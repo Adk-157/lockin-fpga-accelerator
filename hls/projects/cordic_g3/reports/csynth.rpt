@@ -1,0 +1,172 @@
+
+
+================================================================
+== Synthesis Summary Report of 'cordic_vectoring'
+================================================================
++ General Information: 
+    * Date:           Tue Oct  6 11:56:54 2026
+    * Version:        2023.1 (Build 3854077 on May  4 2023)
+    * Project:        cordic_g3
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynquplus
+    * Target device:  xczu5eg-sfvc784-1-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------------+------+------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+    |       Modules      | Issue|      | Latency | Latency| Iteration|         | Trip |          |      |         |           |           |     |
+    |       & Loops      | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined| BRAM |   DSP   |     FF    |    LUT    | URAM|
+    +--------------------+------+------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+    |+ cordic_vectoring  |     -|  0.21|        4|  40.000|         -|        1|     -|       yes|     -|  1 (~0%)|  555 (~0%)|  3054 (2%)|    -|
+    +--------------------+------+------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* Other Ports
++---------+---------+-----------+----------+
+| Port    | Mode    | Direction | Bitwidth |
++---------+---------+-----------+----------+
+| ang_out | ap_vld  | out       | 16       |
+| mag_out | ap_vld  | out       | 16       |
+| x_in    | ap_none | in        | 16       |
+| y_in    | ap_none | in        | 16       |
++---------+---------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+--------------+
+| Argument | Direction | Datatype     |
++----------+-----------+--------------+
+| x_in     | in        | ap_int<16>   |
+| y_in     | in        | ap_int<16>   |
+| mag_out  | out       | ap_uint<16>& |
+| ang_out  | out       | ap_int<16>&  |
++----------+-----------+--------------+
+
+* SW-to-HW Mapping
++----------+----------------+---------+
+| Argument | HW Interface   | HW Type |
++----------+----------------+---------+
+| x_in     | x_in           | port    |
+| y_in     | y_in           | port    |
+| mag_out  | mag_out        | port    |
+| mag_out  | mag_out_ap_vld | port    |
+| ang_out  | ang_out        | port    |
+| ang_out  | ang_out_ap_vld | port    |
++----------+----------------+---------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++---------------------------+-----+--------+------------+-----+--------+---------+
+| Name                      | DSP | Pragma | Variable   | Op  | Impl   | Latency |
++---------------------------+-----+--------+------------+-----+--------+---------+
+| + cordic_vectoring        | 1   |        |            |     |        |         |
+|   x_1_fu_240_p2           | -   |        | x_1        | sub | fabric | 0       |
+|   y_1_fu_246_p2           | -   |        | y_1        | sub | fabric | 0       |
+|   y_49_fu_308_p2          | -   |        | y_49       | add | fabric | 0       |
+|   add_ln30_fu_314_p2      | -   |        | add_ln30   | add | fabric | 0       |
+|   x_3_fu_320_p2           | -   |        | x_3        | sub | fabric | 0       |
+|   y_4_fu_326_p2           | -   |        | y_4        | sub | fabric | 0       |
+|   x_6_fu_388_p2           | -   |        | x_6        | sub | fabric | 0       |
+|   y_6_fu_394_p2           | -   |        | y_6        | add | fabric | 0       |
+|   x_7_fu_400_p2           | -   |        | x_7        | add | fabric | 0       |
+|   y_7_fu_406_p2           | -   |        | y_7        | sub | fabric | 0       |
+|   x_9_fu_464_p2           | -   |        | x_9        | sub | fabric | 0       |
+|   y_9_fu_470_p2           | -   |        | y_9        | add | fabric | 0       |
+|   x_10_fu_476_p2          | -   |        | x_10       | add | fabric | 0       |
+|   y_10_fu_482_p2          | -   |        | y_10       | sub | fabric | 0       |
+|   x_12_fu_540_p2          | -   |        | x_12       | sub | fabric | 0       |
+|   y_12_fu_546_p2          | -   |        | y_12       | add | fabric | 0       |
+|   x_13_fu_552_p2          | -   |        | x_13       | add | fabric | 0       |
+|   y_13_fu_558_p2          | -   |        | y_13       | sub | fabric | 0       |
+|   x_15_fu_610_p2          | -   |        | x_15       | sub | fabric | 0       |
+|   y_15_fu_616_p2          | -   |        | y_15       | add | fabric | 0       |
+|   x_16_fu_622_p2          | -   |        | x_16       | add | fabric | 0       |
+|   y_16_fu_628_p2          | -   |        | y_16       | sub | fabric | 0       |
+|   x_18_fu_694_p2          | -   |        | x_18       | sub | fabric | 0       |
+|   y_18_fu_700_p2          | -   |        | y_18       | add | fabric | 0       |
+|   x_19_fu_706_p2          | -   |        | x_19       | add | fabric | 0       |
+|   y_19_fu_712_p2          | -   |        | y_19       | sub | fabric | 0       |
+|   x_21_fu_778_p2          | -   |        | x_21       | sub | fabric | 0       |
+|   y_21_fu_784_p2          | -   |        | y_21       | add | fabric | 0       |
+|   x_22_fu_790_p2          | -   |        | x_22       | add | fabric | 0       |
+|   y_22_fu_796_p2          | -   |        | y_22       | sub | fabric | 0       |
+|   x_24_fu_862_p2          | -   |        | x_24       | sub | fabric | 0       |
+|   y_24_fu_868_p2          | -   |        | y_24       | add | fabric | 0       |
+|   x_25_fu_874_p2          | -   |        | x_25       | add | fabric | 0       |
+|   y_25_fu_880_p2          | -   |        | y_25       | sub | fabric | 0       |
+|   x_27_fu_957_p2          | -   |        | x_27       | sub | fabric | 0       |
+|   y_27_fu_962_p2          | -   |        | y_27       | add | fabric | 0       |
+|   x_28_fu_967_p2          | -   |        | x_28       | add | fabric | 0       |
+|   y_28_fu_972_p2          | -   |        | y_28       | sub | fabric | 0       |
+|   x_30_fu_1027_p2         | -   |        | x_30       | sub | fabric | 0       |
+|   y_30_fu_1033_p2         | -   |        | y_30       | add | fabric | 0       |
+|   x_31_fu_1039_p2         | -   |        | x_31       | add | fabric | 0       |
+|   y_31_fu_1045_p2         | -   |        | y_31       | sub | fabric | 0       |
+|   x_33_fu_1103_p2         | -   |        | x_33       | sub | fabric | 0       |
+|   y_33_fu_1109_p2         | -   |        | y_33       | add | fabric | 0       |
+|   x_34_fu_1115_p2         | -   |        | x_34       | add | fabric | 0       |
+|   y_34_fu_1121_p2         | -   |        | y_34       | sub | fabric | 0       |
+|   x_36_fu_1179_p2         | -   |        | x_36       | sub | fabric | 0       |
+|   y_36_fu_1185_p2         | -   |        | y_36       | add | fabric | 0       |
+|   x_37_fu_1191_p2         | -   |        | x_37       | add | fabric | 0       |
+|   y_37_fu_1197_p2         | -   |        | y_37       | sub | fabric | 0       |
+|   x_39_fu_1323_p2         | -   |        | x_39       | sub | fabric | 0       |
+|   y_39_fu_1328_p2         | -   |        | y_39       | add | fabric | 0       |
+|   x_40_fu_1333_p2         | -   |        | x_40       | add | fabric | 0       |
+|   y_40_fu_1338_p2         | -   |        | y_40       | sub | fabric | 0       |
+|   x_42_fu_1400_p2         | -   |        | x_42       | sub | fabric | 0       |
+|   y_42_fu_1406_p2         | -   |        | y_42       | add | fabric | 0       |
+|   x_43_fu_1412_p2         | -   |        | x_43       | add | fabric | 0       |
+|   y_43_fu_1418_p2         | -   |        | y_43       | sub | fabric | 0       |
+|   y_45_fu_1480_p2         | -   |        | y_45       | add | fabric | 0       |
+|   y_46_fu_1486_p2         | -   |        | y_46       | sub | fabric | 0       |
+|   sub_ln29_fu_1492_p2     | -   |        | sub_ln29   | sub | fabric | 0       |
+|   add_ln29_fu_1498_p2     | -   |        | add_ln29   | add | fabric | 0       |
+|   sub_ln29_1_fu_1542_p2   | -   |        | sub_ln29_1 | sub | fabric | 0       |
+|   add_ln29_1_fu_1548_p2   | -   |        | add_ln29_1 | add | fabric | 0       |
+|   mul_20ns_14ns_32_1_1_U1 | 1   |        | mul_ln38   | mul | auto   | 0       |
+|   add_ln43_2_fu_1578_p2   | -   |        | add_ln43_2 | add | fabric | 0       |
+|   add_ln43_5_fu_1604_p2   | -   |        | add_ln43_5 | add | fabric | 0       |
+|   add_ln43_6_fu_1614_p2   | -   |        | add_ln43_6 | add | fabric | 0       |
+|   add_ln43_7_fu_930_p2    | -   |        | add_ln43_7 | add | fabric | 0       |
+|   a_1_fu_1645_p2          | -   |        | a_1        | add | fabric | 0       |
+|   a_2_fu_1657_p2          | -   |        | a_2        | add | fabric | 0       |
++---------------------------+-----+--------+------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++----------+---------+------------------------------------------------+
+| Type     | Options | Location                                       |
++----------+---------+------------------------------------------------+
+| pipeline | II=1    | ../files/cordic_hls.cpp:6 in cordic_vectoring  |
+| unroll   |         | ../files/cordic_hls.cpp:26 in cordic_vectoring |
++----------+---------+------------------------------------------------+
+
+

@@ -1,0 +1,9 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../../files/tb_dds.cpp in debug mode
+   Compiling ../../../../../files/dds_hls.cpp in debug mode
+   Generating csim.exe
+C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/dds_stream.csv: 45859 clocks, 0 mismatches
+TEST PASSED
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

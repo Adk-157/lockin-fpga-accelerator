@@ -1,0 +1,145 @@
+
+
+================================================================
+== Synthesis Summary Report of 'cic_fir_chain'
+================================================================
++ General Information: 
+    * Date:           Tue Nov  3 18:12:48 2026
+    * Version:        2023.1 (Build 3854077 on May  4 2023)
+    * Project:        chain
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynquplus
+    * Target device:  xczu5eg-sfvc784-1-e
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------------+------+------+---------+--------+----------+---------+------+----------+------+---------+------------+-----------+-----+
+    |     Modules     | Issue|      | Latency | Latency| Iteration|         | Trip |          |      |         |            |           |     |
+    |     & Loops     | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined| BRAM |   DSP   |     FF     |    LUT    | URAM|
+    +-----------------+------+------+---------+--------+----------+---------+------+----------+------+---------+------------+-----------+-----+
+    |+ cic_fir_chain  |     -|  0.94|        5|  50.000|         -|        1|     -|       yes|     -|  19 (1%)|  1250 (~0%)|  2176 (1%)|    -|
+    +-----------------+------+------+---------+--------+----------+---------+------+----------+------+---------+------------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* Other Ports
++-------+---------+-----------+----------+
+| Port  | Mode    | Direction | Bitwidth |
++-------+---------+-----------+----------+
+| rst_r | ap_none | in        | 1        |
+| valid | ap_vld  | out       | 1        |
+| x     | ap_none | in        | 16       |
+| y     | ap_vld  | out       | 18       |
++-------+---------+-----------+----------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst    | reset      | ap_rst                            |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+-------------+
+| Argument | Direction | Datatype    |
++----------+-----------+-------------+
+| rst      | in        | bool        |
+| x        | in        | ap_int<16>  |
+| valid    | out       | bool&       |
+| y        | out       | ap_int<18>& |
++----------+-----------+-------------+
+
+* SW-to-HW Mapping
++----------+--------------+---------+
+| Argument | HW Interface | HW Type |
++----------+--------------+---------+
+| rst      | rst_r        | port    |
+| x        | x            | port    |
+| valid    | valid        | port    |
+| valid    | valid_ap_vld | port    |
+| y        | y            | port    |
+| y        | y_ap_vld     | port    |
++----------+--------------+---------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------------+-----+--------+-------------+-----+--------+---------+
+| Name                                 | DSP | Pragma | Variable    | Op  | Impl   | Latency |
++--------------------------------------+-----+--------+-------------+-----+--------+---------+
+| + cic_fir_chain                      | 19  |        |             |     |        |         |
+|   v_fu_240_p2                        | -   |        | v           | add | fabric | 0       |
+|   v_4_fu_246_p2                      | -   |        | v_4         | add | fabric | 0       |
+|   v_5_fu_252_p2                      | -   |        | v_5         | add | fabric | 0       |
+|   v_6_fu_538_p2                      | -   |        | v_6         | add | fabric | 0       |
+|   d_6_fu_549_p2                      | -   |        | d_6         | sub | fabric | 0       |
+|   d_7_fu_555_p2                      | -   |        | d_7         | sub | fabric | 0       |
+|   d_8_fu_561_p2                      | -   |        | d_8         | sub | fabric | 0       |
+|   add_ln68_fu_294_p2                 | -   |        | add_ln68    | add | fabric | 0       |
+|   mul_16s_9ns_25_1_1_U1              | 1   |        | acc         | mul | auto   | 0       |
+|   mac_muladd_16s_9s_25s_25_4_1_U8    | 1   |        | mul_ln77    | mul | dsp48  | 3       |
+|   mac_muladd_16s_6ns_24s_24_4_1_U9   | 1   |        | mul_ln77_1  | mul | dsp48  | 3       |
+|   mul_16s_8ns_24_1_1_U2              | 1   |        | mul_ln77_2  | mul | auto   | 0       |
+|   mac_muladd_16s_10s_24s_25_4_1_U15  | 1   |        | mul_ln77_3  | mul | dsp48  | 3       |
+|   mac_muladd_16s_10ns_27s_27_4_1_U10 | 1   |        | mul_ln77_4  | mul | dsp48  | 3       |
+|   mul_16s_11s_27_1_1_U3              | 1   |        | mul_ln77_5  | mul | auto   | 0       |
+|   mac_muladd_16s_12ns_30s_30_4_1_U11 | 1   |        | mul_ln77_6  | mul | dsp48  | 3       |
+|   mul_16s_15s_30_1_1_U4              | 1   |        | mul_ln77_7  | mul | auto   | 0       |
+|   mul_16s_16ns_32_1_1_U5             | 1   |        | mul_ln77_8  | mul | auto   | 0       |
+|   mac_muladd_16s_15s_32s_32_4_1_U12  | 1   |        | mul_ln77_9  | mul | dsp48  | 3       |
+|   mac_muladd_16s_12ns_32s_32_4_1_U16 | 1   |        | mul_ln77_10 | mul | dsp48  | 3       |
+|   mac_muladd_16s_11s_23s_26_4_1_U13  | 1   |        | mul_ln77_11 | mul | dsp48  | 3       |
+|   mac_muladd_16s_10ns_26s_26_4_1_U14 | 1   |        | mul_ln77_12 | mul | dsp48  | 3       |
+|   mul_16s_10s_26_1_1_U6              | 1   |        | mul_ln77_13 | mul | auto   | 0       |
+|   mac_muladd_16s_7ns_26s_26_4_1_U17  | 1   |        | mul_ln77_14 | mul | dsp48  | 3       |
+|   mac_muladd_16s_6ns_24s_24_4_1_U18  | 1   |        | mul_ln77_15 | mul | dsp48  | 3       |
+|   mul_16s_9s_24_1_1_U7               | 1   |        | mul_ln77_16 | mul | auto   | 0       |
+|   mac_muladd_16s_8ns_25ns_25_4_1_U19 | 1   |        | mul_ln77_17 | mul | dsp48  | 3       |
+|   mac_muladd_16s_6ns_24s_24_4_1_U18  | 1   |        | add_ln77    | add | dsp48  | 3       |
+|   mac_muladd_16s_10ns_26s_26_4_1_U14 | 1   |        | add_ln77_1  | add | dsp48  | 3       |
+|   mac_muladd_16s_7ns_26s_26_4_1_U17  | 1   |        | add_ln77_2  | add | dsp48  | 3       |
+|   add_ln77_3_fu_1150_p2              | -   |        | add_ln77_3  | add | fabric | 0       |
+|   mac_muladd_16s_11s_23s_26_4_1_U13  | 1   |        | add_ln77_4  | add | dsp48  | 3       |
+|   mac_muladd_16s_15s_32s_32_4_1_U12  | 1   |        | add_ln77_5  | add | dsp48  | 3       |
+|   mac_muladd_16s_12ns_32s_32_4_1_U16 | 1   |        | add_ln77_6  | add | dsp48  | 3       |
+|   mac_muladd_16s_12ns_30s_30_4_1_U11 | 1   |        | add_ln77_9  | add | dsp48  | 3       |
+|   mac_muladd_16s_10ns_27s_27_4_1_U10 | 1   |        | add_ln77_10 | add | dsp48  | 3       |
+|   add_ln77_11_fu_1136_p2             | -   |        | add_ln77_11 | add | fabric | 0       |
+|   mac_muladd_16s_6ns_24s_24_4_1_U9   | 1   |        | add_ln77_13 | add | dsp48  | 3       |
+|   mac_muladd_16s_10s_24s_25_4_1_U15  | 1   |        | add_ln77_14 | add | dsp48  | 3       |
+|   mac_muladd_16s_9s_25s_25_4_1_U8    | 1   |        | add_ln77_15 | add | dsp48  | 3       |
+|   mac_muladd_16s_8ns_25ns_25_4_1_U19 | 1   |        | add_ln77_16 | add | dsp48  | 3       |
+|   add_ln77_17_fu_1188_p2             | -   |        | add_ln77_17 | add | fabric | 0       |
++--------------------------------------+-----+--------+-------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+----------------------------+-----------------------------------------------------+
+| Type            | Options                    | Location                                            |
++-----------------+----------------------------+-----------------------------------------------------+
+| pipeline        | II=1                       | ../files/chain_hls.cpp:6 in cic_fir_chain           |
+| array_partition | variable=cs.integ complete | ../files/chain_hls.cpp:9 in cic_fir_chain, cs.integ |
+| array_partition | variable=cs.comb complete  | ../files/chain_hls.cpp:10 in cic_fir_chain, cs.comb |
+| array_partition | variable=fs.hist complete  | ../files/chain_hls.cpp:11 in cic_fir_chain, fs.hist |
++-----------------+----------------------------+-----------------------------------------------------+
+
+

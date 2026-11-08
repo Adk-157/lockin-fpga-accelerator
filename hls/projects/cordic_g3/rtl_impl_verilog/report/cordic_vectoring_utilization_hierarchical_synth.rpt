@@ -1,0 +1,34 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Tue Oct  6 12:14:25 2026
+| Host         : SUS running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -hierarchical_depth 5 -file ./report/cordic_vectoring_utilization_hierarchical_synth.rpt
+| Design       : bd_0_wrapper
+| Device       : xczu5eg-sfvc784-1-e
+| Speed File   : -1
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------------+-------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|             Instance            |                         Module                        | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++---------------------------------+-------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| bd_0_wrapper                    |                                                 (top) |        759 |        756 |       0 |    3 | 230 |      0 |      0 |    0 |          1 |
+|   bd_0_i                        |                                                  bd_0 |        759 |        756 |       0 |    3 | 230 |      0 |      0 |    0 |          1 |
+|     hls_inst                    |                                       bd_0_hls_inst_0 |        759 |        756 |       0 |    3 | 230 |      0 |      0 |    0 |          1 |
+|       (hls_inst)                |                                       bd_0_hls_inst_0 |          0 |          0 |       0 |    0 |   0 |      0 |      0 |    0 |          0 |
+|       inst                      |                      bd_0_hls_inst_0_cordic_vectoring |        759 |        756 |       0 |    3 | 230 |      0 |      0 |    0 |          1 |
+|         (inst)                  |                      bd_0_hls_inst_0_cordic_vectoring |        661 |        658 |       0 |    3 | 230 |      0 |      0 |    0 |          0 |
+|         mul_20ns_14ns_32_1_1_U1 | bd_0_hls_inst_0_cordic_vectoring_mul_20ns_14ns_32_1_1 |         98 |         98 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
++---------------------------------+-------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+
+

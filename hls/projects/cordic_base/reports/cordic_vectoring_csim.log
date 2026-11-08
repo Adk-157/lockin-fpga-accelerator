@@ -1,0 +1,7 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+make: 'csim.exe' is up to date.
+C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/cordic_full.csv: 26707 vectors, 0 mismatches (1 angle checks skipped as don't-care)
+TEST PASSED
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

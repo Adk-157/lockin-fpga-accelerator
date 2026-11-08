@@ -1,0 +1,947 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date              : Tue Oct  6 00:47:49 2026
+| Host              : SUS running 64-bit major release  (build 9200)
+| Command           : report_timing -max_paths 10 -file ./report/cordic_vectoring_timing_paths_routed.rpt
+| Design            : bd_0_wrapper
+| Device            : xczu5eg-sfvc784
+| Speed File        : -1  PRODUCTION 1.30 05-15-2022
+| Design State      : Routed
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             5.245ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.733ns  (logic 2.080ns (43.945%)  route 2.653ns (56.055%))
+  Logic Levels:           15  (CARRY8=10 LUT1=2 LUT2=1 LUT3=2)
+  Clock Path Skew:        -0.013ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.024ns = ( 10.024 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.888 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/O[1]
+                         net (fo=3, routed)           0.494     3.382    bd_0_i/hls_inst/inst/y_22_fu_785_p3__0[9]
+    SLICE_X15Y22         LUT3 (Prop_C6LUT_SLICEL_I1_O)
+                                                      0.063     3.445 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17/O
+                         net (fo=1, routed)           0.011     3.456    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17_n_0
+    SLICE_X15Y22         CARRY8 (Prop_CARRY8_SLICEL_S[2]_CO[7])
+                                                      0.196     3.652 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     3.680    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_2_n_0
+    SLICE_X15Y23         CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
+                                                      0.072     3.752 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]_i_2/O[0]
+                         net (fo=6, routed)           0.435     4.187    bd_0_i/hls_inst/inst/x_25_fu_861_p3[8]
+    SLICE_X16Y27         LUT2 (Prop_A6LUT_SLICEL_I0_O)
+                                                      0.178     4.365 r  bd_0_i/hls_inst/inst/x_27_reg_1755[15]_i_10/O
+                         net (fo=1, routed)           0.011     4.376    bd_0_i/hls_inst/inst/x_27_reg_1755[15]_i_10_n_0
+    SLICE_X16Y27         CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
+                                                      0.238     4.614 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.642    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]_i_1_n_0
+    SLICE_X16Y28         CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
+                                                      0.097     4.739 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]_i_1/O[1]
+                         net (fo=1, routed)           0.031     4.770    bd_0_i/hls_inst/inst/x_27_fu_925_p2[17]
+    SLICE_X16Y28         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.024    10.024    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X16Y28         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]/C
+                         clock pessimism              0.000    10.024    
+                         clock uncertainty           -0.035     9.989    
+    SLICE_X16Y28         FDRE (Setup_BFF_SLICEL_C_D)
+                                                      0.027    10.016    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]
+  -------------------------------------------------------------------
+                         required time                         10.016    
+                         arrival time                          -4.770    
+  -------------------------------------------------------------------
+                         slack                                  5.245    
+
+Slack (MET) :             5.252ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.728ns  (logic 2.016ns (42.637%)  route 2.712ns (57.363%))
+  Logic Levels:           16  (CARRY8=11 LUT1=3 LUT2=1 LUT3=1)
+  Clock Path Skew:        -0.011ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.026ns = ( 10.026 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.023     2.814 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     2.842    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2_n_0
+    SLICE_X13Y22         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.104     2.946 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_1/O[1]
+                         net (fo=30, routed)          0.231     3.177    bd_0_i/hls_inst/inst/y_22_fu_785_p3[17]
+    SLICE_X13Y22         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     3.243 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11/O
+                         net (fo=1, routed)           0.194     3.437    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11_n_0
+    SLICE_X14Y22         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     3.628 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     3.656    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2_n_0
+    SLICE_X14Y23         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     3.802 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]_i_2/O[7]
+                         net (fo=8, routed)           0.540     4.342    bd_0_i/hls_inst/inst/y_25_fu_869_p3__0[15]
+    SLICE_X17Y25         LUT2 (Prop_H6LUT_SLICEM_I1_O)
+                                                      0.100     4.442 r  bd_0_i/hls_inst/inst/y_27_reg_1760[15]_i_3/O
+                         net (fo=1, routed)           0.017     4.459    bd_0_i/hls_inst/inst/y_27_reg_1760[15]_i_3_n_0
+    SLICE_X17Y25         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     4.609 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[15]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.637    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[15]_i_1_n_0
+    SLICE_X17Y26         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     4.734 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]_i_1/O[1]
+                         net (fo=1, routed)           0.031     4.765    bd_0_i/hls_inst/inst/y_27_fu_931_p2[17]
+    SLICE_X17Y26         FDRE                                         r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.026    10.026    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y26         FDRE                                         r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]/C
+                         clock pessimism              0.000    10.026    
+                         clock uncertainty           -0.035     9.991    
+    SLICE_X17Y26         FDRE (Setup_BFF_SLICEM_C_D)
+                                                      0.027    10.018    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]
+  -------------------------------------------------------------------
+                         required time                         10.018    
+                         arrival time                          -4.765    
+  -------------------------------------------------------------------
+                         slack                                  5.252    
+
+Slack (MET) :             5.271ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_27_reg_1755_reg[16]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.707ns  (logic 2.055ns (43.657%)  route 2.652ns (56.343%))
+  Logic Levels:           15  (CARRY8=10 LUT1=2 LUT2=1 LUT3=2)
+  Clock Path Skew:        -0.013ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.024ns = ( 10.024 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.888 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/O[1]
+                         net (fo=3, routed)           0.494     3.382    bd_0_i/hls_inst/inst/y_22_fu_785_p3__0[9]
+    SLICE_X15Y22         LUT3 (Prop_C6LUT_SLICEL_I1_O)
+                                                      0.063     3.445 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17/O
+                         net (fo=1, routed)           0.011     3.456    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17_n_0
+    SLICE_X15Y22         CARRY8 (Prop_CARRY8_SLICEL_S[2]_CO[7])
+                                                      0.196     3.652 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     3.680    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_2_n_0
+    SLICE_X15Y23         CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
+                                                      0.072     3.752 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]_i_2/O[0]
+                         net (fo=6, routed)           0.435     4.187    bd_0_i/hls_inst/inst/x_25_fu_861_p3[8]
+    SLICE_X16Y27         LUT2 (Prop_A6LUT_SLICEL_I0_O)
+                                                      0.178     4.365 r  bd_0_i/hls_inst/inst/x_27_reg_1755[15]_i_10/O
+                         net (fo=1, routed)           0.011     4.376    bd_0_i/hls_inst/inst/x_27_reg_1755[15]_i_10_n_0
+    SLICE_X16Y27         CARRY8 (Prop_CARRY8_SLICEL_S[0]_CO[7])
+                                                      0.238     4.614 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.642    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]_i_1_n_0
+    SLICE_X16Y28         CARRY8 (Prop_CARRY8_SLICEL_CI_O[0])
+                                                      0.072     4.714 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[17]_i_1/O[0]
+                         net (fo=1, routed)           0.030     4.744    bd_0_i/hls_inst/inst/x_27_fu_925_p2[16]
+    SLICE_X16Y28         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[16]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.024    10.024    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X16Y28         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[16]/C
+                         clock pessimism              0.000    10.024    
+                         clock uncertainty           -0.035     9.989    
+    SLICE_X16Y28         FDRE (Setup_AFF_SLICEL_C_D)
+                                                      0.027    10.016    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[16]
+  -------------------------------------------------------------------
+                         required time                         10.016    
+                         arrival time                          -4.744    
+  -------------------------------------------------------------------
+                         slack                                  5.271    
+
+Slack (MET) :             5.278ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/y_27_reg_1760_reg[16]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.702ns  (logic 1.991ns (42.341%)  route 2.711ns (57.659%))
+  Logic Levels:           16  (CARRY8=11 LUT1=3 LUT2=1 LUT3=1)
+  Clock Path Skew:        -0.011ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.026ns = ( 10.026 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.023     2.814 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     2.842    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2_n_0
+    SLICE_X13Y22         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.104     2.946 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_1/O[1]
+                         net (fo=30, routed)          0.231     3.177    bd_0_i/hls_inst/inst/y_22_fu_785_p3[17]
+    SLICE_X13Y22         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     3.243 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11/O
+                         net (fo=1, routed)           0.194     3.437    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11_n_0
+    SLICE_X14Y22         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     3.628 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     3.656    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2_n_0
+    SLICE_X14Y23         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     3.802 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]_i_2/O[7]
+                         net (fo=8, routed)           0.540     4.342    bd_0_i/hls_inst/inst/y_25_fu_869_p3__0[15]
+    SLICE_X17Y25         LUT2 (Prop_H6LUT_SLICEM_I1_O)
+                                                      0.100     4.442 r  bd_0_i/hls_inst/inst/y_27_reg_1760[15]_i_3/O
+                         net (fo=1, routed)           0.017     4.459    bd_0_i/hls_inst/inst/y_27_reg_1760[15]_i_3_n_0
+    SLICE_X17Y25         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     4.609 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[15]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.637    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[15]_i_1_n_0
+    SLICE_X17Y26         CARRY8 (Prop_CARRY8_SLICEM_CI_O[0])
+                                                      0.072     4.709 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]_i_1/O[0]
+                         net (fo=1, routed)           0.030     4.739    bd_0_i/hls_inst/inst/y_27_fu_931_p2[16]
+    SLICE_X17Y26         FDRE                                         r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[16]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.026    10.026    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y26         FDRE                                         r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[16]/C
+                         clock pessimism              0.000    10.026    
+                         clock uncertainty           -0.035     9.991    
+    SLICE_X17Y26         FDRE (Setup_AFF_SLICEM_C_D)
+                                                      0.027    10.018    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[16]
+  -------------------------------------------------------------------
+                         required time                         10.018    
+                         arrival time                          -4.739    
+  -------------------------------------------------------------------
+                         slack                                  5.278    
+
+Slack (MET) :             5.282ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.698ns  (logic 2.142ns (45.597%)  route 2.556ns (54.403%))
+  Logic Levels:           16  (CARRY8=11 LUT1=3 LUT2=1 LUT3=1)
+  Clock Path Skew:        -0.012ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.025ns = ( 10.025 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.023     2.814 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     2.842    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2_n_0
+    SLICE_X13Y22         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.104     2.946 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_1/O[1]
+                         net (fo=30, routed)          0.231     3.177    bd_0_i/hls_inst/inst/y_22_fu_785_p3[17]
+    SLICE_X13Y22         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     3.243 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11/O
+                         net (fo=1, routed)           0.194     3.437    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11_n_0
+    SLICE_X14Y22         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     3.628 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     3.656    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2_n_0
+    SLICE_X14Y23         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     3.802 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]_i_2/O[7]
+                         net (fo=8, routed)           0.390     4.192    bd_0_i/hls_inst/inst/y_25_fu_869_p3__0[15]
+    SLICE_X16Y26         LUT2 (Prop_H6LUT_SLICEL_I1_O)
+                                                      0.179     4.371 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_3/O
+                         net (fo=1, routed)           0.011     4.382    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_3_n_0
+    SLICE_X16Y26         CARRY8 (Prop_CARRY8_SLICEL_S[7]_CO[7])
+                                                      0.148     4.530 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.558    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_1_n_0
+    SLICE_X16Y27         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     4.704 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]_i_1/O[7]
+                         net (fo=1, routed)           0.031     4.735    bd_0_i/hls_inst/inst/x_27_fu_925_p2[15]
+    SLICE_X16Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.025    10.025    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X16Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]/C
+                         clock pessimism              0.000    10.025    
+                         clock uncertainty           -0.035     9.990    
+    SLICE_X16Y27         FDRE (Setup_HFF_SLICEL_C_D)
+                                                      0.027    10.017    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]
+  -------------------------------------------------------------------
+                         required time                         10.017    
+                         arrival time                          -4.735    
+  -------------------------------------------------------------------
+                         slack                                  5.282    
+
+Slack (MET) :             5.283ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_27_reg_1755_reg[13]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.697ns  (logic 2.141ns (45.585%)  route 2.556ns (54.415%))
+  Logic Levels:           16  (CARRY8=11 LUT1=3 LUT2=1 LUT3=1)
+  Clock Path Skew:        -0.012ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.025ns = ( 10.025 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.023     2.814 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     2.842    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2_n_0
+    SLICE_X13Y22         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.104     2.946 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_1/O[1]
+                         net (fo=30, routed)          0.231     3.177    bd_0_i/hls_inst/inst/y_22_fu_785_p3[17]
+    SLICE_X13Y22         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     3.243 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11/O
+                         net (fo=1, routed)           0.194     3.437    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11_n_0
+    SLICE_X14Y22         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     3.628 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     3.656    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2_n_0
+    SLICE_X14Y23         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     3.802 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]_i_2/O[7]
+                         net (fo=8, routed)           0.390     4.192    bd_0_i/hls_inst/inst/y_25_fu_869_p3__0[15]
+    SLICE_X16Y26         LUT2 (Prop_H6LUT_SLICEL_I1_O)
+                                                      0.179     4.371 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_3/O
+                         net (fo=1, routed)           0.011     4.382    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_3_n_0
+    SLICE_X16Y26         CARRY8 (Prop_CARRY8_SLICEL_S[7]_CO[7])
+                                                      0.148     4.530 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.558    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_1_n_0
+    SLICE_X16Y27         CARRY8 (Prop_CARRY8_SLICEL_CI_O[5])
+                                                      0.145     4.703 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]_i_1/O[5]
+                         net (fo=1, routed)           0.031     4.734    bd_0_i/hls_inst/inst/x_27_fu_925_p2[13]
+    SLICE_X16Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.025    10.025    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X16Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[13]/C
+                         clock pessimism              0.000    10.025    
+                         clock uncertainty           -0.035     9.990    
+    SLICE_X16Y27         FDRE (Setup_FFF_SLICEL_C_D)
+                                                      0.027    10.017    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[13]
+  -------------------------------------------------------------------
+                         required time                         10.017    
+                         arrival time                          -4.734    
+  -------------------------------------------------------------------
+                         slack                                  5.283    
+
+Slack (MET) :             5.284ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_26_reg_1745_reg[17]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.694ns  (logic 1.915ns (40.793%)  route 2.779ns (59.207%))
+  Logic Levels:           15  (CARRY8=10 LUT1=2 LUT2=1 LUT3=2)
+  Clock Path Skew:        -0.013ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.024ns = ( 10.024 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.888 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/O[1]
+                         net (fo=3, routed)           0.494     3.382    bd_0_i/hls_inst/inst/y_22_fu_785_p3__0[9]
+    SLICE_X15Y22         LUT3 (Prop_C6LUT_SLICEL_I1_O)
+                                                      0.063     3.445 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17/O
+                         net (fo=1, routed)           0.011     3.456    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17_n_0
+    SLICE_X15Y22         CARRY8 (Prop_CARRY8_SLICEL_S[2]_O[7])
+                                                      0.248     3.704 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_2/O[7]
+                         net (fo=4, routed)           0.561     4.265    bd_0_i/hls_inst/inst/x_25_fu_861_p3[7]
+    SLICE_X14Y26         LUT2 (Prop_H6LUT_SLICEL_I1_O)
+                                                      0.100     4.365 r  bd_0_i/hls_inst/inst/x_26_reg_1745[7]_i_2/O
+                         net (fo=1, routed)           0.011     4.376    bd_0_i/hls_inst/inst/x_26_reg_1745[7]_i_2_n_0
+    SLICE_X14Y26         CARRY8 (Prop_CARRY8_SLICEL_S[7]_CO[7])
+                                                      0.148     4.524 r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[7]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.552    bd_0_i/hls_inst/inst/x_26_reg_1745_reg[7]_i_1_n_0
+    SLICE_X14Y27         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.023     4.575 r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.603    bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]_i_1_n_0
+    SLICE_X14Y28         CARRY8 (Prop_CARRY8_SLICEL_CI_O[1])
+                                                      0.097     4.700 r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[17]_i_1/O[1]
+                         net (fo=1, routed)           0.031     4.731    bd_0_i/hls_inst/inst/x_26_fu_913_p2[17]
+    SLICE_X14Y28         FDRE                                         r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[17]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.024    10.024    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X14Y28         FDRE                                         r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[17]/C
+                         clock pessimism              0.000    10.024    
+                         clock uncertainty           -0.035     9.989    
+    SLICE_X14Y28         FDRE (Setup_BFF_SLICEL_C_D)
+                                                      0.027    10.016    bd_0_i/hls_inst/inst/x_26_reg_1745_reg[17]
+  -------------------------------------------------------------------
+                         required time                         10.016    
+                         arrival time                          -4.731    
+  -------------------------------------------------------------------
+                         slack                                  5.284    
+
+Slack (MET) :             5.287ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.692ns  (logic 1.941ns (41.365%)  route 2.751ns (58.635%))
+  Logic Levels:           14  (CARRY8=9 LUT1=2 LUT2=1 LUT3=2)
+  Clock Path Skew:        -0.012ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.025ns = ( 10.025 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.888 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/O[1]
+                         net (fo=3, routed)           0.494     3.382    bd_0_i/hls_inst/inst/y_22_fu_785_p3__0[9]
+    SLICE_X15Y22         LUT3 (Prop_C6LUT_SLICEL_I1_O)
+                                                      0.063     3.445 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17/O
+                         net (fo=1, routed)           0.011     3.456    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17_n_0
+    SLICE_X15Y22         CARRY8 (Prop_CARRY8_SLICEL_S[2]_O[7])
+                                                      0.248     3.704 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_2/O[7]
+                         net (fo=4, routed)           0.561     4.265    bd_0_i/hls_inst/inst/x_25_fu_861_p3[7]
+    SLICE_X14Y26         LUT2 (Prop_H6LUT_SLICEL_I1_O)
+                                                      0.100     4.365 r  bd_0_i/hls_inst/inst/x_26_reg_1745[7]_i_2/O
+                         net (fo=1, routed)           0.011     4.376    bd_0_i/hls_inst/inst/x_26_reg_1745[7]_i_2_n_0
+    SLICE_X14Y26         CARRY8 (Prop_CARRY8_SLICEL_S[7]_CO[7])
+                                                      0.148     4.524 r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[7]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.552    bd_0_i/hls_inst/inst/x_26_reg_1745_reg[7]_i_1_n_0
+    SLICE_X14Y27         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     4.698 r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]_i_1/O[7]
+                         net (fo=1, routed)           0.031     4.729    bd_0_i/hls_inst/inst/x_26_fu_913_p2[15]
+    SLICE_X14Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.025    10.025    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X14Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]/C
+                         clock pessimism              0.000    10.025    
+                         clock uncertainty           -0.035     9.990    
+    SLICE_X14Y27         FDRE (Setup_HFF_SLICEL_C_D)
+                                                      0.027    10.017    bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]
+  -------------------------------------------------------------------
+                         required time                         10.017    
+                         arrival time                          -4.729    
+  -------------------------------------------------------------------
+                         slack                                  5.287    
+
+Slack (MET) :             5.288ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_26_reg_1745_reg[13]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.691ns  (logic 1.940ns (41.352%)  route 2.751ns (58.648%))
+  Logic Levels:           14  (CARRY8=9 LUT1=2 LUT2=1 LUT3=2)
+  Clock Path Skew:        -0.012ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.025ns = ( 10.025 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.888 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/O[1]
+                         net (fo=3, routed)           0.494     3.382    bd_0_i/hls_inst/inst/y_22_fu_785_p3__0[9]
+    SLICE_X15Y22         LUT3 (Prop_C6LUT_SLICEL_I1_O)
+                                                      0.063     3.445 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17/O
+                         net (fo=1, routed)           0.011     3.456    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_17_n_0
+    SLICE_X15Y22         CARRY8 (Prop_CARRY8_SLICEL_S[2]_O[7])
+                                                      0.248     3.704 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_2/O[7]
+                         net (fo=4, routed)           0.561     4.265    bd_0_i/hls_inst/inst/x_25_fu_861_p3[7]
+    SLICE_X14Y26         LUT2 (Prop_H6LUT_SLICEL_I1_O)
+                                                      0.100     4.365 r  bd_0_i/hls_inst/inst/x_26_reg_1745[7]_i_2/O
+                         net (fo=1, routed)           0.011     4.376    bd_0_i/hls_inst/inst/x_26_reg_1745[7]_i_2_n_0
+    SLICE_X14Y26         CARRY8 (Prop_CARRY8_SLICEL_S[7]_CO[7])
+                                                      0.148     4.524 r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[7]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.552    bd_0_i/hls_inst/inst/x_26_reg_1745_reg[7]_i_1_n_0
+    SLICE_X14Y27         CARRY8 (Prop_CARRY8_SLICEL_CI_O[5])
+                                                      0.145     4.697 r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[15]_i_1/O[5]
+                         net (fo=1, routed)           0.031     4.728    bd_0_i/hls_inst/inst/x_26_fu_913_p2[13]
+    SLICE_X14Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.025    10.025    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X14Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_26_reg_1745_reg[13]/C
+                         clock pessimism              0.000    10.025    
+                         clock uncertainty           -0.035     9.990    
+    SLICE_X14Y27         FDRE (Setup_FFF_SLICEL_C_D)
+                                                      0.027    10.017    bd_0_i/hls_inst/inst/x_26_reg_1745_reg[13]
+  -------------------------------------------------------------------
+                         required time                         10.017    
+                         arrival time                          -4.728    
+  -------------------------------------------------------------------
+                         slack                                  5.288    
+
+Slack (MET) :             5.298ns  (required time - arrival time)
+  Source:                 bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            bd_0_i/hls_inst/inst/x_27_reg_1755_reg[14]/D
+                            (rising edge-triggered cell FDRE clocked by ap_clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             ap_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (ap_clk rise@10.000ns - ap_clk rise@0.000ns)
+  Data Path Delay:        4.682ns  (logic 2.125ns (45.389%)  route 2.557ns (54.611%))
+  Logic Levels:           16  (CARRY8=11 LUT1=3 LUT2=1 LUT3=1)
+  Clock Path Skew:        -0.012ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.025ns = ( 10.025 - 10.000 ) 
+    Source Clock Delay      (SCD):    0.037ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock ap_clk rise edge)     0.000     0.000 r  
+                                                      0.000     0.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.037     0.037    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X17Y16         FDRE                                         r  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y16         FDRE (Prop_BFF_SLICEM_C_Q)
+                                                      0.095     0.132 f  bd_0_i/hls_inst/inst/tmp_6_reg_1726_reg[0]/Q
+                         net (fo=50, routed)          0.251     0.383    bd_0_i/hls_inst/inst/tmp_6_reg_1726
+    SLICE_X13Y16         LUT1 (Prop_G6LUT_SLICEM_I0_O)
+                                                      0.100     0.483 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41/O
+                         net (fo=1, routed)           0.332     0.815    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_41_n_0
+    SLICE_X14Y15         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     1.006 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32/CO[7]
+                         net (fo=1, routed)           0.028     1.034    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_32_n_0
+    SLICE_X14Y16         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     1.180 r  bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10/O[7]
+                         net (fo=3, routed)           0.510     1.690    bd_0_i/hls_inst/inst/add_ln43_9_reg_1765_reg[14]_i_10_n_8
+    SLICE_X13Y18         LUT3 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.100     1.790 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18/O
+                         net (fo=1, routed)           0.017     1.807    bd_0_i/hls_inst/inst/tmp_9_reg_1733[0]_i_18_n_0
+    SLICE_X13Y18         CARRY8 (Prop_CARRY8_SLICEM_S[7]_CO[7])
+                                                      0.150     1.957 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6/CO[7]
+                         net (fo=1, routed)           0.028     1.985    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_6_n_0
+    SLICE_X13Y19         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.097     2.082 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3/O[1]
+                         net (fo=49, routed)          0.219     2.301    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_3_n_14
+    SLICE_X13Y19         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     2.367 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21/O
+                         net (fo=1, routed)           0.202     2.569    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_21_n_0
+    SLICE_X13Y20         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.194     2.763 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12/CO[7]
+                         net (fo=1, routed)           0.028     2.791    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_12_n_0
+    SLICE_X13Y21         CARRY8 (Prop_CARRY8_SLICEM_CI_CO[7])
+                                                      0.023     2.814 r  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     2.842    bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_2_n_0
+    SLICE_X13Y22         CARRY8 (Prop_CARRY8_SLICEM_CI_O[1])
+                                                      0.104     2.946 f  bd_0_i/hls_inst/inst/tmp_9_reg_1733_reg[0]_i_1/O[1]
+                         net (fo=30, routed)          0.231     3.177    bd_0_i/hls_inst/inst/y_22_fu_785_p3[17]
+    SLICE_X13Y22         LUT1 (Prop_H6LUT_SLICEM_I0_O)
+                                                      0.066     3.243 r  bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11/O
+                         net (fo=1, routed)           0.194     3.437    bd_0_i/hls_inst/inst/y_27_reg_1760[7]_i_11_n_0
+    SLICE_X14Y22         CARRY8 (Prop_CARRY8_SLICEL_CI_CO[7])
+                                                      0.191     3.628 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2/CO[7]
+                         net (fo=1, routed)           0.028     3.656    bd_0_i/hls_inst/inst/y_27_reg_1760_reg[7]_i_2_n_0
+    SLICE_X14Y23         CARRY8 (Prop_CARRY8_SLICEL_CI_O[7])
+                                                      0.146     3.802 r  bd_0_i/hls_inst/inst/y_27_reg_1760_reg[17]_i_2/O[7]
+                         net (fo=8, routed)           0.390     4.192    bd_0_i/hls_inst/inst/y_25_fu_869_p3__0[15]
+    SLICE_X16Y26         LUT2 (Prop_H6LUT_SLICEL_I1_O)
+                                                      0.179     4.371 r  bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_3/O
+                         net (fo=1, routed)           0.011     4.382    bd_0_i/hls_inst/inst/x_27_reg_1755[7]_i_3_n_0
+    SLICE_X16Y26         CARRY8 (Prop_CARRY8_SLICEL_S[7]_CO[7])
+                                                      0.148     4.530 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_1/CO[7]
+                         net (fo=1, routed)           0.028     4.558    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[7]_i_1_n_0
+    SLICE_X16Y27         CARRY8 (Prop_CARRY8_SLICEL_CI_O[6])
+                                                      0.129     4.687 r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[15]_i_1/O[6]
+                         net (fo=1, routed)           0.032     4.719    bd_0_i/hls_inst/inst/x_27_fu_925_p2[14]
+    SLICE_X16Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock ap_clk rise edge)    10.000    10.000 r  
+                                                      0.000    10.000 r  ap_clk (IN)
+                         net (fo=193, unset)          0.025    10.025    bd_0_i/hls_inst/inst/ap_clk
+    SLICE_X16Y27         FDRE                                         r  bd_0_i/hls_inst/inst/x_27_reg_1755_reg[14]/C
+                         clock pessimism              0.000    10.025    
+                         clock uncertainty           -0.035     9.990    
+    SLICE_X16Y27         FDRE (Setup_GFF_SLICEL_C_D)
+                                                      0.027    10.017    bd_0_i/hls_inst/inst/x_27_reg_1755_reg[14]
+  -------------------------------------------------------------------
+                         required time                         10.017    
+                         arrival time                          -4.719    
+  -------------------------------------------------------------------
+                         slack                                  5.298    
+
+
+
+

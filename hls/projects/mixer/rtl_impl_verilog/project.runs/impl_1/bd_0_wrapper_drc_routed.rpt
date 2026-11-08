@@ -1,0 +1,56 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Sat Oct 31 23:15:11 2026
+| Host         : SUS running 64-bit major release  (build 9200)
+| Command      : report_drc -file bd_0_wrapper_drc_routed.rpt -pb bd_0_wrapper_drc_routed.pb -rpx bd_0_wrapper_drc_routed.rpx
+| Design       : bd_0_wrapper
+| Device       : xczu5eg-sfvc784-1-e
+| Speed File   : -1
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: checkpoint_bd_0_wrapper
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 1
++-----------+----------+-------------------+------------+
+| Rule      | Severity | Description       | Violations |
++-----------+----------+-------------------+------------+
+| RTSTAT-10 | Warning  | No routable loads | 1          |
++-----------+----------+-------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+RTSTAT-10#1 Warning
+No routable loads  
+34 net(s) have no routable loads. The problem bus(es) and/or net(s) are bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[15],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[16],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[17],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[18],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[19],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[20],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[21],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[22],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[23],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[24],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[25],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[26],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[27],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[28],
+bd_0_i/hls_inst/inst/mac_mulsub_16s_16s_15ns_31_4_1_U2/mixer_mac_mulsub_16s_16s_15ns_31_4_1_DSP48_1_U/p_reg_reg/P[29]
+ (the first 15 of 19 listed nets/buses).
+Related violations: <none>
+
+

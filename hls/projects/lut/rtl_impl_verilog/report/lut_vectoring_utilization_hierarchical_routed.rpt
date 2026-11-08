@@ -1,0 +1,41 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Tue Oct  6 13:26:55 2026
+| Host         : SUS running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -hierarchical_depth 5 -file ./report/lut_vectoring_utilization_hierarchical_routed.rpt
+| Design       : bd_0_wrapper
+| Device       : xczu5eg-sfvc784-1-e
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------------------------------------+--------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+|                         Instance                         |                            Module                            | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++----------------------------------------------------------+--------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+| bd_0_wrapper                                             |                                                        (top) |       1438 |       1386 |       0 |   52 | 1353 |      0 |      2 |    0 |          3 |
+|   bd_0_i                                                 |                                                         bd_0 |       1438 |       1386 |       0 |   52 | 1353 |      0 |      2 |    0 |          3 |
+|     hls_inst                                             |                                              bd_0_hls_inst_0 |       1438 |       1386 |       0 |   52 | 1353 |      0 |      2 |    0 |          3 |
+|       inst                                               |                                bd_0_hls_inst_0_lut_vectoring |       1438 |       1386 |       0 |   52 | 1353 |      0 |      2 |    0 |          3 |
+|         (inst)                                           |                                bd_0_hls_inst_0_lut_vectoring |         98 |         75 |       0 |   23 |  105 |      0 |      0 |    0 |          0 |
+|         LUT_ATAN_ROM_U                                   |       bd_0_hls_inst_0_lut_vectoring_LUT_ATAN_ROM_ROM_AUTO_1R |         12 |         12 |       0 |    0 |    0 |      0 |      1 |    0 |          0 |
+|         LUT_MAG_ROM_U                                    |        bd_0_hls_inst_0_lut_vectoring_LUT_MAG_ROM_ROM_AUTO_1R |         13 |         13 |       0 |    0 |    0 |      0 |      1 |    0 |          0 |
+|         mul_20ns_16ns_29_1_1_U4                          |           bd_0_hls_inst_0_lut_vectoring_mul_20ns_16ns_29_1_1 |          9 |          9 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_23s_13s_30_1_1_U2                            |             bd_0_hls_inst_0_lut_vectoring_mul_23s_13s_30_1_1 |         12 |         12 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_23s_13s_34_1_1_U3                            |             bd_0_hls_inst_0_lut_vectoring_mul_23s_13s_34_1_1 |         14 |         14 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         udiv_30ns_16ns_15_34_1_U1                        |         bd_0_hls_inst_0_lut_vectoring_udiv_30ns_16ns_15_34_1 |       1280 |       1251 |       0 |   29 | 1248 |      0 |      0 |    0 |          0 |
+|           (udiv_30ns_16ns_15_34_1_U1)                    |         bd_0_hls_inst_0_lut_vectoring_udiv_30ns_16ns_15_34_1 |         47 |         47 |       0 |    0 |   16 |      0 |      0 |    0 |          0 |
+|           lut_vectoring_udiv_30ns_16ns_15_34_1_divider_u | bd_0_hls_inst_0_lut_vectoring_udiv_30ns_16ns_15_34_1_divider |       1235 |       1206 |       0 |   29 | 1232 |      0 |      0 |    0 |          0 |
++----------------------------------------------------------+--------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

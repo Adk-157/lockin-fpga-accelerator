@@ -1,0 +1,44 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Tue Oct  6 13:41:18 2026
+| Host         : SUS running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -hierarchical_depth 5 -file ./report/poly_vectoring_utilization_hierarchical_routed.rpt
+| Design       : bd_0_wrapper
+| Device       : xczu5eg-sfvc784-1-e
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------------------------------------+---------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+|                          Instance                         |                             Module                            | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-----------------------------------------------------------+---------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+| bd_0_wrapper                                              |                                                         (top) |       1528 |       1476 |       0 |   52 | 1404 |      0 |      0 |    0 |          9 |
+|   bd_0_i                                                  |                                                          bd_0 |       1528 |       1476 |       0 |   52 | 1404 |      0 |      0 |    0 |          9 |
+|     hls_inst                                              |                                               bd_0_hls_inst_0 |       1528 |       1476 |       0 |   52 | 1404 |      0 |      0 |    0 |          9 |
+|       inst                                                |                                bd_0_hls_inst_0_poly_vectoring |       1528 |       1476 |       0 |   52 | 1404 |      0 |      0 |    0 |          9 |
+|         (inst)                                            |                                bd_0_hls_inst_0_poly_vectoring |        149 |        126 |       0 |   23 |  156 |      0 |      0 |    0 |          1 |
+|         mul_13ns_15ns_28_1_1_U3                           |           bd_0_hls_inst_0_poly_vectoring_mul_13ns_15ns_28_1_1 |         12 |         12 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_14ns_15ns_29_1_1_U6                           |           bd_0_hls_inst_0_poly_vectoring_mul_14ns_15ns_29_1_1 |         15 |         15 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_14s_15ns_29_1_1_U4                            |            bd_0_hls_inst_0_poly_vectoring_mul_14s_15ns_29_1_1 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_15ns_11s_26_1_1_U2                            |            bd_0_hls_inst_0_poly_vectoring_mul_15ns_11s_26_1_1 |         10 |         10 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_15ns_12s_27_1_1_U5                            |            bd_0_hls_inst_0_poly_vectoring_mul_15ns_12s_27_1_1 |          7 |          7 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_16s_15ns_31_1_1_U7                            |            bd_0_hls_inst_0_poly_vectoring_mul_16s_15ns_31_1_1 |         34 |         34 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_16s_15ns_31_1_1_U8                            |          bd_0_hls_inst_0_poly_vectoring_mul_16s_15ns_31_1_1_0 |         23 |         23 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         mul_16s_15ns_31_1_1_U9                            |          bd_0_hls_inst_0_poly_vectoring_mul_16s_15ns_31_1_1_1 |         19 |         19 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|         udiv_30ns_16ns_15_34_1_U1                         |         bd_0_hls_inst_0_poly_vectoring_udiv_30ns_16ns_15_34_1 |       1260 |       1231 |       0 |   29 | 1248 |      0 |      0 |    0 |          0 |
+|           (udiv_30ns_16ns_15_34_1_U1)                     |         bd_0_hls_inst_0_poly_vectoring_udiv_30ns_16ns_15_34_1 |         26 |         26 |       0 |    0 |   16 |      0 |      0 |    0 |          0 |
+|           poly_vectoring_udiv_30ns_16ns_15_34_1_divider_u | bd_0_hls_inst_0_poly_vectoring_udiv_30ns_16ns_15_34_1_divider |       1236 |       1207 |       0 |   29 | 1232 |      0 |      0 |    0 |          0 |
++-----------------------------------------------------------+---------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

@@ -1,0 +1,98 @@
+//Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+//Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+//--------------------------------------------------------------------------------
+//Tool Version: Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+//Date        : Sat Oct 31 23:10:13 2026
+//Host        : SUS running 64-bit major release  (build 9200)
+//Command     : generate_target bd_0.bd
+//Design      : bd_0
+//Purpose     : IP block netlist
+//--------------------------------------------------------------------------------
+`timescale 1 ps / 1 ps
+
+(* CORE_GENERATION_INFO = "bd_0,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_0,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=1,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "bd_0.hwdef" *) 
+module bd_0
+   (ap_clk,
+    ap_ctrl_done,
+    ap_ctrl_idle,
+    ap_ctrl_ready,
+    ap_ctrl_start,
+    ap_rst,
+    c,
+    i_out,
+    i_out_ap_vld,
+    q_out,
+    q_out_ap_vld,
+    s,
+    valid_in,
+    valid_out,
+    valid_out_ap_vld,
+    x);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AP_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AP_CLK, ASSOCIATED_RESET ap_rst, CLK_DOMAIN bd_0_ap_clk_0, FREQ_HZ 100000000.0, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input ap_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl " *) output ap_ctrl_done;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl " *) output ap_ctrl_idle;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl " *) output ap_ctrl_ready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl " *) input ap_ctrl_start;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.AP_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.AP_RST, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input ap_rst;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.C DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.C, LAYERED_METADATA undef" *) input [15:0]c;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.I_OUT DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.I_OUT, LAYERED_METADATA undef" *) output [15:0]i_out;
+  output i_out_ap_vld;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.Q_OUT DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.Q_OUT, LAYERED_METADATA undef" *) output [15:0]q_out;
+  output q_out_ap_vld;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.S DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.S, LAYERED_METADATA undef" *) input [15:0]s;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.VALID_IN DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.VALID_IN, LAYERED_METADATA undef" *) input valid_in;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.VALID_OUT DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.VALID_OUT, LAYERED_METADATA undef" *) output valid_out;
+  output valid_out_ap_vld;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.X DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.X, LAYERED_METADATA undef" *) input [15:0]x;
+
+  wire ap_clk_0_1;
+  wire ap_ctrl_0_1_done;
+  wire ap_ctrl_0_1_idle;
+  wire ap_ctrl_0_1_ready;
+  wire ap_ctrl_0_1_start;
+  wire ap_rst_0_1;
+  wire [15:0]c_0_1;
+  wire [15:0]hls_inst_i_out;
+  wire hls_inst_i_out_ap_vld;
+  wire [15:0]hls_inst_q_out;
+  wire hls_inst_q_out_ap_vld;
+  wire hls_inst_valid_out;
+  wire hls_inst_valid_out_ap_vld;
+  wire [15:0]s_0_1;
+  wire valid_in_0_1;
+  wire [15:0]x_0_1;
+
+  assign ap_clk_0_1 = ap_clk;
+  assign ap_ctrl_0_1_start = ap_ctrl_start;
+  assign ap_ctrl_done = ap_ctrl_0_1_done;
+  assign ap_ctrl_idle = ap_ctrl_0_1_idle;
+  assign ap_ctrl_ready = ap_ctrl_0_1_ready;
+  assign ap_rst_0_1 = ap_rst;
+  assign c_0_1 = c[15:0];
+  assign i_out[15:0] = hls_inst_i_out;
+  assign i_out_ap_vld = hls_inst_i_out_ap_vld;
+  assign q_out[15:0] = hls_inst_q_out;
+  assign q_out_ap_vld = hls_inst_q_out_ap_vld;
+  assign s_0_1 = s[15:0];
+  assign valid_in_0_1 = valid_in;
+  assign valid_out = hls_inst_valid_out;
+  assign valid_out_ap_vld = hls_inst_valid_out_ap_vld;
+  assign x_0_1 = x[15:0];
+  bd_0_hls_inst_0 hls_inst
+       (.ap_clk(ap_clk_0_1),
+        .ap_done(ap_ctrl_0_1_done),
+        .ap_idle(ap_ctrl_0_1_idle),
+        .ap_ready(ap_ctrl_0_1_ready),
+        .ap_rst(ap_rst_0_1),
+        .ap_start(ap_ctrl_0_1_start),
+        .c(c_0_1),
+        .i_out(hls_inst_i_out),
+        .i_out_ap_vld(hls_inst_i_out_ap_vld),
+        .q_out(hls_inst_q_out),
+        .q_out_ap_vld(hls_inst_q_out_ap_vld),
+        .s(s_0_1),
+        .valid_in(valid_in_0_1),
+        .valid_out(hls_inst_valid_out),
+        .valid_out_ap_vld(hls_inst_valid_out_ap_vld),
+        .x(x_0_1));
+endmodule

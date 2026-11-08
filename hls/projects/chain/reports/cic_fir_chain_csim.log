@@ -1,0 +1,9 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../../files/tb_chain.cpp in debug mode
+   Compiling ../../../../../files/chain_hls.cpp in debug mode
+   Generating csim.exe
+C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv: 58884 input samples, 464 output samples, 0 mismatches
+TEST PASSED
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

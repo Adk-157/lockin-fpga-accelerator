@@ -1,0 +1,121 @@
+<profile>
+  <RunData>
+    <RUN_TYPE>synth</RUN_TYPE>
+    <VIVADO_VERSION>v.2023.1</VIVADO_VERSION>
+    <ROOT_MODULE_CELL>bd_0_i/hls_inst</ROOT_MODULE_CELL>
+  </RunData>
+  <TimingReport>
+    <TargetClockPeriod>10.000</TargetClockPeriod>
+    <AchievedClockPeriod>1.550</AchievedClockPeriod>
+    <CLOCK_NAME>ap_clk</CLOCK_NAME>
+    <CP_FINAL>1.550</CP_FINAL>
+    <CP_ROUTE>NA</CP_ROUTE>
+    <CP_SYNTH>1.550</CP_SYNTH>
+    <CP_TARGET>10.000</CP_TARGET>
+    <SLACK_FINAL>8.450</SLACK_FINAL>
+    <SLACK_ROUTE/>
+    <SLACK_SYNTH>8.450</SLACK_SYNTH>
+    <TIMING_MET>TRUE</TIMING_MET>
+    <TNS_FINAL>0.000</TNS_FINAL>
+    <TNS_ROUTE>NA</TNS_ROUTE>
+    <TNS_SYNTH>0.000</TNS_SYNTH>
+    <WNS_FINAL>9.004</WNS_FINAL>
+    <WNS_ROUTE>NA</WNS_ROUTE>
+    <WNS_SYNTH>9.004</WNS_SYNTH>
+  </TimingReport>
+  <AreaReport>
+    <Resources>
+      <BRAM>1</BRAM>
+      <CLB>0</CLB>
+      <DSP>0</DSP>
+      <FF>33</FF>
+      <LATCH>0</LATCH>
+      <LUT>41</LUT>
+      <SRL>0</SRL>
+      <URAM>0</URAM>
+    </Resources>
+    <AvailableResources>
+      <BRAM>288</BRAM>
+      <CLB>0</CLB>
+      <DSP>1248</DSP>
+      <FF>234240</FF>
+      <LUT>117120</LUT>
+      <URAM>64</URAM>
+    </AvailableResources>
+  </AreaReport>
+  <RtlModules>
+    <RtlModule CELL="inst" DEPTH="0" IS_TOP="1" TYPE="function" MODULENAME="dds_sincos" DISPNAME="inst" RTLNAME="dds_sincos">
+      <SubModules count="1">DDS_SINE_ROM_U</SubModules>
+      <Resources BRAM="1" FF="33" LUT="41"/>
+      <LocalResources FF="33" LUT="33"/>
+    </RtlModule>
+    <RtlModule CELL="inst/DDS_SINE_ROM_U" BINDMODULE="dds_sincos_DDS_SINE_ROM_ROM_AUTO_1R" DEPTH="1" TYPE="resource" MODULENAME="DDS_SINE_ROM_ROM_AUTO_1R" DISPNAME="DDS_SINE_ROM_U" RTLNAME="dds_sincos_DDS_SINE_ROM_ROM_AUTO_1R">
+      <Resources BRAM="1" LUT="8"/>
+      <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage rom_2p" DSP="0" ID="" IMPL="auto" LATENCY="1" LOOP="" OPTYPE="rom_2p" PRAGMA="" RTLNAME="DDS_SINE_ROM_U" SOURCE="" URAM="0" VARIABLE="DDS_SINE_ROM"/>
+    </RtlModule>
+  </RtlModules>
+  <TimingPaths>
+    <TPATH DATAPATH_DELAY="0.658" DATAPATH_LOGIC_DELAY="0.281" DATAPATH_NET_DELAY="0.377" ENDPOINT_PIN="DDS_SINE_ROM_U/q0_reg/ADDRARDADDR[13]" LOGIC_LEVELS="2" MAX_FANOUT="3" SLACK="9.004" STARTPOINT_PIN="phase_reg[30]/C">
+      <CELL NAME="phase_reg[30]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="120"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_13" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER="245"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="219"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" LINE_NUMBER="41"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="0.610" DATAPATH_LOGIC_DELAY="0.229" DATAPATH_NET_DELAY="0.381" ENDPOINT_PIN="DDS_SINE_ROM_U/q0_reg/ADDRARDADDR[11]" LOGIC_LEVELS="2" MAX_FANOUT="3" SLACK="9.058" STARTPOINT_PIN="phase_reg[29]/C">
+      <CELL NAME="phase_reg[29]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="120"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_14" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER=""/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="219"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" LINE_NUMBER="41"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="0.597" DATAPATH_LOGIC_DELAY="0.279" DATAPATH_NET_DELAY="0.318" ENDPOINT_PIN="DDS_SINE_ROM_U/q0_reg/ADDRARDADDR[12]" LOGIC_LEVELS="2" MAX_FANOUT="3" SLACK="9.077" STARTPOINT_PIN="phase_reg[29]/C">
+      <CELL NAME="phase_reg[29]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="120"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_14" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER=""/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="219"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" LINE_NUMBER="41"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="0.567" DATAPATH_LOGIC_DELAY="0.219" DATAPATH_NET_DELAY="0.348" ENDPOINT_PIN="DDS_SINE_ROM_U/q0_reg/ADDRARDADDR[5]" LOGIC_LEVELS="1" MAX_FANOUT="2" SLACK="9.095" STARTPOINT_PIN="phase_reg[23]/C">
+      <CELL NAME="phase_reg[23]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="120"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_7" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER=""/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" LINE_NUMBER="41"/>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="0.566" DATAPATH_LOGIC_DELAY="0.219" DATAPATH_NET_DELAY="0.347" ENDPOINT_PIN="DDS_SINE_ROM_U/q0_reg/ADDRARDADDR[7]" LOGIC_LEVELS="1" MAX_FANOUT="2" SLACK="9.099" STARTPOINT_PIN="phase_reg[25]/C">
+      <CELL NAME="phase_reg[25]" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="120"/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg_i_5" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER=""/>
+      <CELL NAME="DDS_SINE_ROM_U/q0_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" LINE_NUMBER="41"/>
+    </TPATH>
+  </TimingPaths>
+  <VivadoReportFiles>
+    <ReportFile TYPE="design_analysis" PATH="verilog/report/dds_sincos_design_analysis_synth.rpt"/>
+    <ReportFile TYPE="failfast" PATH="verilog/report/dds_sincos_failfast_synth.rpt"/>
+    <ReportFile TYPE="timing" PATH="verilog/report/dds_sincos_timing_synth.rpt"/>
+    <ReportFile TYPE="timing_paths" PATH="verilog/report/dds_sincos_timing_paths_synth.rpt"/>
+    <ReportFile TYPE="utilization" PATH="verilog/report/dds_sincos_utilization_synth.rpt"/>
+    <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/dds_sincos_utilization_hierarchical_synth.rpt"/>
+  </VivadoReportFiles>
+  <GeneralInfo NAME="General Information">
+    <item NAME="Date" VALUE="Thu Oct 15 02:48:21 +0530 2026"/>
+    <item NAME="Version" VALUE="2023.1 (Build 3854077 on May  4 2023)"/>
+    <item NAME="Project" VALUE="dds"/>
+    <item NAME="Solution" VALUE="solution1 (Vivado IP Flow Target)"/>
+    <item NAME="Product family" VALUE="zynquplus"/>
+    <item NAME="Target device" VALUE="xczu5eg-sfvc784-1-e"/>
+  </GeneralInfo>
+  <RunOptions NAME="Run Constraints &amp; Options">
+    <General NAME="Design Constraints &amp; Options">
+      <item NAME="RTL Synthesis target clock" VALUE="10 ns"/>
+      <item NAME="C-Synthesis target clock" VALUE="10 ns"/>
+      <item NAME="C-Synthesis uncertainty" VALUE="27%"/>
+      <item NAME="config_export -ip_xdc_file" VALUE=""/>
+      <item NAME="config_export -ip_xdc_ooc_file" VALUE=""/>
+    </General>
+    <Syn NAME="RTL Synthesis Options">
+      <item NAME="config_export -vivado_synth_strategy" VALUE="default"/>
+      <item NAME="config_export -vivado_synth_design_args" VALUE="-directive sdx_optimization_effort_high"/>
+    </Syn>
+    <Reporting NAME="Reporting Options">
+      <item NAME="config_export -vivado_report_level" VALUE="2"/>
+      <item NAME="config_export -vivado_max_timing_paths" VALUE="10"/>
+    </Reporting>
+  </RunOptions>
+</profile>
+

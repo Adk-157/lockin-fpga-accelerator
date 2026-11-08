@@ -1,0 +1,190 @@
+<profile>
+<RunData>
+  <RUN_TYPE>impl</RUN_TYPE>
+  <VIVADO_VERSION>v.2023.1</VIVADO_VERSION>
+  <ROOT_MODULE_CELL>bd_0_i/hls_inst</ROOT_MODULE_CELL>
+</RunData>
+<TimingReport>
+  <TargetClockPeriod>10.000</TargetClockPeriod>
+  <AchievedClockPeriod>5.566</AchievedClockPeriod>
+  <CLOCK_NAME>ap_clk</CLOCK_NAME>
+  <CP_FINAL>5.566</CP_FINAL>
+  <CP_ROUTE>5.566</CP_ROUTE>
+  <CP_SYNTH>3.688</CP_SYNTH>
+  <CP_TARGET>10.000</CP_TARGET>
+  <SLACK_FINAL>4.434</SLACK_FINAL>
+  <SLACK_ROUTE>4.434</SLACK_ROUTE>
+  <SLACK_SYNTH>6.312</SLACK_SYNTH>
+  <TIMING_MET>TRUE</TIMING_MET>
+  <TNS_FINAL>0.000</TNS_FINAL>
+  <TNS_ROUTE>0.000</TNS_ROUTE>
+  <TNS_SYNTH>0.000</TNS_SYNTH>
+  <WNS_FINAL>4.434</WNS_FINAL>
+  <WNS_ROUTE>4.434</WNS_ROUTE>
+  <WNS_SYNTH>6.312</WNS_SYNTH>
+</TimingReport>
+<AreaReport>
+  <Resources>
+    <BRAM>0</BRAM>
+    <CLB>221</CLB>
+    <DSP>19</DSP>
+    <FF>888</FF>
+    <LATCH>0</LATCH>
+    <LUT>1181</LUT>
+    <SRL>8</SRL>
+    <URAM>0</URAM>
+  </Resources>
+  <AvailableResources>
+    <BRAM>288</BRAM>
+    <CLB>14640</CLB>
+    <DSP>1248</DSP>
+    <FF>234240</FF>
+    <LUT>117120</LUT>
+    <URAM>64</URAM>
+  </AvailableResources>
+</AreaReport>
+<RtlModules>
+  <RtlModule CELL="inst" DEPTH="0" FILE_NAME="bd_0_hls_inst_0.v" ORIG_REF_NAME="cic_fir_chain" TOP_CELL="bd_0_i/hls_inst/inst">
+    <SubModules count="12">mac_muladd_16s_10ns_26s_26_4_1_U14 mac_muladd_16s_10ns_27s_27_4_1_U10 mac_muladd_16s_10s_24s_25_4_1_U15 mac_muladd_16s_11s_23s_26_4_1_U13 mac_muladd_16s_12ns_30s_30_4_1_U11 mac_muladd_16s_12ns_32s_32_4_1_U16 mac_muladd_16s_15s_32s_32_4_1_U12 mac_muladd_16s_6ns_24s_24_4_1_U18 mac_muladd_16s_6ns_24s_24_4_1_U9 mac_muladd_16s_7ns_26s_26_4_1_U17 mac_muladd_16s_8ns_25ns_25_4_1_U19 mac_muladd_16s_9s_25s_25_4_1_U8</SubModules>
+    <Resources DSP="19" FF="888" LUT="1181" LogicLUT="1173" SRL="8"/>
+    <LocalResources FF="888" LUT="603" LogicLUT="595" SRL="8"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_10ns_26s_26_4_1_U14" BINDMODULE="cic_fir_chain_mac_muladd_16s_10ns_26s_26_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_10ns_26s_26_4_1">
+    <Resources DSP="2" LUT="16" LogicLUT="16"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_10ns_27s_27_4_1_U10" BINDMODULE="cic_fir_chain_mac_muladd_16s_10ns_27s_27_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_10ns_27s_27_4_1">
+    <Resources DSP="2" LUT="57" LogicLUT="57"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_10s_24s_25_4_1_U15" BINDMODULE="cic_fir_chain_mac_muladd_16s_10s_24s_25_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_10s_24s_25_4_1">
+    <Resources DSP="1" LUT="8" LogicLUT="8"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_11s_23s_26_4_1_U13" BINDMODULE="cic_fir_chain_mac_muladd_16s_11s_23s_26_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_11s_23s_26_4_1">
+    <Resources DSP="1" LUT="26" LogicLUT="26"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_12ns_30s_30_4_1_U11" BINDMODULE="cic_fir_chain_mac_muladd_16s_12ns_30s_30_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_12ns_30s_30_4_1">
+    <Resources DSP="2" LUT="16" LogicLUT="16"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_12ns_32s_32_4_1_U16" BINDMODULE="cic_fir_chain_mac_muladd_16s_12ns_32s_32_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_12ns_32s_32_4_1">
+    <Resources DSP="1" LUT="85" LogicLUT="85"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_15s_32s_32_4_1_U12" BINDMODULE="cic_fir_chain_mac_muladd_16s_15s_32s_32_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_15s_32s_32_4_1">
+    <Resources DSP="2" LUT="16" LogicLUT="16"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_6ns_24s_24_4_1_U18" BINDMODULE="cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1">
+    <Resources DSP="2" LUT="18" LogicLUT="18"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_6ns_24s_24_4_1_U9" BINDMODULE="cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1">
+    <Resources DSP="2" LUT="16" LogicLUT="16"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_7ns_26s_26_4_1_U17" BINDMODULE="cic_fir_chain_mac_muladd_16s_7ns_26s_26_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_7ns_26s_26_4_1">
+    <Resources DSP="1" LUT="48" LogicLUT="48"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_8ns_25ns_25_4_1_U19" BINDMODULE="cic_fir_chain_mac_muladd_16s_8ns_25ns_25_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_8ns_25ns_25_4_1">
+    <Resources DSP="1" LUT="69" LogicLUT="69"/>
+  </RtlModule>
+  <RtlModule CELL="inst/mac_muladd_16s_9s_25s_25_4_1_U8" BINDMODULE="cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1" DEPTH="1" FILE_NAME="cic_fir_chain.v" ORIG_REF_NAME="cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1">
+    <Resources DSP="2" LUT="208" LogicLUT="208"/>
+  </RtlModule>
+</RtlModules>
+<TimingPaths>
+  <TPATH DATAPATH_DELAY="5.239" DATAPATH_LOGIC_DELAY="1.930" DATAPATH_NET_DELAY="3.309" ENDPOINT_PIN="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/A[11]" LOGIC_LEVELS="14" MAX_FANOUT="108" SLACK="4.434" STARTPOINT_PIN="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="725"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4[7]_i_9" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="1104"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4_reg[7]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_139" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_146" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_110" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_70" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_40" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_67" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_23" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_31" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[11]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg_i_5" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="5.185" DATAPATH_LOGIC_DELAY="1.884" DATAPATH_NET_DELAY="3.301" ENDPOINT_PIN="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/A[1]" LOGIC_LEVELS="13" MAX_FANOUT="108" SLACK="4.480" STARTPOINT_PIN="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="725"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4[7]_i_9" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="1104"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4_reg[7]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_139" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_146" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_110" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_70" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_40" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_67" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_23" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_31" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg_i_15" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="5.133" DATAPATH_LOGIC_DELAY="1.895" DATAPATH_NET_DELAY="3.238" ENDPOINT_PIN="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/A[9]" LOGIC_LEVELS="14" MAX_FANOUT="108" SLACK="4.526" STARTPOINT_PIN="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="725"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4[7]_i_9" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="1104"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4_reg[7]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_139" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_146" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_110" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_70" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_40" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_67" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_23" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_31" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[11]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg_i_7" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="5.125" DATAPATH_LOGIC_DELAY="1.824" DATAPATH_NET_DELAY="3.301" ENDPOINT_PIN="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/A[29]" LOGIC_LEVELS="15" MAX_FANOUT="108" SLACK="4.533" STARTPOINT_PIN="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="725"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4[7]_i_9" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="1104"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4_reg[7]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_139" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_146" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_110" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_70" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_40" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_67" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_23" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_31" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[11]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[15]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg_i_1" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="5.125" DATAPATH_LOGIC_DELAY="1.858" DATAPATH_NET_DELAY="3.267" ENDPOINT_PIN="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/A[5]" LOGIC_LEVELS="14" MAX_FANOUT="108" SLACK="4.540" STARTPOINT_PIN="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1/C">
+    <CELL  NAME="bd_0_i/hls_inst/inst/rst_r_read_reg_1341_reg[0]_rep__1" PRIMITIVE_TYPE="REGISTER.SDR.FDRE" LINE_NUMBER="725"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4[7]_i_9" PRIMITIVE_TYPE="CLB.LUT.LUT3" LINE_NUMBER="1104"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4_reg[7]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_139" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_146" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_110" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_70" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_40" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_67" PRIMITIVE_TYPE="CLB.LUT.LUT4" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_23" PRIMITIVE_TYPE="CLB.LUT.LUT5" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs[3]_i_31" PRIMITIVE_TYPE="CLB.LUT.LUT6" LINE_NUMBER="846"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_2" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[3]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_reg[11]_i_1" PRIMITIVE_TYPE="CLB.CARRY.CARRY8" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg_i_11" PRIMITIVE_TYPE="CLB.LUT.LUT2" LINE_NUMBER="666"/>
+    <CELL  NAME="bd_0_i/hls_inst/inst/mac_muladd_16s_9s_25s_25_4_1_U8/cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" LINE_NUMBER=""/>
+  </TPATH>
+</TimingPaths>
+<VivadoReportFiles>
+  <ReportFile TYPE="design_analysis" PATH="verilog/report/cic_fir_chain_design_analysis_routed.rpt"/>
+  <ReportFile TYPE="failfast" PATH="verilog/report/cic_fir_chain_failfast_routed.rpt"/>
+  <ReportFile TYPE="status" PATH="verilog/report/cic_fir_chain_status_routed.rpt"/>
+  <ReportFile TYPE="timing" PATH="verilog/report/cic_fir_chain_timing_routed.rpt"/>
+  <ReportFile TYPE="timing_paths" PATH="verilog/report/cic_fir_chain_timing_paths_routed.rpt"/>
+  <ReportFile TYPE="utilization" PATH="verilog/report/cic_fir_chain_utilization_routed.rpt"/>
+  <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/cic_fir_chain_utilization_hierarchical_routed.rpt"/>
+</VivadoReportFiles>
+</profile>

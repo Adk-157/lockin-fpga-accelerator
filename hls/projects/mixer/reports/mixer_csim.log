@@ -1,0 +1,8 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../../files/tb_mixer.cpp in debug mode
+   Compiling ../../../../../files/mixer_hls.cpp in debug mode
+   Generating csim.exe
+C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/mixer_full.csv: 765004 rows, mismatches = 0, valid errors = 0  ->  PASS
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

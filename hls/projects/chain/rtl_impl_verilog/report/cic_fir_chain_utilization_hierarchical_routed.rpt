@@ -1,0 +1,57 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Tue Nov  3 18:24:02 2026
+| Host         : SUS running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -hierarchical_depth 5 -file ./report/cic_fir_chain_utilization_hierarchical_routed.rpt
+| Design       : bd_0_wrapper
+| Device       : xczu5eg-sfvc784-1-e
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------------------------------------------------+-----------------------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|                              Instance                             |                                 Module                                | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++-------------------------------------------------------------------+-----------------------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| bd_0_wrapper                                                      |                                                                 (top) |       1181 |       1173 |       0 |    8 | 888 |      0 |      0 |    0 |         19 |
+|   bd_0_i                                                          |                                                                  bd_0 |       1181 |       1173 |       0 |    8 | 888 |      0 |      0 |    0 |         19 |
+|     hls_inst                                                      |                                                       bd_0_hls_inst_0 |       1181 |       1173 |       0 |    8 | 888 |      0 |      0 |    0 |         19 |
+|       inst                                                        |                                         bd_0_hls_inst_0_cic_fir_chain |       1181 |       1173 |       0 |    8 | 888 |      0 |      0 |    0 |         19 |
+|         (inst)                                                    |                                         bd_0_hls_inst_0_cic_fir_chain |        603 |        595 |       0 |    8 | 888 |      0 |      0 |    0 |          0 |
+|         mac_muladd_16s_10ns_26s_26_4_1_U14                        |          bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_10ns_26s_26_4_1 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|           cic_fir_chain_mac_muladd_16s_10ns_26s_26_4_1_DSP48_6_U  |  bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_10ns_26s_26_4_1_DSP48_6 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|         mac_muladd_16s_10ns_27s_27_4_1_U10                        |          bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_10ns_27s_27_4_1 |         57 |         57 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|           cic_fir_chain_mac_muladd_16s_10ns_27s_27_4_1_DSP48_2_U  |  bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_10ns_27s_27_4_1_DSP48_2 |         57 |         57 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|         mac_muladd_16s_10s_24s_25_4_1_U15                         |           bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_10s_24s_25_4_1 |          8 |          8 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|           cic_fir_chain_mac_muladd_16s_10s_24s_25_4_1_DSP48_7_U   |   bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_10s_24s_25_4_1_DSP48_7 |          8 |          8 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|         mac_muladd_16s_11s_23s_26_4_1_U13                         |           bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_11s_23s_26_4_1 |         26 |         26 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|           cic_fir_chain_mac_muladd_16s_11s_23s_26_4_1_DSP48_5_U   |   bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_11s_23s_26_4_1_DSP48_5 |         26 |         26 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|         mac_muladd_16s_12ns_30s_30_4_1_U11                        |          bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_12ns_30s_30_4_1 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|           cic_fir_chain_mac_muladd_16s_12ns_30s_30_4_1_DSP48_3_U  |  bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_12ns_30s_30_4_1_DSP48_3 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|         mac_muladd_16s_12ns_32s_32_4_1_U16                        |          bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_12ns_32s_32_4_1 |         85 |         85 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|           cic_fir_chain_mac_muladd_16s_12ns_32s_32_4_1_DSP48_8_U  |  bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_12ns_32s_32_4_1_DSP48_8 |         85 |         85 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|         mac_muladd_16s_15s_32s_32_4_1_U12                         |           bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_15s_32s_32_4_1 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|           cic_fir_chain_mac_muladd_16s_15s_32s_32_4_1_DSP48_4_U   |   bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_15s_32s_32_4_1_DSP48_4 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|         mac_muladd_16s_6ns_24s_24_4_1_U18                         |           bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1 |         18 |         18 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|           cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1_DSP48_1_U   | bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1_DSP48_1_1 |         18 |         18 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|         mac_muladd_16s_6ns_24s_24_4_1_U9                          |         bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1_0 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|           cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1_DSP48_1_U   |   bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_6ns_24s_24_4_1_DSP48_1 |         16 |         16 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|         mac_muladd_16s_7ns_26s_26_4_1_U17                         |           bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_7ns_26s_26_4_1 |         48 |         48 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|           cic_fir_chain_mac_muladd_16s_7ns_26s_26_4_1_DSP48_9_U   |   bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_7ns_26s_26_4_1_DSP48_9 |         48 |         48 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|         mac_muladd_16s_8ns_25ns_25_4_1_U19                        |          bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_8ns_25ns_25_4_1 |         69 |         69 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|           cic_fir_chain_mac_muladd_16s_8ns_25ns_25_4_1_DSP48_10_U | bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_8ns_25ns_25_4_1_DSP48_10 |         69 |         69 |       0 |    0 |   0 |      0 |      0 |    0 |          1 |
+|         mac_muladd_16s_9s_25s_25_4_1_U8                           |            bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1 |        208 |        208 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
+|           cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0_U    |    bd_0_hls_inst_0_cic_fir_chain_mac_muladd_16s_9s_25s_25_4_1_DSP48_0 |        208 |        208 |       0 |    0 |   0 |      0 |      0 |    0 |          2 |
++-------------------------------------------------------------------+-----------------------------------------------------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

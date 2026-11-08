@@ -1,0 +1,448 @@
+<profile>
+    <ReportVersion>
+        <Version>2023.1</Version>
+    </ReportVersion>
+    <UserAssignments>
+        <unit>ns</unit>
+        <ProductFamily>zynquplus</ProductFamily>
+        <Part>xczu5eg-sfvc784-1-e</Part>
+        <TopModelName>cic_fir_chain</TopModelName>
+        <TargetClockPeriod>10.00</TargetClockPeriod>
+        <ClockUncertainty>2.70</ClockUncertainty>
+        <TargetInitiationInterval>1</TargetInitiationInterval>
+        <FlowTarget>vivado</FlowTarget>
+    </UserAssignments>
+    <PerformanceEstimates>
+        <PipelineType>yes</PipelineType>
+        <SummaryOfTimingAnalysis>
+            <unit>ns</unit>
+            <EstimatedClockPeriod>6.357</EstimatedClockPeriod>
+        </SummaryOfTimingAnalysis>
+        <SummaryOfOverallLatency>
+            <unit>clock cycles</unit>
+            <Best-caseLatency>5</Best-caseLatency>
+            <Average-caseLatency>5</Average-caseLatency>
+            <Worst-caseLatency>5</Worst-caseLatency>
+            <Best-caseRealTimeLatency>50.000 ns</Best-caseRealTimeLatency>
+            <Average-caseRealTimeLatency>50.000 ns</Average-caseRealTimeLatency>
+            <Worst-caseRealTimeLatency>50.000 ns</Worst-caseRealTimeLatency>
+            <PipelineInitiationInterval>1</PipelineInitiationInterval>
+            <PipelineDepth>6</PipelineDepth>
+            <Interval-min>1</Interval-min>
+            <Interval-max>1</Interval-max>
+        </SummaryOfOverallLatency>
+    </PerformanceEstimates>
+    <AreaEstimates>
+        <Resources>
+            <DSP>19</DSP>
+            <FF>1250</FF>
+            <LUT>2176</LUT>
+            <BRAM_18K>0</BRAM_18K>
+            <URAM>0</URAM>
+        </Resources>
+        <AvailableResources>
+            <BRAM_18K>288</BRAM_18K>
+            <DSP>1248</DSP>
+            <FF>234240</FF>
+            <LUT>117120</LUT>
+            <URAM>64</URAM>
+        </AvailableResources>
+    </AreaEstimates>
+    <InterfaceSummary>
+        <RtlPorts>
+            <name>ap_clk</name>
+            <Object>cic_fir_chain</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_rst</name>
+            <Object>cic_fir_chain</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_start</name>
+            <Object>cic_fir_chain</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_done</name>
+            <Object>cic_fir_chain</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_idle</name>
+            <Object>cic_fir_chain</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>ap_ready</name>
+            <Object>cic_fir_chain</Object>
+            <Type>return value</Type>
+            <Scope/>
+            <IOProtocol>ap_ctrl_hs</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+        </RtlPorts>
+        <RtlPorts>
+            <name>rst_r</name>
+            <Object>rst_r</Object>
+            <Type>scalar</Type>
+            <Scope/>
+            <IOProtocol>ap_none</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>1</Bits>
+            <Attribute>data</Attribute>
+            <CType>bool</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>x</name>
+            <Object>x</Object>
+            <Type>scalar</Type>
+            <Scope/>
+            <IOProtocol>ap_none</IOProtocol>
+            <IOConfig/>
+            <Dir>in</Dir>
+            <Bits>16</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>valid</name>
+            <Object>valid</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_vld</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>data</Attribute>
+            <CType>bool</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>valid_ap_vld</name>
+            <Object>valid</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_vld</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>bool</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>y</name>
+            <Object>y</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_vld</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>18</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>y_ap_vld</name>
+            <Object>y</Object>
+            <Type>pointer</Type>
+            <Scope/>
+            <IOProtocol>ap_vld</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+    </InterfaceSummary>
+    <RTLDesignHierarchy>
+        <TopModule MAX_DEPTH="2">
+            <ModuleName>cic_fir_chain</ModuleName>
+            <BindInstances>v_fu_240_p2 v_4_fu_246_p2 v_5_fu_252_p2 v_6_fu_538_p2 d_6_fu_549_p2 d_7_fu_555_p2 d_8_fu_561_p2 add_ln68_fu_294_p2 mul_16s_9ns_25_1_1_U1 mac_muladd_16s_9s_25s_25_4_1_U8 mac_muladd_16s_6ns_24s_24_4_1_U9 mul_16s_8ns_24_1_1_U2 mac_muladd_16s_10s_24s_25_4_1_U15 mac_muladd_16s_10ns_27s_27_4_1_U10 mul_16s_11s_27_1_1_U3 mac_muladd_16s_12ns_30s_30_4_1_U11 mul_16s_15s_30_1_1_U4 mul_16s_16ns_32_1_1_U5 mac_muladd_16s_15s_32s_32_4_1_U12 mac_muladd_16s_12ns_32s_32_4_1_U16 mac_muladd_16s_11s_23s_26_4_1_U13 mac_muladd_16s_10ns_26s_26_4_1_U14 mul_16s_10s_26_1_1_U6 mac_muladd_16s_7ns_26s_26_4_1_U17 mac_muladd_16s_6ns_24s_24_4_1_U18 mul_16s_9s_24_1_1_U7 mac_muladd_16s_8ns_25ns_25_4_1_U19 mac_muladd_16s_6ns_24s_24_4_1_U18 mac_muladd_16s_10ns_26s_26_4_1_U14 mac_muladd_16s_7ns_26s_26_4_1_U17 add_ln77_3_fu_1150_p2 mac_muladd_16s_11s_23s_26_4_1_U13 mac_muladd_16s_15s_32s_32_4_1_U12 mac_muladd_16s_12ns_32s_32_4_1_U16 mac_muladd_16s_12ns_30s_30_4_1_U11 mac_muladd_16s_10ns_27s_27_4_1_U10 add_ln77_11_fu_1136_p2 mac_muladd_16s_6ns_24s_24_4_1_U9 mac_muladd_16s_10s_24s_25_4_1_U15 mac_muladd_16s_9s_25s_25_4_1_U8 mac_muladd_16s_8ns_25ns_25_4_1_U19 add_ln77_17_fu_1188_p2</BindInstances>
+        </TopModule>
+    </RTLDesignHierarchy>
+    <ModuleInformation>
+        <Module>
+            <Name>cic_fir_chain</Name>
+            <PerformanceEstimates>
+                <SummaryOfTimingAnalysis>
+                    <TargetClockPeriod>10.00</TargetClockPeriod>
+                    <ClockUncertainty>2.70</ClockUncertainty>
+                    <TargetInitiationInterval>1</TargetInitiationInterval>
+                    <EstimatedClockPeriod>6.357</EstimatedClockPeriod>
+                </SummaryOfTimingAnalysis>
+                <SummaryOfOverallLatency>
+                    <Best-caseLatency>5</Best-caseLatency>
+                    <Average-caseLatency>5</Average-caseLatency>
+                    <Worst-caseLatency>5</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>50.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>50.000 ns</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>50.000 ns</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>1</PipelineInitiationInterval>
+                    <PipelineDepth>6</PipelineDepth>
+                    <PipelineType>yes</PipelineType>
+                </SummaryOfOverallLatency>
+            </PerformanceEstimates>
+            <AreaEstimates>
+                <Resources>
+                    <DSP>19</DSP>
+                    <AVAIL_DSP>1248</AVAIL_DSP>
+                    <UTIL_DSP>1</UTIL_DSP>
+                    <FF>1250</FF>
+                    <AVAIL_FF>234240</AVAIL_FF>
+                    <UTIL_FF>~0</UTIL_FF>
+                    <LUT>2176</LUT>
+                    <AVAIL_LUT>117120</AVAIL_LUT>
+                    <UTIL_LUT>1</UTIL_LUT>
+                    <BRAM_18K>0</BRAM_18K>
+                    <AVAIL_BRAM>288</AVAIL_BRAM>
+                    <UTIL_BRAM>0</UTIL_BRAM>
+                    <URAM>0</URAM>
+                    <AVAIL_URAM>64</AVAIL_URAM>
+                    <UTIL_URAM>0</UTIL_URAM>
+                </Resources>
+            </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="v_fu_240_p2" SOURCE="../files/cic_fir_common.h:45" URAM="0" VARIABLE="v"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="v_4_fu_246_p2" SOURCE="../files/cic_fir_common.h:45" URAM="0" VARIABLE="v_4"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="v_5_fu_252_p2" SOURCE="../files/cic_fir_common.h:45" URAM="0" VARIABLE="v_5"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="v_6_fu_538_p2" SOURCE="../files/cic_fir_common.h:45" URAM="0" VARIABLE="v_6"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op sub" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="sub" PRAGMA="" RTLNAME="d_6_fu_549_p2" SOURCE="../files/cic_fir_common.h:53" URAM="0" VARIABLE="d_6"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op sub" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="sub" PRAGMA="" RTLNAME="d_7_fu_555_p2" SOURCE="../files/cic_fir_common.h:53" URAM="0" VARIABLE="d_7"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op sub" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="sub" PRAGMA="" RTLNAME="d_8_fu_561_p2" SOURCE="../files/cic_fir_common.h:53" URAM="0" VARIABLE="d_8"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln68_fu_294_p2" SOURCE="../files/cic_fir_common.h:68" URAM="0" VARIABLE="add_ln68"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_16s_9ns_25_1_1_U1" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="acc"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_9s_25s_25_4_1_U8" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_6ns_24s_24_4_1_U9" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_16s_8ns_24_1_1_U2" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_2"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_10s_24s_25_4_1_U15" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_3"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_10ns_27s_27_4_1_U10" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_4"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_16s_11s_27_1_1_U3" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_5"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_12ns_30s_30_4_1_U11" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_6"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_16s_15s_30_1_1_U4" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_7"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_16s_16ns_32_1_1_U5" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_8"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_15s_32s_32_4_1_U12" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_9"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_12ns_32s_32_4_1_U16" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_10"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_11s_23s_26_4_1_U13" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_11"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_10ns_26s_26_4_1_U14" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_12"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_16s_10s_26_1_1_U6" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_13"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_7ns_26s_26_4_1_U17" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_14"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_6ns_24s_24_4_1_U18" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_15"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_16s_9s_24_1_1_U7" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_16"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_16s_8ns_25ns_25_4_1_U19" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="mul_ln77_17"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_6ns_24s_24_4_1_U18" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_10ns_26s_26_4_1_U14" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_7ns_26s_26_4_1_U17" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_2"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln77_3_fu_1150_p2" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_3"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_11s_23s_26_4_1_U13" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_4"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_15s_32s_32_4_1_U12" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_5"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_12ns_32s_32_4_1_U16" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_6"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_12ns_30s_30_4_1_U11" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_9"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_10ns_27s_27_4_1_U10" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_10"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln77_11_fu_1136_p2" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_11"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_6ns_24s_24_4_1_U9" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_13"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_10s_24s_25_4_1_U15" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_14"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_9s_25s_25_4_1_U8" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_15"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_16s_8ns_25ns_25_4_1_U19" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_16"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln77_17_fu_1188_p2" SOURCE="../files/cic_fir_common.h:77" URAM="0" VARIABLE="add_ln77_17"/>
+            </BindNodes>
+        </Module>
+    </ModuleInformation>
+    <FIFOInformation/>
+    <UserConfigCommands>
+        <config_cosim argv="C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv"/>
+        <config_export flow="impl" output="C:/hls_out/chain.zip" vivado_clock="10ns"/>
+    </UserConfigCommands>
+    <Args>
+        <Arg ArgName="rst" index="0" direction="in" srcType="bool" srcSize="1">
+            <hwRefs>
+                <hwRef type="port" interface="rst_r" name="rst_r" usage="data" direction="in"/>
+            </hwRefs>
+        </Arg>
+        <Arg ArgName="x" index="1" direction="in" srcType="ap_int&lt;16&gt;" srcSize="16">
+            <hwRefs>
+                <hwRef type="port" interface="x" name="x" usage="data" direction="in"/>
+            </hwRefs>
+        </Arg>
+        <Arg ArgName="valid" index="2" direction="out" srcType="bool&amp;" srcSize="1">
+            <hwRefs>
+                <hwRef type="port" interface="valid" name="valid" usage="data" direction="out"/>
+                <hwRef type="port" interface="valid_ap_vld" name="valid_ap_vld" usage="control" direction="out"/>
+            </hwRefs>
+        </Arg>
+        <Arg ArgName="y" index="3" direction="out" srcType="ap_int&lt;18&gt;&amp;" srcSize="32">
+            <hwRefs>
+                <hwRef type="port" interface="y" name="y" usage="data" direction="out"/>
+                <hwRef type="port" interface="y_ap_vld" name="y_ap_vld" usage="control" direction="out"/>
+            </hwRefs>
+        </Arg>
+    </Args>
+    <Interfaces>
+        <Interface InterfaceName="ap_clk" type="clock" busTypeName="clock" mode="slave">
+            <busParams>
+                <busParam busParamName="ASSOCIATED_RESET">ap_rst</busParam>
+            </busParams>
+            <portMaps>
+                <portMap portMapName="ap_clk">CLK</portMap>
+            </portMaps>
+            <ports>
+                <port>ap_clk</port>
+            </ports>
+        </Interface>
+        <Interface InterfaceName="ap_rst" type="reset" busTypeName="reset" mode="slave">
+            <busParams>
+                <busParam busParamName="POLARITY">ACTIVE_HIGH</busParam>
+            </busParams>
+            <portMaps>
+                <portMap portMapName="ap_rst">RST</portMap>
+            </portMaps>
+            <ports>
+                <port>ap_rst</port>
+            </ports>
+        </Interface>
+        <Interface InterfaceName="ap_ctrl" type="ap_ctrl" busTypeName="acc_handshake" mode="slave">
+            <portMaps>
+                <portMap portMapName="ap_start">start</portMap>
+                <portMap portMapName="ap_done">done</portMap>
+                <portMap portMapName="ap_idle">idle</portMap>
+                <portMap portMapName="ap_ready">ready</portMap>
+            </portMaps>
+            <ports>
+                <port>ap_done</port>
+                <port>ap_idle</port>
+                <port>ap_ready</port>
+                <port>ap_start</port>
+            </ports>
+        </Interface>
+        <Interface InterfaceName="rst_r" type="data" busTypeName="data" protocol="ap_none" mode="slave" dataWidth="1">
+            <portMaps>
+                <portMap portMapName="rst_r">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>rst_r</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_none" register_option="0" argName="rst"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="x" type="data" busTypeName="data" protocol="ap_none" mode="slave" dataWidth="16">
+            <portMaps>
+                <portMap portMapName="x">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>x</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_none" register_option="0" argName="x"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="valid" type="data" busTypeName="data" protocol="ap_vld" mode="master" dataWidth="1">
+            <portMaps>
+                <portMap portMapName="valid">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>valid</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_none" register_option="0" argName="valid"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="y" type="data" busTypeName="data" protocol="ap_vld" mode="master" dataWidth="18">
+            <portMaps>
+                <portMap portMapName="y">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>y</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_none" register_option="0" argName="y"/>
+            </constraints>
+        </Interface>
+    </Interfaces>
+    <ReportHWInterface>
+        <section name="HW Interfaces" level="0">
+            <item name="Other Ports">
+                <table>
+                    <keys size="4">Port, Mode, Direction, Bitwidth</keys>
+                    <column name="rst_r">ap_none, in, 1</column>
+                    <column name="valid">ap_vld, out, 1</column>
+                    <column name="x">ap_none, in, 16</column>
+                    <column name="y">ap_vld, out, 18</column>
+                </table>
+            </item>
+            <item name="TOP LEVEL CONTROL">
+                <table>
+                    <keys size="3">Interface, Type, Ports</keys>
+                    <column name="ap_clk">clock, ap_clk</column>
+                    <column name="ap_rst">reset, ap_rst</column>
+                    <column name="ap_ctrl">ap_ctrl_hs, ap_done ap_idle ap_ready ap_start</column>
+                </table>
+            </item>
+        </section>
+    </ReportHWInterface>
+    <ReportSWInterface>
+        <section name="SW I/O Information" level="0">
+            <item name="Top Function Arguments">
+                <table>
+                    <keys size="3">Argument, Direction, Datatype</keys>
+                    <column name="rst">in, bool</column>
+                    <column name="x">in, ap_int&lt;16&gt;</column>
+                    <column name="valid">out, bool&amp;</column>
+                    <column name="y">out, ap_int&lt;18&gt;&amp;</column>
+                </table>
+            </item>
+            <item name="SW-to-HW Mapping">
+                <table>
+                    <keys size="3">Argument, HW Interface, HW Type</keys>
+                    <column name="rst">rst_r, port</column>
+                    <column name="x">x, port</column>
+                    <column name="valid">valid, port</column>
+                    <column name="valid">valid_ap_vld, port</column>
+                    <column name="y">y, port</column>
+                    <column name="y">y_ap_vld, port</column>
+                </table>
+            </item>
+        </section>
+    </ReportSWInterface>
+    <ResolutionUrl key="ZZZ">www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=ZZZ.html</ResolutionUrl>
+    <PragmaReport>
+        <Pragma type="pipeline" location="../files/chain_hls.cpp:6" status="valid" parentFunction="cic_fir_chain" variable="" isDirective="0" options="II=1"/>
+        <Pragma type="array_partition" location="../files/chain_hls.cpp:9" status="valid" parentFunction="cic_fir_chain" variable="cs.integ" isDirective="0" options="variable=cs.integ complete"/>
+        <Pragma type="array_partition" location="../files/chain_hls.cpp:10" status="valid" parentFunction="cic_fir_chain" variable="cs.comb" isDirective="0" options="variable=cs.comb complete"/>
+        <Pragma type="array_partition" location="../files/chain_hls.cpp:11" status="valid" parentFunction="cic_fir_chain" variable="fs.hist" isDirective="0" options="variable=fs.hist complete"/>
+    </PragmaReport>
+</profile>
+

@@ -1,0 +1,24 @@
+
+
+Implementation tool: Xilinx Vivado v.2023.1
+Project:             cordic_g3
+Solution:            solution1
+Device target:       xczu5eg-sfvc784-1-e
+Report date:         Tue Oct 06 12:18:19 +0530 2026
+
+#=== Post-Implementation Resource usage ===
+SLICE:            0
+LUT:            722
+FF:             230
+DSP:              1
+BRAM:             0
+URAM:             0
+LATCH:            0
+SRL:              3
+CLB:            132
+
+#=== Final timing ===
+CP required:                     10.000
+CP achieved post-synthesis:      4.403
+CP achieved post-implementation: 5.622
+Timing met

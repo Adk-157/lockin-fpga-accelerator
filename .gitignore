@@ -1,0 +1,24 @@
+# Vitis HLS / Vivado generated clutter
+.autopilot/
+.apc/
+.debug/
+.tcls/
+sim/
+csim/build/
+*.bc
+*.jou
+*.backup.log
+.Xil/
+*.cache/
+*.ip_user_files/
+*.sim/
+# OS / IDE
+.metadata/
+RemoteSystemsTempFiles/
+IDE.log
+.analytics
+.DS_Store
+Thumbs.db
+# third-party material (papers, vendor manuals, vendor repo) - keep local, do not redistribute
+*.pdf
+PYNQ-ZU-master/

@@ -1,0 +1,563 @@
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+ERROR: [SIM 211-100] 'csim_design' failed: nonzero return value.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 3.341 seconds; current allocated memory: 0.648 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csim_design -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.557 seconds; current allocated memory: 0.480 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.124 seconds; current allocated memory: 1.039 GB.
+INFO: [HLS 200-10] Analyzing design file '../files/chain_hls.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 4.377 seconds; current allocated memory: 1.040 GB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-377] Adding 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::fs' into disaggregation list because there's array-partition pragma applied on the struct field (../files/chain_hls.cpp:11:9)
+INFO: [HLS 214-377] Adding 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::cs' into disaggregation list because there's array-partition pragma applied on the struct field (../files/chain_hls.cpp:10:9)
+INFO: [HLS 214-377] Adding 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::cs' into disaggregation list because there's array-partition pragma applied on the struct field (../files/chain_hls.cpp:9:9)
+INFO: [HLS 214-210] Disaggregating variable 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::fs' (../files/chain_hls.cpp:8:0)
+INFO: [HLS 214-210] Disaggregating variable 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::cs' (../files/chain_hls.cpp:7:0)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_76_2' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:76:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_73_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:73:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_52_2' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:52:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_44_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:44:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_36_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:36:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_32_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:32:22)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_76_2' (../files/cic_fir_common.h:76:22) in function 'fir_step' completely with a factor of 21 (../files/cic_fir_common.h:72:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_73_1' (../files/cic_fir_common.h:73:22) in function 'fir_step' completely with a factor of 20 (../files/cic_fir_common.h:72:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_52_2' (../files/cic_fir_common.h:52:26) in function 'cic_step' completely with a factor of 4 (../files/cic_fir_common.h:42:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_44_1' (../files/cic_fir_common.h:44:22) in function 'cic_step' completely with a factor of 4 (../files/cic_fir_common.h:42:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_36_1' (../files/cic_fir_common.h:36:22) in function 'fir_reset' completely with a factor of 21 (../files/cic_fir_common.h:35:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_32_1' (../files/cic_fir_common.h:32:22) in function 'cic_reset' completely with a factor of 4 (../files/cic_fir_common.h:31:0)
+INFO: [HLS 214-178] Inlining function 'cic_reset(CicState&)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'fir_reset(FirState&)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'cic_step(CicState&, ap_int<16>, bool&, ap_int<16>&)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'fir_step(FirState&, ap_int<16>)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2cs.integ': Complete partitioning on dimension 1. (../files/chain_hls.cpp:7:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2cs.comb': Complete partitioning on dimension 1. (../files/chain_hls.cpp:7:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs': Complete partitioning on dimension 1. (../files/chain_hls.cpp:8:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 3.417 seconds; current allocated memory: 1.041 GB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.005 seconds; current allocated memory: 1.041 GB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.086 seconds; current allocated memory: 1.046 GB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.025 seconds; current allocated memory: 1.048 GB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../files/chain_hls.cpp:6:9) in function 'cic_fir_chain'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../files/chain_hls.cpp:15:9) in function 'cic_fir_chain'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'cic_fir_chain' (../files/chain_hls.cpp:4:1)...20 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.082 seconds; current allocated memory: 1.069 GB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.065 seconds; current allocated memory: 1.070 GB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'cic_fir_chain' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cic_fir_chain' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_2) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_15) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_5) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_8) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_6) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_10) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_12) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_11) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_14) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'cic_fir_chain'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, function 'cic_fir_chain'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.491 seconds; current allocated memory: 1.070 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.147 seconds; current allocated memory: 1.071 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cic_fir_chain' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/rst_r' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/x' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/valid' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/y' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'cic_fir_chain' to 'ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cs_cnt' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_19' is power-on initialization.
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'cic_fir_chain' pipeline 'cic_fir_chain' pipeline type 'function pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10ns_25s_26_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10ns_26s_27_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_11s_23s_26_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_12ns_30s_30_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_15ns_30s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_6ns_24s_24_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_7ns_24s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_7ns_25s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_8ns_24s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_8ns_25s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_10s_25_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_15s_30_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_9s_24_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cic_fir_chain'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.271 seconds; current allocated memory: 1.075 GB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 2.904 seconds; current allocated memory: 1.083 GB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.755 seconds; current allocated memory: 1.088 GB.
+INFO: [VHDL 208-304] Generating VHDL RTL for cic_fir_chain.
+INFO: [VLOG 209-307] Generating Verilog RTL for cic_fir_chain.
+INFO: [HLS 200-789] **** Estimated Fmax: 149.75 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 4 seconds. CPU system time: 1 seconds. Elapsed time: 12.768 seconds; current allocated memory: 50.746 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: cosim_design -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+INFO: [COSIM 212-302] Starting C TB testing ... 
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [COSIM 212-316] Starting C post checking ...
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 33.88 seconds; current allocated memory: 9.711 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -output C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+INFO: [HLS 200-802] Generated output file C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 17.931 seconds; current allocated memory: 7.074 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=10ns
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip -rtl verilog -vivado_clock 10ns 
+INFO: [HLS 200-1510] Running: export_design -flow syn -rtl verilog -format ip_catalog -output C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+INFO: [HLS 200-802] Generated output file C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 223.893 seconds; current allocated memory: 7.426 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -flow=syn
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=10ns
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -flow syn -format ip_catalog -output C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip -rtl verilog -vivado_clock 10ns 
+INFO: [HLS 200-1510] Running: export_design -flow impl -rtl verilog -format ip_catalog -output C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+INFO: [HLS 200-802] Generated output file C:/Users/adith/OneDrive/Desktop/College/FPGA/files/chain.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 420.257 seconds; current allocated memory: 6.594 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -flow=impl
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/hls_out/chain.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=10ns
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -flow impl -format ip_catalog -output C:/hls_out/chain.zip -rtl verilog -vivado_clock 10ns 
+INFO: [HLS 200-1510] Running: source ./chain/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name cic_fir_chain cic_fir_chain 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output C:/hls_out/chain.zip 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+INFO: [HLS 200-802] Generated output file C:/hls_out/chain.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 446.317 seconds; current allocated memory: 6.980 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -flow=impl
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/hls_out/chain.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=10ns
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -flow impl -format ip_catalog -output C:/hls_out/chain.zip -rtl verilog -vivado_clock 10ns 
+INFO: [HLS 200-1510] Running: source ./chain/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name cic_fir_chain cic_fir_chain 
+INFO: [HLS 200-1510] Running: csim_design -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 3.847 seconds; current allocated memory: 0.512 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -flow=impl
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/hls_out/chain.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=10ns
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -flow impl -format ip_catalog -output C:/hls_out/chain.zip -rtl verilog -vivado_clock 10ns 
+INFO: [HLS 200-1510] Running: source ./chain/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name cic_fir_chain cic_fir_chain 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.174 seconds; current allocated memory: 1.039 GB.
+INFO: [HLS 200-10] Analyzing design file '../files/chain_hls.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 4.605 seconds; current allocated memory: 1.040 GB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-377] Adding 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::fs' into disaggregation list because there's array-partition pragma applied on the struct field (../files/chain_hls.cpp:11:9)
+INFO: [HLS 214-377] Adding 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::cs' into disaggregation list because there's array-partition pragma applied on the struct field (../files/chain_hls.cpp:10:9)
+INFO: [HLS 214-377] Adding 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::cs' into disaggregation list because there's array-partition pragma applied on the struct field (../files/chain_hls.cpp:9:9)
+INFO: [HLS 214-210] Disaggregating variable 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::fs' (../files/chain_hls.cpp:8:0)
+INFO: [HLS 214-210] Disaggregating variable 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)::cs' (../files/chain_hls.cpp:7:0)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_76_2' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:76:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_73_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:73:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_52_2' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:52:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_44_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:44:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_36_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:36:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_32_1' is marked as complete unroll implied by the pipeline pragma (../files/cic_fir_common.h:32:22)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_76_2' (../files/cic_fir_common.h:76:22) in function 'fir_step' completely with a factor of 21 (../files/cic_fir_common.h:72:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_73_1' (../files/cic_fir_common.h:73:22) in function 'fir_step' completely with a factor of 20 (../files/cic_fir_common.h:72:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_52_2' (../files/cic_fir_common.h:52:26) in function 'cic_step' completely with a factor of 4 (../files/cic_fir_common.h:42:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_44_1' (../files/cic_fir_common.h:44:22) in function 'cic_step' completely with a factor of 4 (../files/cic_fir_common.h:42:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_36_1' (../files/cic_fir_common.h:36:22) in function 'fir_reset' completely with a factor of 21 (../files/cic_fir_common.h:35:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_32_1' (../files/cic_fir_common.h:32:22) in function 'cic_reset' completely with a factor of 4 (../files/cic_fir_common.h:31:0)
+INFO: [HLS 214-178] Inlining function 'cic_reset(CicState&)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'fir_reset(FirState&)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'cic_step(CicState&, ap_int<16>, bool&, ap_int<16>&)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-178] Inlining function 'fir_step(FirState&, ap_int<16>)' into 'cic_fir_chain(bool, ap_int<16>, bool&, ap_int<18>&)' (../files/chain_hls.cpp:5:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2cs.integ': Complete partitioning on dimension 1. (../files/chain_hls.cpp:7:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2cs.comb': Complete partitioning on dimension 1. (../files/chain_hls.cpp:7:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs': Complete partitioning on dimension 1. (../files/chain_hls.cpp:8:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 3.639 seconds; current allocated memory: 1.042 GB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.007 seconds; current allocated memory: 1.042 GB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.093 seconds; current allocated memory: 1.047 GB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.027 seconds; current allocated memory: 1.048 GB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../files/chain_hls.cpp:6:9) in function 'cic_fir_chain'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (../files/chain_hls.cpp:15:9) in function 'cic_fir_chain'... converting 3 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'cic_fir_chain' (../files/chain_hls.cpp:4:1)...20 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.097 seconds; current allocated memory: 1.070 GB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.06 seconds; current allocated memory: 1.070 GB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'cic_fir_chain' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cic_fir_chain' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_3) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_6) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_10) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_9) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_11) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_14) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_12) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_15) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'cic_fir_chain'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, function 'cic_fir_chain'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.529 seconds; current allocated memory: 1.070 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 1.071 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cic_fir_chain' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/rst_r' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/x' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/valid' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'cic_fir_chain/y' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'cic_fir_chain' to 'ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_cs_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cs_cnt' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'cic_fir_chain_bool_ap_int_16_bool_ap_int_18_fs_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_ZZ13cic_fir_chainb6ap_intILi16EERbRS_ILi18EEE2fs_19' is power-on initialization.
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'cic_fir_chain' pipeline 'cic_fir_chain' pipeline type 'function pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10ns_26s_26_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10ns_27s_27_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10s_24s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_11s_23s_26_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_12ns_30s_30_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_12ns_32s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_15s_32s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_6ns_24s_24_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_7ns_26s_26_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_8ns_25ns_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_9s_25s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_10s_26_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_11s_27_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_15s_30_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16ns_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_8ns_24_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_9ns_25_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_9s_24_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cic_fir_chain'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.389 seconds; current allocated memory: 1.075 GB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 3.825 seconds; current allocated memory: 1.085 GB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.103 seconds; current allocated memory: 1.089 GB.
+INFO: [VHDL 208-304] Generating VHDL RTL for cic_fir_chain.
+INFO: [VLOG 209-307] Generating Verilog RTL for cic_fir_chain.
+INFO: [HLS 200-789] **** Estimated Fmax: 157.30 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 5 seconds. CPU system time: 2 seconds. Elapsed time: 14.729 seconds; current allocated memory: 52.184 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -flow=impl
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/hls_out/chain.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=10ns
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -flow impl -format ip_catalog -output C:/hls_out/chain.zip -rtl verilog -vivado_clock 10ns 
+INFO: [HLS 200-1510] Running: source ./chain/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name cic_fir_chain cic_fir_chain 
+INFO: [HLS 200-1510] Running: cosim_design -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+INFO: [COSIM 212-302] Starting C TB testing ... 
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [COSIM 212-316] Starting C post checking ...
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 37.985 seconds; current allocated memory: 10.285 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_cosim -argv=C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv
+INFO: [HLS 200-1464] Running solution command: config_cosim -tool=xsim
+INFO: [HLS 200-1464] Running solution command: config_export -flow=impl
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=C:/hls_out/chain.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1464] Running solution command: config_export -vivado_clock=10ns
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1510] Running: create_clock -period 10ns -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: config_cosim -argv C:/Users/adith/OneDrive/Desktop/College/FPGA/golden_vectors/chain_R128_stream.csv -tool xsim 
+INFO: [HLS 200-1510] Running: config_export -flow impl -format ip_catalog -output C:/hls_out/chain.zip -rtl verilog -vivado_clock 10ns 
+INFO: [HLS 200-1510] Running: source ./chain/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name cic_fir_chain cic_fir_chain 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output C:/hls_out/chain.zip 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+INFO: [IMPL 213-8] Starting RTL evaluation using Vivado ...
+INFO: [HLS 200-802] Generated output file C:/hls_out/chain.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 584.533 seconds; current allocated memory: 7.719 MB.

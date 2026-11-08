@@ -1,0 +1,24 @@
+
+
+Implementation tool: Xilinx Vivado v.2023.1
+Project:             lut
+Solution:            solution1
+Device target:       xczu5eg-sfvc784-1-e
+Report date:         Tue Oct 06 13:27:00 +0530 2026
+
+#=== Post-Implementation Resource usage ===
+SLICE:            0
+LUT:           1438
+FF:            1353
+DSP:              3
+BRAM:             2
+URAM:             0
+LATCH:            0
+SRL:             52
+CLB:            289
+
+#=== Final timing ===
+CP required:                     10.000
+CP achieved post-synthesis:      5.124
+CP achieved post-implementation: 5.749
+Timing met
