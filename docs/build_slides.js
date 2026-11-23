@@ -190,8 +190,8 @@ function stat(s, x, y, w, h, big, label, fill, bigColor, labColor) {
 
 // ---- 15 status
 { const s = pres.addSlide({ masterName: "DARK" }); s.addText("Conclusion and status", { placeholder: "title" });
-  s.addNotes("All planned phases are now done. The report draft exists and is being checked for similarity before submission.");
-  const ph = [["Phases 0-2", "Python model, extraction study, fixed-point translation", "Done"], ["Phase 3", "Vivado block design on the PYNQ-ZU; JTAG and ARM control", "Done"], ["Phase 4", "Adaptive bandwidth, measured down to -63 dB", "Done"], ["Phase 5", "Benchmark vs Cortex-A53, resources, timing, verification", "Done"], ["Report", "IEEE-format LaTeX draft", "Draft, similarity check pending"]];
+  s.addNotes("All planned phases are done. Phases 0-2 were the Python golden model; phase 3 built each block in Vitis HLS with its own testbench; phase 4 built the adaptive controller (floating point prototype, fixed point, then HLS); phase 5 integrated everything into one IP, built the Vivado block designs, and measured it on the board. The report is compiled in IEEE format (6 pages) and the similarity check is pending. Code, logs and bitstreams are in the project repository (private, can be shared on request).");
+  const ph = [["Phases 0-2", "Python golden model, extraction study, fixed-point translation", "Done"], ["Phase 3", "Each block in Vitis HLS with testbench, co-simulation and post-implementation numbers", "Done"], ["Phase 4", "Adaptive-bandwidth controller: prototype, fixed point, HLS", "Done"], ["Phase 5", "One integrated IP, Vivado block designs, board verification, measurements, A53 comparison", "Done"], ["Report", "IEEE-format report (6 pages); code, logs and bitstreams in the project repository", "Similarity check pending"]];
   ph.forEach((p, i) => { const y = 1.45 + i * 0.82; card(s, 0.6, y, 12.1, 0.7, i === 4 ? C.accent3 : C.background2, "ph");
     txt(s, p[0], { x: 0.85, y, w: 1.9, h: 0.7, fontSize: 15, bold: true, color: C.text2, valign: "middle" });
     txt(s, p[1], { x: 2.8, y, w: 7.2, h: 0.7, fontSize: 14, color: C.text1, valign: "middle" });
