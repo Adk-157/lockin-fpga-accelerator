@@ -1,0 +1,500 @@
+NOTE: Using modified tcl85t.dll from https://gitenterprise.xilinx.com/ACT/vitis_hls_tcl
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+  **** SW Build 3854077 on May  4 2023
+  **** IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+  **** SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source D:/Vitis_HLS/2023.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running 'D:/Vitis_HLS/2023.1/bin/unwrapped/win64.o/vitis_hls.exe'
+INFO: [HLS 200-10] For user 'adith' on host 'sus' (Windows NT_amd64 version 6.2) on Sun Nov 22 21:41:13 +0530 2026
+INFO: [HLS 200-10] In directory 'C:/Users/adith/OneDrive/Desktop/College/FPGA/lockin_top_pkg'
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset lockin_top_prj 
+INFO: [HLS 200-10] Creating and opening project 'C:/Users/adith/OneDrive/Desktop/College/FPGA/lockin_top_pkg/lockin_top_prj'.
+INFO: [HLS 200-1510] Running: set_top lockin_top 
+INFO: [HLS 200-1510] Running: add_files src/lockin_top.cpp 
+INFO: [HLS 200-10] Adding design file 'src/lockin_top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files src/ctrl_x.cpp 
+INFO: [HLS 200-10] Adding design file 'src/ctrl_x.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files src/cordic_hls.cpp 
+INFO: [HLS 200-10] Adding design file 'src/cordic_hls.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files src/lut_hls.cpp 
+INFO: [HLS 200-10] Adding design file 'src/lut_hls.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files src/poly_hls.cpp 
+INFO: [HLS 200-10] Adding design file 'src/poly_hls.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution -reset sol1 
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/adith/OneDrive/Desktop/College/FPGA/lockin_top_pkg/lockin_top_prj/sol1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xczu5eg-sfvc784-1-e 
+INFO: [HLS 200-1611] Setting target device to 'xczu5eg-sfvc784-1-e'
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.136 seconds; current allocated memory: 1.036 GB.
+INFO: [HLS 200-10] Analyzing design file 'src/poly_hls.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'src/lut_hls.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'src/cordic_hls.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'src/ctrl_x.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'src/lockin_top.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 22.441 seconds; current allocated memory: 1.039 GB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-377] Adding '(anonymous namespace)::T' into disaggregation list because there's array-partition pragma applied on the struct field (src/lockin_top.cpp:93:9)
+INFO: [HLS 214-377] Adding '(anonymous namespace)::T' into disaggregation list because there's array-partition pragma applied on the struct field (src/lockin_top.cpp:92:9)
+INFO: [HLS 214-377] Adding '(anonymous namespace)::T' into disaggregation list because there's array-partition pragma applied on the struct field (src/lockin_top.cpp:91:9)
+INFO: [HLS 214-377] Adding '(anonymous namespace)::T' into disaggregation list because there's array-partition pragma applied on the struct field (src/lockin_top.cpp:90:9)
+INFO: [HLS 214-377] Adding '(anonymous namespace)::T' into disaggregation list because there's array-partition pragma applied on the struct field (src/lockin_top.cpp:89:9)
+INFO: [HLS 214-377] Adding '(anonymous namespace)::T' into disaggregation list because there's array-partition pragma applied on the struct field (src/lockin_top.cpp:88:9)
+INFO: [HLS 214-377] Adding '(anonymous namespace)::st' into disaggregation list because there's array-partition pragma applied on the struct field (src/ctrl_x.cpp:55:9)
+INFO: [HLS 214-377] Adding '(anonymous namespace)::st' into disaggregation list because there's array-partition pragma applied on the struct field (src/ctrl_x.cpp:54:9)
+INFO: [HLS 214-210] Disaggregating variable '(anonymous namespace)::st' (src/ctrl_x.cpp:42:0)
+Resolution: For help on HLS 214-210 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=214-210.html
+INFO: [HLS 214-210] Disaggregating variable '(anonymous namespace)::T' (src/lockin_top.cpp:56:0)
+Resolution: For help on HLS 214-210 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=214-210.html
+INFO: [HLS 214-210] Disaggregating variable '(anonymous namespace)::T (.fsQ)' (src/lockin_top.cpp:56:0)
+Resolution: For help on HLS 214-210 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=214-210.html
+INFO: [HLS 214-210] Disaggregating variable '(anonymous namespace)::T (.fsI)' (src/lockin_top.cpp:56:0)
+Resolution: For help on HLS 214-210 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=214-210.html
+INFO: [HLS 214-210] Disaggregating variable '(anonymous namespace)::T (.csQ)' (src/lockin_top.cpp:56:0)
+Resolution: For help on HLS 214-210 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=214-210.html
+INFO: [HLS 214-210] Disaggregating variable '(anonymous namespace)::T (.csI)' (src/lockin_top.cpp:56:0)
+Resolution: For help on HLS 214-210 see www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=214-210.html
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_11_1' is marked as complete unroll implied by the pipeline pragma (src/poly_hls.cpp:11:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_25_1' is marked as complete unroll implied by the pipeline pragma (src/cordic_hls.cpp:25:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_78_1' is marked as complete unroll implied by the pipeline pragma (src/ctrl_x.cpp:78:30)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_14_1' is marked as complete unroll implied by the pipeline pragma (src/ctrl_x.cpp:14:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_37_1' is marked as complete unroll implied by the pipeline pragma (src/ctrl_x.cpp:37:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_76_2' is marked as complete unroll implied by the pipeline pragma (src/cic_fir_common.h:76:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_73_1' is marked as complete unroll implied by the pipeline pragma (src/cic_fir_common.h:73:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_52_2' is marked as complete unroll implied by the pipeline pragma (src/cic_fir_common.h:52:26)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_44_1' is marked as complete unroll implied by the pipeline pragma (src/cic_fir_common.h:44:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_36_1' is marked as complete unroll implied by the pipeline pragma (src/cic_fir_common.h:36:22)
+INFO: [HLS 214-291] Loop 'VITIS_LOOP_32_1' is marked as complete unroll implied by the pipeline pragma (src/cic_fir_common.h:32:22)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_11_1' (src/poly_hls.cpp:11:22) in function 'horner<16, 4>' completely with a factor of 3 (src/poly_hls.cpp:7:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_11_1' (src/poly_hls.cpp:11:22) in function 'horner<16, 6>' completely with a factor of 5 (src/poly_hls.cpp:7:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_25_1' (src/cordic_hls.cpp:25:22) in function 'cordic_vectoring' completely with a factor of 16 (src/cordic_hls.cpp:5:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_78_1' (src/ctrl_x.cpp:78:30) in function 'adaptive_ctrl_x' completely with a factor of 31 (src/ctrl_x.cpp:49:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_14_1' (src/ctrl_x.cpp:14:22) in function 'flog2<22>' completely with a factor of 22 (src/ctrl_x.cpp:12:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_14_1' (src/ctrl_x.cpp:14:22) in function 'flog2<10>' completely with a factor of 10 (src/ctrl_x.cpp:12:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_37_1' (src/ctrl_x.cpp:37:26) in function '(anonymous namespace)::State::reset' completely with a factor of 32 (src/ctrl_x.cpp:36:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_76_2' (src/cic_fir_common.h:76:22) in function 'fir_step' completely with a factor of 21 (src/cic_fir_common.h:72:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_73_1' (src/cic_fir_common.h:73:22) in function 'fir_step' completely with a factor of 20 (src/cic_fir_common.h:72:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_52_2' (src/cic_fir_common.h:52:26) in function 'cic_step' completely with a factor of 4 (src/cic_fir_common.h:42:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_44_1' (src/cic_fir_common.h:44:22) in function 'cic_step' completely with a factor of 4 (src/cic_fir_common.h:42:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_36_1' (src/cic_fir_common.h:36:22) in function 'fir_reset' completely with a factor of 21 (src/cic_fir_common.h:35:0)
+INFO: [HLS 214-186] Unrolling loop 'VITIS_LOOP_32_1' (src/cic_fir_common.h:32:22) in function 'cic_reset' completely with a factor of 4 (src/cic_fir_common.h:31:0)
+INFO: [HLS 214-178] Inlining function 'cic_reset(CicState&)' into '(anonymous namespace)::Top::reset(ap_uint<32>)' (src/lockin_top.cpp:47:0)
+INFO: [HLS 214-178] Inlining function 'fir_reset(FirState&)' into '(anonymous namespace)::Top::reset(ap_uint<32>)' (src/lockin_top.cpp:47:0)
+INFO: [HLS 214-178] Inlining function '(anonymous namespace)::State::reset()' into 'adaptive_ctrl_x(bool, bool, ap_int<18>, ap_int<18>, bool, ap_uint<5>, ap_uint<5>&, ap_int<40>&, ap_int<40>&, ap_int<32>&, ap_int<32>&)' (src/ctrl_x.cpp:49:0)
+INFO: [HLS 214-178] Inlining function 'int flog2<10>(ap_uint<10>)' into 'adaptive_ctrl_x(bool, bool, ap_int<18>, ap_int<18>, bool, ap_uint<5>, ap_uint<5>&, ap_int<40>&, ap_int<40>&, ap_int<32>&, ap_int<32>&)' (src/ctrl_x.cpp:49:0)
+INFO: [HLS 214-178] Inlining function 'int flog2<22>(ap_uint<22>)' into 'adaptive_ctrl_x(bool, bool, ap_int<18>, ap_int<18>, bool, ap_uint<5>, ap_uint<5>&, ap_int<40>&, ap_int<40>&, ap_int<32>&, ap_int<32>&)' (src/ctrl_x.cpp:49:0)
+INFO: [HLS 214-178] Inlining function 'rs(ap_int<64>, int)' into 'adaptive_ctrl_x(bool, bool, ap_int<18>, ap_int<18>, bool, ap_uint<5>, ap_uint<5>&, ap_int<40>&, ap_int<40>&, ap_int<32>&, ap_int<32>&)' (src/ctrl_x.cpp:49:0)
+INFO: [HLS 214-178] Inlining function 'make_ratio(ap_int<16>, ap_int<16>) (.1)' into 'lut_vectoring(ap_int<16>, ap_int<16>, ap_uint<16>&, ap_int<16>&)' (src/lut_hls.cpp:4:0)
+INFO: [HLS 214-178] Inlining function 'fold_angle(ratio_info const&, ap_int<18>, int, int) (.2)' into 'lut_vectoring(ap_int<16>, ap_int<16>, ap_uint<16>&, ap_int<16>&)' (src/lut_hls.cpp:4:0)
+INFO: [HLS 214-178] Inlining function 'make_ratio(ap_int<16>, ap_int<16>)' into 'poly_vectoring(ap_int<16>, ap_int<16>, ap_uint<16>&, ap_int<17>&)' (src/poly_hls.cpp:20:0)
+INFO: [HLS 214-178] Inlining function 'ap_int<16> horner<16, 6>(ap_uint<15>, int const (&) [6])' into 'poly_vectoring(ap_int<16>, ap_int<16>, ap_uint<16>&, ap_int<17>&)' (src/poly_hls.cpp:20:0)
+INFO: [HLS 214-178] Inlining function 'ap_int<16> horner<16, 4>(ap_uint<15>, int const (&) [4])' into 'poly_vectoring(ap_int<16>, ap_int<16>, ap_uint<16>&, ap_int<17>&)' (src/poly_hls.cpp:20:0)
+INFO: [HLS 214-178] Inlining function 'fold_angle(ratio_info const&, ap_int<18>, int, int)' into 'poly_vectoring(ap_int<16>, ap_int<16>, ap_uint<16>&, ap_int<17>&)' (src/poly_hls.cpp:20:0)
+INFO: [HLS 214-178] Inlining function '(anonymous namespace)::Top::reset(ap_uint<32>)' into 'lockin_top(ap_uint<32>, ap_uint<5>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_int<16>, ap_uint<16>, ap_uint<32>, ap_uint<16>, ap_int<16>, ap_uint<32>&, ap_uint<32>&, ap_uint<32>&, ap_uint<5>&, ap_int<32>&, ap_int<32>&, ap_uint<16>&, ap_int<32>*)' (src/lockin_top.cpp:67:0)
+INFO: [HLS 214-178] Inlining function 'xorshift32(ap_uint<32>)' into 'lockin_top(ap_uint<32>, ap_uint<5>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_int<16>, ap_uint<16>, ap_uint<32>, ap_uint<16>, ap_int<16>, ap_uint<32>&, ap_uint<32>&, ap_uint<32>&, ap_uint<5>&, ap_int<32>&, ap_int<32>&, ap_uint<16>&, ap_int<32>*)' (src/lockin_top.cpp:67:0)
+INFO: [HLS 214-178] Inlining function 'mix_round_sat(ap_int<33>)' into 'lockin_top(ap_uint<32>, ap_uint<5>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_int<16>, ap_uint<16>, ap_uint<32>, ap_uint<16>, ap_int<16>, ap_uint<32>&, ap_uint<32>&, ap_uint<32>&, ap_uint<5>&, ap_int<32>&, ap_int<32>&, ap_uint<16>&, ap_int<32>*)' (src/lockin_top.cpp:67:0)
+INFO: [HLS 214-178] Inlining function 'cic_step(CicState&, ap_int<16>, bool&, ap_int<16>&)' into 'lockin_top(ap_uint<32>, ap_uint<5>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_int<16>, ap_uint<16>, ap_uint<32>, ap_uint<16>, ap_int<16>, ap_uint<32>&, ap_uint<32>&, ap_uint<32>&, ap_uint<5>&, ap_int<32>&, ap_int<32>&, ap_uint<16>&, ap_int<32>*)' (src/lockin_top.cpp:67:0)
+INFO: [HLS 214-178] Inlining function 'narrow16(ap_int<64>, int)' into 'lockin_top(ap_uint<32>, ap_uint<5>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_int<16>, ap_uint<16>, ap_uint<32>, ap_uint<16>, ap_int<16>, ap_uint<32>&, ap_uint<32>&, ap_uint<32>&, ap_uint<5>&, ap_int<32>&, ap_int<32>&, ap_uint<16>&, ap_int<32>*)' (src/lockin_top.cpp:67:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_11TE.fsQ': Complete partitioning on dimension 1. (src/lockin_top.cpp:56:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_11TE.fsI': Complete partitioning on dimension 1. (src/lockin_top.cpp:56:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_11TE.csQ.comb': Complete partitioning on dimension 1. (src/lockin_top.cpp:56:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_11TE.csQ.integ': Complete partitioning on dimension 1. (src/lockin_top.cpp:56:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_11TE.csI.comb': Complete partitioning on dimension 1. (src/lockin_top.cpp:56:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_11TE.csI.integ': Complete partitioning on dimension 1. (src/lockin_top.cpp:56:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_12stE.hI': Complete partitioning on dimension 1. (src/ctrl_x.cpp:42:0)
+INFO: [HLS 214-248] Applying array_partition to '_ZN12_GLOBAL__N_12stE.hQ': Complete partitioning on dimension 1. (src/ctrl_x.cpp:42:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 6.386 seconds; current allocated memory: 1.040 GB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.023 seconds; current allocated memory: 1.040 GB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.181 seconds; current allocated memory: 1.049 GB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.128 seconds; current allocated memory: 1.054 GB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (src/ctrl_x.cpp:8:1) in function 'rs'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/poly_hls.cpp:22:13) to (src/poly_hls.cpp:34:1) in function 'poly_vectoring'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/lut_hls.cpp:7:16) to (src/lut_hls.cpp:28:1) in function 'lut_vectoring'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/lockin_top.cpp:87:9) to (src/lockin_top.cpp:106:9) in function 'lockin_top'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/lockin_top.cpp:108:21) to (src/lockin_top.cpp:143:13) in function 'lockin_top'... converting 5 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/cordic_hls.cpp:7:21) to (src/cordic_hls.cpp:47:1) in function 'cordic_vectoring'... converting 42 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/ctrl_x.cpp:59:13) to (src/ctrl_x.cpp:61:13) in function 'adaptive_ctrl_x'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/ctrl_x.cpp:11:46) to (src/ctrl_x.cpp:76:13) in function 'adaptive_ctrl_x'... converting 10 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/ctrl_x.cpp:11:46) to (src/ctrl_x.cpp:93:21) in function 'adaptive_ctrl_x'... converting 22 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/ctrl_x.cpp:111:39) to (src/ctrl_x.cpp:122:25) in function 'adaptive_ctrl_x'... converting 3 basic blocks.
+INFO: [XFORM 203-602] Inlining function 'rs' into 'adaptive_ctrl_x' (src/ctrl_x.cpp:94) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'lockin_top' (src/lockin_top.cpp:63)...3 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'fir_step' (src/cic_fir_common.h:77:12)...20 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'cordic_vectoring' (src/cordic_hls.cpp:7:1)...23 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.579 seconds; current allocated memory: 1.084 GB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.532 seconds; current allocated memory: 1.131 GB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'lockin_top' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fir_step' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_3) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_6) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_10) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_9) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_11) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_14) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_12) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln77_15) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'fir_step'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 250, Final II = 15, Depth = 15, function 'fir_step'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.38 seconds; current allocated memory: 1.137 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.223 seconds; current allocated memory: 1.138 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'adaptive_ctrl_x' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'adaptive_ctrl_x'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 500, Final II = 12, Depth = 12, function 'adaptive_ctrl_x'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.031 seconds; current allocated memory: 1.147 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.248 seconds; current allocated memory: 1.147 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cordic_vectoring' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'cordic_vectoring'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 500, Final II = 1, Depth = 4, function 'cordic_vectoring'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.86 seconds; current allocated memory: 1.147 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.112 seconds; current allocated memory: 1.147 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'lut_vectoring' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'lut_vectoring'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 500, Final II = 1, Depth = 36, function 'lut_vectoring'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.399 seconds; current allocated memory: 1.147 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.369 seconds; current allocated memory: 1.147 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'poly_vectoring' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function 'poly_vectoring'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 500, Final II = 1, Depth = 38, function 'poly_vectoring'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.506 seconds; current allocated memory: 1.147 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.39 seconds; current allocated memory: 1.147 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'lockin_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln137) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln22) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln111) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining function 'lockin_top'.
+INFO: [SCHED 204-61] Unable to satisfy pipeline directive for function 'lockin_top': unable to pipeline.
+INFO: [SCHED 204-61] Pipelining function 'lockin_top'.
+INFO: [SCHED 204-61] Unable to satisfy pipeline directive for function 'lockin_top': unable to pipeline.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.151 seconds; current allocated memory: 1.154 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.032 seconds; current allocated memory: 1.154 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fir_step' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10ns_26s_26_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10ns_27s_27_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_10s_24s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_11s_23s_26_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_12ns_30s_30_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_12ns_32s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_15s_32s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_6ns_24s_24_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_7ns_26s_26_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_8ns_25ns_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_9s_25s_25_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_10s_26_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_11s_27_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_15s_30_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16ns_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_8ns_24_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_9ns_25_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_9s_24_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fir_step'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.534 seconds; current allocated memory: 1.157 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'adaptive_ctrl_x' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_nvc' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_vh' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_zI' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_zQ' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_u' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_k' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_67' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_68' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_69' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_70' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_71' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_72' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_73' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_74' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_75' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_76' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_77' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_78' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_79' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_80' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_81' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_82' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_83' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_84' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_85' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_86' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_87' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_88' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_89' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_90' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_91' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_92' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_93' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_94' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_95' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_96' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_97' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_98' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_99' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_21' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_12' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_hcnt' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_n32' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_npre' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_m' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_sprev' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_vm_last' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_st_sig_last' is power-on initialization.
+INFO: [RTGEN 206-100] Generating core module 'mul_19s_19s_38_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_27s_27s_54_1_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_52ns_9ns_60_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'adaptive_ctrl_x'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 1.003 seconds; current allocated memory: 1.164 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cordic_vectoring' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_17ns_14ns_29_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cordic_vectoring'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 2.505 seconds; current allocated memory: 1.174 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'lut_vectoring' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'lut_vectoring' pipeline 'lut_vectoring' pipeline type 'function pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mul_20ns_16ns_29_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_23s_13s_30_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_23s_13s_34_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'udiv_30ns_16ns_15_34_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'lut_vectoring'.
+INFO: [RTMG 210-279] Implementing memory 'lockin_top_lut_vectoring_LUT_ATAN_ROM_ROM_AUTO_1R' using auto ROMs.
+INFO: [RTMG 210-279] Implementing memory 'lockin_top_lut_vectoring_LUT_MAG_ROM_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.622 seconds; current allocated memory: 1.179 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'poly_vectoring' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_13ns_15ns_28_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14ns_15ns_29_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_14s_15ns_29_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_15ns_11s_26_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_15ns_12s_27_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_15ns_31_1_1': 3 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16ns_29_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'udiv_30ns_16ns_15_34_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'poly_vectoring'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.976 seconds; current allocated memory: 1.182 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'lockin_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/ctl' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/kfix' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/ph_ref' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/ph_sig' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/ph_off' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/amp' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/sigma' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/seed' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/log_every' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/x_ext' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/out_count' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/log_n' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/status' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/k_now' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/mI_now' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/mQ_now' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/mag_now' to 's_axilite & ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'lockin_top/log_mem' to 's_axilite & ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'lockin_top' to 's_axilite & ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_ph_ref_acc' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_ph_sig_acc' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_rng_a' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_rng_b' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_7' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_8' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_9' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_10' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_11' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_csI_cnt' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_13' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_14' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_15' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_16' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_17' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_18' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_19' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_20' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_csQ_cnt' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_22' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_23' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_24' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_25' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_26' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_27' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_28' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_29' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_30' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_31' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_32' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_33' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_34' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_35' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_36' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_37' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_38' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_39' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_40' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_41' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_43' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_44' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_45' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_46' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_47' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_48' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_49' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_50' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_51' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_52' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_53' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_54' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_55' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_56' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_57' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_58' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_59' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_60' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_61' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_62' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_n_out' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_n_log' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'p_anonymous_namespace_T_lg_cnt' is power-on initialization.
+INFO: [RTGEN 206-100] Bundling port 'ctl', 'kfix', 'ph_ref', 'ph_sig', 'ph_off', 'amp', 'sigma', 'seed', 'log_every', 'x_ext', 'out_count', 'log_n', 'status', 'k_now', 'mI_now', 'mQ_now', 'mag_now', 'log_mem' to AXI-Lite port ctl.
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_15ns_31_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_mulsub_16s_16s_15ns_31_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16ns_16ns_31_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_31ns_18s_49_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'lockin_top'.
+INFO: [RTMG 210-279] Implementing memory 'lockin_top_DDS_SINE_ROM_ROM_AUTO_1R' using auto ROMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.322 seconds; current allocated memory: 1.192 GB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 5 seconds. CPU system time: 2 seconds. Elapsed time: 7.165 seconds; current allocated memory: 1.206 GB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 2.152 seconds; current allocated memory: 1.213 GB.
+INFO: [VHDL 208-304] Generating VHDL RTL for lockin_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for lockin_top.
+INFO: [HLS 200-789] **** Estimated Fmax: 137.21 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 19 seconds. CPU system time: 8 seconds. Elapsed time: 54.487 seconds; current allocated memory: 182.570 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog -output C:/Users/adith/OneDrive/Desktop/College/FPGA/lockin_top_pkg/lockin_top_ip.zip 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2023.1 (64-bit)
+  **** SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+  **** IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+  **** SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1474.008 ; gain = 162.496
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado/2023.1/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 22 21:42:30 2026...
+INFO: [HLS 200-802] Generated output file lockin_top_ip.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 19.384 seconds; current allocated memory: 4.516 MB.
+INFO: [HLS 200-112] Total CPU user time: 24 seconds. Total CPU system time: 9 seconds. Total elapsed time: 78.357 seconds; peak allocated memory: 1.219 GB.
+INFO: [Common 17-206] Exiting vitis_hls at Sun Nov 22 21:42:31 2026...

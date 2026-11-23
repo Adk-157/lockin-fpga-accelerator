@@ -5,8 +5,9 @@ on the TUL PYNQ-ZU (Zynq UltraScale+ XCZU5EG). The project compares three ways o
 magnitude and phase (CORDIC, lookup table with interpolation, polynomial) with real post-implementation
 numbers, and adds adaptive bandwidth control driven by an online noise/SNR estimate.
 
-Status: work in progress. Phases 0 to 4 are verified in Vitis HLS; Phase 5 (board bring-up, PS baseline,
-Vivado integration) is under way. More files will be added as the project finishes.
+Status: complete (23 Nov 2026). Phases 0 to 4 are verified in Vitis HLS; Phase 5 (integrated `lockin_top` IP,
+Vivado block designs, on-board verification, adaptive-bandwidth measurements, ARM control, A53 comparison) is done
+and documented in `paper/lockin_report.pdf` and `docs/pl-board-results.md`.
 
 ## Signal chain
 
@@ -29,7 +30,7 @@ DDS (sin/cos reference) -> mixer -> CIC decimator (R = 128) + 21-tap compensatin
 All blocks meet timing at 10 ns. Numbers are taken from the Export RTL post-implementation reports
 (see `hls/projects/*/reports/`), not from the HLS-stage estimates, which overstate LUTs.
 The adaptive controller's Vitis project was exported to a different folder on the development PC, so its
-reports are not in this repository yet; the figures above are from the logged Vitis runs.
+reports are not in this repository; the figures above are from the logged Vitis runs.
 
 ## PS (software) baseline on the board
 
@@ -37,20 +38,39 @@ Measured on one Cortex-A53 core at 1.2 GHz, gcc -O2: DDS + mixer 16.35 ns/sample
 55.40 ns/sample, CORDIC about 215 ns/vector, LUT 58.26 ns/vector, polynomial 107.15 ns/vector.
 Details, verification method and limits are in `docs/ps-baseline-results.md`.
 
+## Integrated design on the board (Phase 5)
+
+One HLS IP, `lockin_top` (stimulus + DDS + mixer + CIC/FIR + adaptive averager + CORDIC/LUT/polynomial extractors),
+integrated in two Vivado 2023.1 block designs: JTAG-only (`lockin_top.bit`) and JTAG + Zynq PS (`lockin_ps.bit/.hwh`).
+Headline results (details in `docs/pl-board-results.md` and the report):
+
+- IP: 9,554 LUT, 12,989 FF, 63 DSP; JTAG-only design 11,008 LUT; timing met at 100 MHz (WNS +3.256 ns); vectorless power 0.54 W.
+- On-board output bit-exact against the C reference: 57,344 words (7 configurations), over JTAG and from the Cortex-A53 (PYNQ 3.1.1); 17/17 injected faults caught.
+- Throughput 4.27 MS/s (21x the nominal 200 kS/s); the same C++ on one A53 core: 0.185 MS/s (about 23x slower).
+- Adaptive averaging bandwidth keeps the relative error at about 4-7 % from 100 to 8000 LSB noise and down to -63 dB input SNR (k at its limit of 20); fixed k=8 reaches 57-281 %.
+
 ## Repository layout
 
 | Path | Contents |
 |---|---|
-| `hls/src/` | HLS C++ sources, testbenches and parameter headers for every block |
-| `hls/golden_vectors/` | Golden-vector CSVs used for C-sim and cosim |
-| `hls/projects/<block>/` | Vitis HLS scripts, directives and csim / csynth / cosim / export reports, generated RTL, packaged IP zip |
-| `vivado/lockin_hw/` | Vivado 2023.1 project (first block design on the PYNQ-ZU base) |
-| `constraints/pynqzu_master.xdc` | Board master constraints |
-| `python/lockin.ipynb` | Phase 0 to 2 Python golden model and fixed-point studies |
-| `docs/` | Project checklist, slide decks, PS baseline notes |
+| `hls/src/`, `hls/golden_vectors/`, `hls/projects/<block>/` | Phase 3/4 per-block HLS sources, golden vectors, Vitis scripts and reports |
+| `hls/lockin_top/src/` | Integrated top-level HLS IP (`lockin_top.cpp`, `ctrl_x.cpp`, extractors) |
+| `hls/lockin_top/tb/` | Testbench, C reference (`ref_pipe.c`), mutation tester, board-vs-model compare, expected logs V1-V7 |
+| `vivado/lockin_hw/` | Early Vivado project (first block design on the PYNQ-ZU base) |
+| `vivado/scripts/` | Tcl for the two block designs (`build_top.tcl`, `build_top_ps.tcl`), board runs (`board_*.tcl`, `lockin_hw.tcl`) |
+| `vivado/reports/` | Post-implementation utilization, timing, power reports for both builds |
+| `bitstreams/` | `lockin_top.bit`, `lockin_ps.bit`, `lockin_ps.hwh`, packaged IP zip |
+| `board/pynq/` | `lockin_pynq.py` (verify / throughput / demo on PYNQ 3.1.1) |
+| `board/a53_bench/` | A53 software benchmark source (needs the Xilinx `ap_int` headers from a Vitis HLS install; not redistributed) |
+| `results/` | Raw board logs: JTAG and ARM verification, adaptive-vs-fixed sweep, deep-noise runs, throughput |
+| `analysis/` | Python scripts that turn the logs into the report tables and figures |
+| `paper/` | IEEE-style report (`main.tex`, figures, compiled `lockin_report.pdf`) |
+| `docs/` | Slides, project checklist, results notes, PS baseline notes |
+| `sw/lockin_sw.c`, `constraints/`, `python/` | PS baseline C code, board constraints, Phase 0-2 notebook |
 
-The Vitis `script.tcl` files reference `../files/...` and absolute `C:/...` paths from the original
-workspace; adjust them if you rebuild elsewhere.
+Rebuild order: `vivado/scripts/run_hls.tcl` (export IP) -> `build_top.tcl` or `build_top_ps.tcl` -> `board_verify*.tcl` / `lockin_pynq.py`.
+Paths inside the scripts are those of the original Windows workspace; adjust them if you rebuild elsewhere.
+The Vitis `script.tcl` files reference `../files/...` and absolute `C:/...` paths from the original workspace.
 
 ## Key technical notes
 

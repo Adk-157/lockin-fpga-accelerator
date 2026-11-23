@@ -1,0 +1,3 @@
+samples_per_second 4270886.540378864
+nominal_samples_per_second 200000
+ratio_to_nominal 21.354432701894318
