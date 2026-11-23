@@ -199,13 +199,15 @@ function stat(s, x, y, w, h, big, label, fill, bigColor, labColor) {
   txt(s, "A working adaptive-bandwidth lock-in on the PYNQ-ZU, verified bit-exact and measured against fixed bandwidth, with a hardware comparison of three extraction methods.", { x: 0.6, y: 5.7, w: 12.1, h: 1.1, fontSize: 17, color: C.background1 }); }
 
 // ---- 16 references
-{ const s = content("References", "Only sources we have checked are listed. Fan et al. venue details are to be confirmed.");
+{ const s = content("References", "Details checked against the publishers' pages on 23 Nov 2026.");
   txt(s, bullets([
-    "S. Fan, Z. He, L. Xing, N. Chen, D. Fan, \"Design of digital lock-in amplifier based on ZYNQ-7020\" (baseline; venue and year to be confirmed).",
-    "C. Zhang, H. Liu, J. Ge, H. Dong, \"FPGA-based digital lock-in amplifier with high-precision automatic frequency tracking,\" IEEE Access, vol. 8, 2020, doi 10.1109/ACCESS.2020.3006070.",
-    "Z. Yao et al., \"A universal digital lock-in amplifier design for calibrating the photo-detector responses with standard black-bodies,\" Sensors, vol. 23, no. 21, 8902, 2023.",
-    "A. J. Harvie, J. C. de Mello, \"OLIA: an open-source digital lock-in amplifier,\" Front. Sens., vol. 4, 1102176, 2023.",
+    "S. X. Fan et al., \"Design of digital lock-in amplifier based on ZYNQ-7020,\" Proc. CSAA/IET Int. Conf. Aircraft Utility Systems (AUS 2022), Nanchang, 17-20 Aug 2022, pp. 1428-1433 (baseline).",
+    "C. Zhang, H. Liu, J. Ge, H. Dong, \"FPGA-based digital lock-in amplifier with high-precision automatic frequency tracking,\" IEEE Access, vol. 8, pp. 123114-123122, 2020.",
+    "Z. Yao et al., \"A universal digital lock-in amplifier design for calibrating the photo-detector responses with standard black-bodies,\" Sensors, vol. 23, no. 21, 8902, Nov 2023.",
+    "A. J. Harvie, J. C. de Mello, \"OLIA: an open-source digital lock-in amplifier,\" Front. Sens., vol. 4, 1102176, Mar 2023.",
+    "H. Chen, Y. Li, L. Ou, \"A digital lock-in amplifier based on adaptive Kalman filter for rail defect detection,\" J. Sensors, vol. 2023, 7112942, 2023.",
+    "J. Ge, X. Chen, B. Hu, \"Velocity-adaptable ACFM device for crack inspection in rails,\" IEEE Sensors J., vol. 23, no. 15, pp. 17034-17041, Aug 2023.",
     "J. E. Volder, \"The CORDIC trigonometric computing technique,\" IRE Trans. Electron. Comput., vol. EC-8, no. 3, 1959.",
-    "E. B. Hogenauer, \"An economical class of digital filters for decimation and interpolation,\" IEEE Trans. ASSP, vol. 29, no. 2, 1981."], { color: C.text1 }), { x: 0.6, y: 1.4, w: 12.1, h: 5.4, fontSize: 14 }); }
+    "E. B. Hogenauer, \"An economical class of digital filters for decimation and interpolation,\" IEEE Trans. ASSP, vol. 29, no. 2, 1981."], { color: C.text1 }), { x: 0.6, y: 1.4, w: 12.1, h: 5.4, fontSize: 13 }); }
 
 (async () => { await pres.writeFile({ fileName: "lockin_final.pptx" }); await applyTheme("lockin_final.pptx", THEME); console.log("written"); })();
