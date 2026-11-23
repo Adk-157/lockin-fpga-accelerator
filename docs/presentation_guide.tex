@@ -1,0 +1,297 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.9cm,top=1.7cm,bottom=1.7cm]{geometry}
+\usepackage{xcolor,enumitem,booktabs,listings,tabularx,longtable,fancyhdr,amsmath,amssymb}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\definecolor{navy}{HTML}{1E2761}\definecolor{amber}{HTML}{C98300}
+\definecolor{ice}{HTML}{EAF0FD}\definecolor{warn}{HTML}{FFF4DC}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlist{nosep,leftmargin=1.3em}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Lock-in on PYNQ-ZU: presentation guide}\fancyhead[R]{\small Adithya Ram S.}\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\usepackage{titlesec}\usepackage{needspace}
+\titleformat{\section}{\large\bfseries\color{navy}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{navy}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{10pt}{4pt}\titlespacing*{\subsection}{0pt}{7pt}{2pt}
+\lstset{basicstyle=\ttfamily\footnotesize,backgroundcolor=\color{ice},frame=single,rulecolor=\color{navy!30},
+ breaklines=true,columns=fullflexible,keepspaces=true,xleftmargin=2pt,xrightmargin=2pt,aboveskip=3pt,belowskip=3pt}
+\newtcolorbox{say}{colback=ice,colframe=navy,boxrule=0.4pt,left=4pt,right=4pt,top=2pt,bottom=2pt,title={Say it like this},fonttitle=\bfseries\small,coltitle=white}
+\newtcolorbox{careful}{colback=warn,colframe=amber,boxrule=0.4pt,left=4pt,right=4pt,top=2pt,bottom=2pt,title={Careful},fonttitle=\bfseries\small,coltitle=white}
+\newcommand{\qa}[2]{\par\vspace{2pt}\noindent{\bfseries\color{navy}Q. #1}\par\noindent #2\par}
+\renewcommand{\c}[1]{\texttt{#1}}
+\begin{document}
+{\LARGE\bfseries\color{navy} Adaptive-Bandwidth Digital Lock-in on Zynq UltraScale+}\\[2pt]
+{\large Presentation and viva guide: every phase, the code, the math, the numbers, likely questions}\\[2pt]
+{\small Adithya Ram S. \quad|\quad IIIT Sri City \quad|\quad Mentor: Dr.\ Ramesh Kumar V.\quad|\quad prepared 23 Nov 2026}
+
+\vspace{4pt}
+\begin{tcolorbox}[colback=white,colframe=navy!40,boxrule=0.4pt,left=5pt,right=5pt,top=3pt,bottom=3pt]
+\textbf{How to use this.} Read Sections 1--2 first (10 minutes) and you can give the talk. Sections 3--6 are the explanations you fall back on when a question goes deep. Section 8 has 40 likely questions with answers. Section 7 is the one-page number sheet to glance at before you walk in. Where something is my reading of the design rather than something measured, it is marked \textbf{(inferred)}; check those against your own notes before quoting them as fact.
+\end{tcolorbox}
+
+\section{The pitch}
+\subsection{Sixty seconds}
+\begin{say}
+A lock-in amplifier pulls a tiny signal of known frequency out of noise much bigger than itself: multiply by a reference, then average. The averaging bandwidth is the key setting, and normally the user picks it by hand. I built a lock-in on the PYNQ-ZU FPGA in high-level synthesis where the bandwidth is chosen automatically from a noise estimate inside the block, and I compared three ways of computing magnitude and phase (CORDIC, lookup table, polynomial) on the same data. Everything was verified bit-exactly against a C reference on the real board, from JTAG and from the on-chip ARM. On the board it recovers a signal down to $-63$\,dB input SNR with a few percent error, where a fixed bandwidth fails by tens to hundreds of percent.
+\end{say}
+
+\subsection{Three-minute story (the order to tell it in)}
+\begin{enumerate}
+\item \textbf{Problem.} Weak signal, strong noise. Lock-in = mix with I/Q reference, low-pass, extract amplitude/phase. Narrow filter = cleaner but slow; today you set it by hand.
+\item \textbf{Baseline.} Fan et al.\ built a lock-in on a ZYNQ-7020 (DDS, mixer, CIC+FIR). I used that structure as the starting point on a bigger device (XCZU5EG).
+\item \textbf{What I added.} (a) an averager whose bandwidth is adapted online from an in-block noise estimate; (b) three interchangeable magnitude/phase extractors on one data path.
+\item \textbf{How it was built.} Python golden model $\to$ each block in Vitis HLS with its own testbench and golden vectors $\to$ one integrated IP $\to$ Vivado block design $\to$ bitstream $\to$ run from JTAG and from Python on the ARM.
+\item \textbf{Proof.} 57,344 logged words match the C model with 0 mismatches over both routes; 17 of 17 injected faults caught; routed design 9,554 LUT, timing met at 100\,MHz.
+\item \textbf{Results.} Adaptive keeps error at about 4--7\% from 100 to 8000\,LSB noise and down to $-63$\,dB; fixed $k=8$ reaches 57--281\%. The fabric is 23$\times$ faster than the same C++ on one A53 core.
+\item \textbf{Honest limits.} Synthetic on-chip input, no ADC; power is an estimate; the rule has fixed thresholds and can overshoot; the guard-bit CORDIC is C model only.
+\end{enumerate}
+
+\section{One mental model of the whole chain}
+Hold this picture; every question maps onto one box.
+\begin{center}\small
+\begin{tabular}{@{}ccccccc@{}}
+\fbox{tone+noise} & $\to$ & \fbox{mixer $\times$ ref DDS} & $\to$ & \fbox{CIC\,/\,128 + FIR} & $\to$ & \fbox{averager $2^{-k}$}\\
+\multicolumn{5}{c}{} & & $\downarrow$ \\
+\multicolumn{5}{c}{\fbox{noise estimate $\to$ adjusts $k$ (every 32 outputs)}} & & \fbox{CORDIC\,|\,LUT\,|\,poly}
+\end{tabular}
+\end{center}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule \textbf{Block} & \textbf{One sentence} \\ \midrule
+Stimulus & Generates $A\cos(\omega t+\phi)+\sigma\nu$ inside the FPGA (no ADC); makes every run repeatable. \\
+Reference DDS + mixer & 32-bit phase accumulator addresses a 1024-entry sine ROM; cosine is the same ROM a quarter turn ahead; multiplying gives I and Q. \\
+CIC + FIR & Cheap decimate-by-128 filter (adders only), then a 21-tap FIR that undoes the CIC's passband droop. Output: 1562.5 samples/s at the nominal 200\,kS/s. \\
+Averager & $z\leftarrow z+2^{-k}(y-z)$: a one-pole low-pass whose bandwidth is set by the shift $k$. \\
+Noise estimator + rule & Measures noise from differences of outputs 32 apart; every 32 outputs raises $k$ if noise is too large relative to signal, lowers it if there is margin. \\
+Extractors & Turn averaged $(I,Q)$ into magnitude $\sqrt{I^2+Q^2}$ and angle $\operatorname{atan2}(Q,I)$ three different ways. \\
+AXI4-Lite + log & All settings and a 512-record result log are registers, so JTAG and the ARM see the same thing. \\ \bottomrule
+\end{tabularx}
+
+\section{The phases, explained}
+\subsection*{Phases 0--2: Python golden model (before any hardware)}
+\textbf{What:} the whole chain in Python with fixed-point arithmetic (notebook \c{python/lockin.ipynb}). \textbf{Why:} every later hardware block has to reproduce a known-good answer exactly; if the model is wrong, everything downstream is wrong. \textbf{Lessons you can quote:} CIC droop is real, so the compensating FIR is required; narrow IIR filters need second-order sections (direct form overflows); the CORDIC angle error is non-monotonic inside a bounded envelope, which is a convergence property and not a bug; $R=128$ makes the CIC rescale a free shift by 28.
+
+\subsection*{Phase 3: one HLS block at a time}
+Each block: C++ source $\to$ C simulation against golden CSV $\to$ C synthesis $\to$ Verilog co-simulation $\to$ Export RTL with place and route, so the numbers below are post-implementation, not estimates.
+\begin{center}\footnotesize
+\begin{tabular}{@{}lcccccc@{}}\toprule
+Block & LUT & FF & DSP & BRAM & CP (ns) & Latency/II\\ \midrule
+CORDIC (guard 0) & 668 & 190 & 1 & 0 & 4.755 & --\\
+CORDIC (guard 3) & 722 & 230 & 1 & 0 & 5.622 & 4 / 1\\
+LUT (2$\times$256 + interp.) & 1438 & 1353 & 3 & 2 & 5.749 & 35 / 1\\
+Polynomial (Horner) & 1528 & 1404 & 9 & 0 & 5.920 & 37 / 1\\
+CIC + FIR (rounded) & 1181 & 888 & 19 & 0 & 5.566 & 5 / 1\\
+DDS & 41 & 33 & 0 & 1 & 1.550 & 1 / 1\\
+Mixer & 9 & 6 & 2 & 0 & 1.155 & 3 / 1\\ \bottomrule
+\end{tabular}
+\end{center}
+All meet the 10\,ns target. \textbf{A real bug you found:} the CIC and FIR rescales originally chopped (floor) instead of rounding, giving about $-1$ count of bias; fixed by adding half an LSB before each shift and re-verified in Vitis.
+
+\subsection*{Phase 4: the adaptive bandwidth (the novel part)}
+Built in four steps, each checked against the previous one: (1) floating-point Python prototype; (2a) fixed-point averager, which showed rounding is required and that 22 extra fraction bits are needed so that a gain of $2^{-20}$ does not vanish; (2b) fixed-point noise meter (16 extra fraction bits, round to nearest); (2c) full fixed-point controller. \textbf{A real bug you found:} the original $k$ rule could wind up and limit-cycle; the fix is an anti-windup clamp ($k$ may never exceed the number of blocks already averaged). Then the controller was made an HLS block (II\,=\,16 pragma, 3,155 LUT, 6 DSP, CP 5.067\,ns), fully verified in Vitis on all vectors.
+
+\subsection*{Phase 5: integration, board, measurement}
+All blocks merged into one IP, \c{lockin\_top}, one call per input sample. Two Vivado block designs: (1) JTAG-to-AXI only (IP at \c{0x40000000}); (2) JTAG plus the Zynq UltraScale+ processing system as a second AXI master (IP at \c{0xA0000000}). Clock: 125\,MHz board oscillator $\to$ clocking wizard $\to$ 100\,MHz. Then: bit-exact verification (7 configurations, both routes), extractor accuracy, adaptive-vs-fixed sweeps, deep-noise runs, step response, throughput, and the Cortex-A53 software comparison.
+
+\section{Slide-by-slide script (about 15--18 minutes)}
+\begin{longtable}{@{}p{0.6cm}p{10.6cm}p{5.2cm}@{}}
+\toprule \textbf{\#} & \textbf{What to say} & \textbf{Likely follow-up}\\ \midrule\endhead
+1 & ``Additional project, mentor Dr.\ Ramesh Kumar V. Everything today was measured on the PYNQ-ZU except items marked C model.'' & --\\
+2 & Lock-in in three steps; the bandwidth trade-off; the $-63$\,dB headline. SNR is $A^2/2\sigma^2$ over the full sample band. & What does $-63$\,dB mean?\\
+3 & Walk the chain left to right; amber boxes are mine. 40-bit averager state, $k\in[0,20]$. & Why these word lengths?\\
+4 & Two contributions. Then say the ``not claimed'' line yourself before anyone asks. & Isn't adaptive filtering known?\\
+5 & Flow: C++ $\to$ Vitis HLS $\to$ IP $\to$ Vivado block design $\to$ bitstream $\to$ PYNQ. Show the 6-line rule. & How does Python reach the IP?\\
+6 & Read the equations top to bottom; this answers the reviewer's ``show the math''. & Derive $t_{90}$.\\
+7 & 9,554 LUT (8.2\%), 63 DSP, $+3.26$\,ns slack, 0.54\,W (vectorless estimate). Controller is the biggest block. & Why is power an estimate?\\
+8 & Three layers: C reference, 17 mutants, board. 57,344 words, 0 mismatches, JTAG and ARM. & What is a mutation test?\\
+9 & Table: CORDIC smallest and least accurate; LUT and poly far better angle for about 2$\times$ LUTs. Say guard-3 is C model only. & Why is CORDIC biased?\\
+10 & Fixed filters degrade with noise; adaptive holds 4--6\% by raising $k$. Admit it loses to a wide fixed filter at strong signal. & Why not just use $k=12$?\\
+11 & $-45$ to $-63$\,dB. Controller picked $k=15$--20 alone. Fixed $k=8$ fails. $-63$\,dB hit the limit $k=20$, two seeds only. & Why does $k$ stop at 20?\\
+12 & Fixed-$k$ settling matches theory. Live ARM run: $k$ follows noise, and overshot to 18--19. & Why did $k$ overshoot?\\
+13 & 4.27 vs 0.185\,MS/s, 23$\times$, same source. Not NEON-optimised. & Is that comparison fair?\\
+14 & Read your own limits out loud. & --\\
+15 & All phases done; report in similarity check. & What next?\\
+\bottomrule
+\end{longtable}
+
+\section{The code, explained}
+Source: \c{hls/lockin\_top/src/} in your GitHub repo. Be ready to open \c{lockin\_top.cpp} and \c{ctrl\_x.cpp}.
+
+\subsection{What one call of \texorpdfstring{\c{lockin\_top}}{lockin\_top} does}
+\begin{enumerate}
+\item Read control bits from \c{ctl}: reset, adaptive, log enable, external input, log clear. A reset call does nothing except reset.
+\item \textbf{Stimulus.} Phase accumulator \c{ph\_sig} advances by \c{ph\_sig} each call; ROM lookup gives $\cos$; times \c{amp}. Two xorshift32 generators give four 16-bit uniforms; their sum is near-Gaussian (kurtosis 2.70 vs 3); scaled by \c{sigma} so its standard deviation is $\sigma$ LSB. Add, saturate to 16 bits. Or use \c{x\_ext} if the external-input bit is set.
+\item \textbf{Reference + mixer.} Reference phase accumulator $\to$ sine and cosine (cosine = ROM at phase $+\texttt{0x40000000}$, a quarter turn). $m_I=x\cos$, $m_Q=-x\sin$, product is Q4.28, rounded to nearest and saturated to 16 bits.
+\item \textbf{CIC + FIR.} Integrators run every sample; every 128th sample the combs run and a decimated value appears (\c{vI} true); the FIR then runs on it.
+\item \textbf{Controller.} \c{adaptive\_ctrl\_x} gets the FIR outputs, updates noise estimate, averager and $k$.
+\item \textbf{Extract + log.} On every decimated output the same averaged $(I,Q)$ goes into CORDIC, LUT and polynomial; every \c{log\_every}-th output a 16-word record is written to \c{log\_mem}.
+\end{enumerate}
+\begin{say}
+The whole instrument is one C++ function called once per input sample, with its state kept in a static struct. HLS turns that into hardware with an AXI-Lite register bank, so the processor or JTAG just writes settings and reads the log.
+\end{say}
+
+\subsection{The stimulus noise (why ``28378'')}
+\begin{lstlisting}
+ap_int<20> S  = n0 + n1 + n2 + n3;        // std ~ 37837 (sum of 4 uniforms)
+nt = S * sigma * 28378;                    // 28378 / 2^30 ~ 1/37837
+noise = (nt + (1<<29)) >> 30;              // std ~ sigma LSB
+\end{lstlisting}
+A 16-bit uniform has standard deviation $65536/\sqrt{12}\approx18919$; four of them sum to $\sqrt4\times18919\approx37837$. Multiplying by $28378/2^{30}\approx1/37837$ normalises to unit standard deviation, and \c{sigma} then sets it in LSB. A shift instead of a divide keeps it cheap. One of the 17 mutants changes 28378 to 28379 and is caught.
+
+\subsection{The mixer rounding}
+\begin{lstlisting}
+r = (p + (1 << (MIX_SHIFT-1))) >> MIX_SHIFT;   // round to nearest
+if (r > 32767) return 32767;  if (r < -32768) return -32768;   // saturate
+\end{lstlisting}
+Truncation would add a constant bias of half an LSB that the long averager would then faithfully preserve, so every cut in the chain rounds. Saturation (not wrap) is used so an overload clips instead of flipping sign.
+
+\subsection{CIC and FIR}
+\begin{lstlisting}
+for k in 0..3:  integ[k] += v;  v = integ[k];        // 4 integrators, every sample
+if (cnt == 0) { for k in 0..3: d = c - comb[k]; comb[k] = c; c = d; }   // 4 combs, every 128th
+y = (c + (1<<27)) >> 28;                              // /128^4, rounded
+\end{lstlisting}
+Accumulators are $16+\lceil4\log_2 128\rceil=44$ bits wide and are allowed to wrap: the combs cancel the wraparound (Hogenauer). Because $R=128=2^7$, dividing by $R^4$ is a shift by 28. The FIR has 21 taps and its peak gain is 3.35, so its output is 18 bits, not 16.
+
+\subsection{The controller (\texorpdfstring{\c{ctrl\_x.cpp}}{ctrl\_x.cpp}) in four parts}
+\textbf{1. Skip and warm-up.} The first 64 outputs are ignored (the chain's own start-up ramp). Averaging starts once 32 noise readings exist, so about 128 outputs pass before anything is reported.
+
+\textbf{2. Noise meter.} Compare each output with the one 32 earlier:
+\begin{lstlisting}
+dI = I - hI[0];  dQ = Q - hQ[0];          // oldest of the last 32
+sraw = dI*dI + dQ*dQ;   T = (sraw << FV + 2) >> 2;
+vh += (T - vh) >> j;                        // running average, window 2^j, j grows to 9
+\end{lstlisting}
+\textbf{(inferred)} Differencing cancels a constant or slowly varying signal and leaves noise: for independent noise samples the difference has twice the variance, and summing the $I$ and $Q$ channels gives four times a per-channel variance, hence the divide by 4. The window $2^j$ grows with the number of readings so the estimate converges quickly and then settles at 512 readings.
+
+\textbf{3. Averager and warm start.}
+\begin{lstlisting}
+s  = min(k, floor(log2(m)));              // m = samples so far
+eI = (I << FA) - zI + half;   zI += eI >> s;     // z += (y - z) / 2^s, rounded
+\end{lstlisting}
+Early on the window is the running count $m$, so the filter behaves like a running mean and converges fast; as $m$ grows it reaches $2^k$. The state has $FA=22$ extra fraction bits so that $2^{-20}$ steps still register.
+
+\textbf{4. Variance tracker and the $k$ rule.} The tracker follows the variance of the averaged output. For $a=2^{-s}$, a one-pole filter obeys $\mathrm{var}_z'=(1-a)^2\mathrm{var}_z+a^2\sigma^2$; storing $u=\mathrm{var}\cdot2^s$ turns that into $u'=u-2a\,u+a^2u+a\sigma^2$, which is exactly the line \c{uu - rs(uu,s-1) + rs(uu,2*s) + rs(cvh,s+FV-FU)}. Every 32 outputs:
+\begin{lstlisting}
+if ((int)k > s) k = s;                                   // anti-windup
+sig = mI*mI + mQ*mQ - 2*vm16;  if (sig < 0) sig = 0;     // remove noise bias
+if      (vm16 > (sig >> 7) && k < KMAX) k++;             // too noisy: narrow
+else if (vm16 < (sig >> 9) && k > KMIN) k--;             // margin: widen
+\end{lstlisting}
+$\mathbb E|z|^2=A^2+2v$ for two channels each with noise variance $v$, so subtracting $2v$ estimates the signal power. \textbf{(inferred)} The relative error of $|z|$ is about $\sqrt{v/S}$, so the two thresholds $2^{-7}$ and $2^{-9}$ are error targets of $\sqrt{2^{-7}}\approx8.8\%$ and $\sqrt{2^{-9}}\approx4.4\%$: if error is above 8.8\% narrow the filter, if below 4.4\% widen it, otherwise hold. That dead-band is why the measured adaptive error sits at 4--7\% regardless of noise.
+
+\subsection{The extractors}
+\begin{itemize}
+\item \textbf{CORDIC.} Rotate $(x,y)$ toward the $x$-axis with 16 shift-and-add steps; the accumulated angle is the phase and the final $x$, times a fixed gain correction ($\approx0.607$), is the magnitude. No multiplier except that one correction and no divider.
+\item \textbf{LUT + interpolation.} Fold into one octant, compute ratio $r=\min/\max$ (needs a divider), look up $\arctan r$ and a magnitude-scale factor in 256-entry tables, interpolate linearly, fold the angle back to the full circle.
+\item \textbf{Polynomial.} Same front end, but $\arctan r$ and the scale come from Horner-evaluated polynomials (order 4 / 6 in the report) with saturation at each step.
+\end{itemize}
+Why LUT and poly are more accurate but larger: they spend a divider, tables or multipliers (3 and 9 DSPs) where CORDIC spends only adders. Why CORDIC (guard 0) has a magnitude bias: with zero guard bits the 16 shifted values lose their low bits, and the loss has a consistent sign, so it appears as a nearly constant offset that dominates small inputs. Three guard bits remove it in the C model (about 1\,LSB).
+
+\Needspace{8\baselineskip}
+\subsection{The interface and the pragmas}
+\begin{lstlisting}
+#pragma HLS INTERFACE s_axilite port=ctl bundle=ctl     // every argument becomes an AXI4-Lite register
+#pragma HLS PIPELINE II=500                              // asked for 1 sample / 500 clocks = 200 kS/s
+#pragma HLS ARRAY_PARTITION variable=T.csI.integ complete   // registers, not RAM, for the CIC state
+\end{lstlisting}
+Register map (base \c{0xA0000000} on the PS build): control \c{0x00} (write \c{0x81} = start plus auto-restart), \c{ctl} \c{0x10}, \c{kfix} \c{0x18}, \c{amp} \c{0x38}, \c{sigma} \c{0x40}, \c{out\_count} \c{0x60}, \c{k\_now} \c{0x90}, log memory from \c{0x8000} (512 records $\times$ 16 words). Log record: counter, FIR $I$, FIR $Q$, $k$, mean $I$, mean $Q$, CORDIC \{angle,mag\}, LUT \{angle,mag\}, poly mag, poly angle, noise estimate, signal estimate.
+
+\subsection{Verification code}
+\c{ref\_pipe.c} reimplements every stage in plain integer C. \c{tb\_top.cpp} runs the HLS function and the reference in lockstep over seven configurations and compares every logged word. \c{mutate.py} injects 17 single-line faults one at a time (noise constant, inverted adapt flag, swapped $I/Q$ log words, removed anti-windup, off-by-one log interval, wrong log-full flag...) and checks the testbench fails each time. On the board, \c{board\_verify*.tcl} (JTAG) and \c{lockin\_pynq.py verify} (ARM) read the 8,192-word log back and compare to the expected files V1--V7.
+
+\section{The math you should be able to derive on a whiteboard}
+\textbf{Lock-in.} $x=A\cos(\omega t+\phi)+n$. Multiply by $\cos\omega t$: $\tfrac A2\cos\phi+\tfrac A2\cos(2\omega t+\phi)+n\cos\omega t$; the low-pass removes the $2\omega$ term and most of the noise. Likewise with $-\sin$ gives $\tfrac A2\sin\phi$. So $I=\tfrac A2\cos\phi$, $Q=\tfrac A2\sin\phi$, $|z|=A/2$, $\theta=\phi$. (This is why the true magnitude in your runs is $A/2$, e.g.\ 128 for amplitude 256.)
+
+\textbf{Settling.} A step into $z\leftarrow z+a(y-z)$ with $a=2^{-k}$ leaves $(1-a)^n$ of the step after $n$ outputs. Set $(1-a)^n=0.1$: $n=\ln10/(-\ln(1-a))\approx\ln10\cdot2^k$. One output every $128/200000=0.64$\,ms, so $t_{90}\approx1.47\,\mathrm{ms}\cdot2^k$: 23.6\,ms, 377\,ms, 6.04\,s for $k=4,8,12$ (board: 20.5\,ms, 368.6\,ms, 6.02\,s).
+
+\textbf{Noise reduction.} For white input of variance $\sigma_y^2$ the one-pole output variance is $\sigma_y^2\,a/(2-a)\approx\sigma_y^2/2^{k+1}$, so each increment of $k$ lowers the noise standard deviation by $\sqrt2$. This is the speed-versus-noise trade-off in one line.
+
+\textbf{Sanity check of the $-57$\,dB result (back-of-envelope, approximate).} Input noise $\sigma=8000$. Mixing by a unit sinusoid halves the variance per channel ($\sigma^2/2$); the CIC/FIR decimation by 128 divides white-noise variance by about 128, giving $\sigma^2/256$; the averager at $k=19$ divides by $2^{20}$. So $\sigma_z\approx8000/\sqrt{256\cdot2^{20}}=8000/2^{14}\approx0.49$\,LSB. The signal $|z|=A/2=8$ LSB for amplitude 16, so relative error $\approx6.1\%$; measured $5.7\%$. The same estimate for $k=15$ (amplitude 64) and $k=17$ (amplitude 32) also gives about 6\%, inside the controller's 4.4--8.8\% dead-band. Treat this as an order-of-magnitude check that ignores the FIR gain shape, not as a derivation.
+
+\textbf{SNR definition.} $\mathrm{SNR}=A^2/(2\sigma^2)$ over the whole sample band. Amplitude 64, 32, 16, 8 at $\sigma=8000$ give $-45$, $-51$, $-57$, $-63$\,dB. It is the input SNR before any lock-in processing, which is why recovering the signal at $-63$\,dB is possible: the lock-in narrows the noise bandwidth enormously.
+
+\section{Number sheet (glance before you walk in)}
+\begin{center}\footnotesize
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Device / tools & XCZU5EG on TUL PYNQ-ZU; Vitis HLS and Vivado 2023.1; PYNQ 3.1.1 on the board \\
+Clock / sample rate & 100\,MHz fabric (from 125\,MHz oscillator); nominal 200\,kS/s; 1562.5 outputs/s \\
+Chain & DDS 32-bit acc., 1024-entry ROM; CIC 4 stages $R=128$; FIR 21 taps; averager 40-bit, 22 frac. bits, $k\in[0,20]$ \\
+Adaptive rule & every 32 outputs; $k{+}1$ if $v>S/2^7$, $k{-}1$ if $v<S/2^9$; warm-up 128 outputs \\
+IP resources & 9,554 LUT (8.2\%), 12,989 FF, 63 DSP (5.0\%), 8 RAMB36 + 3 RAMB18 \\
+Whole designs & JTAG-only 11,008 LUT; with PS 12,545 LUT, 12 BRAM tiles \\
+Timing / power & WNS $+3.256$\,ns (PS build $+3.551$), WHS $+0.010$\,ns; 0.54\,W vectorless (JTAG-only) \\
+Verification & 57,344 words, 0 mismatches, JTAG and ARM; 17/17 mutants caught \\
+Throughput & 4.271\,MS/s JTAG, 4.2714\,MS/s ARM = 21.4$\times$ nominal; A53 0.1849\,MS/s $\Rightarrow$ 23$\times$ \\
+Extractors (board) & CORDIC 3.7\,LSB / 1.28$^\circ$ / 776 LUT / 1 DSP; LUT 0.66 / 0.012$^\circ$ / 1,438 / 3; poly 0.75 / 0.006$^\circ$ / 1,468 / 9 \\
+Adaptive, amp 256 & fixed $k{=}4$ 0.9/2.6/8.8/26.5/62.3\%; adaptive 4.3/5.6/6.1/5.4/3.7\% for $\sigma$ = 100/300/1000/3000/8000 \\
+Deep noise ($\sigma$=8000) & adaptive 4.4/4.2/5.7\% at $-45/-51/-57$\,dB ($k$=15/17/19); $-63$\,dB 5.7/4.2\% ($k$=20, 2 seeds); fixed $k{=}8$ 57/120/281\% \\
+Settling (nominal) & $k$=4/8/12: 20.5\,ms / 368.6\,ms / 6.02\,s (theory 23.6/377/6036\,ms) \\
+Live ARM demo & $\sigma$ 100/1000/3000/8000/1000/100 gave $k$ = 0/5/8/18--19/5/0 \\ \bottomrule
+\end{tabularx}
+\end{center}
+\textbf{Demo command if asked to run live} (on the board, after copying \c{lockin} to the home folder): \c{sudo -E env "PATH=\$PATH" python3 lockin\_pynq.py demo} (also \c{verify}, \c{throughput}). Plain \c{sudo} hides the PYNQ Python environment, which is why the \c{env} form is needed.
+
+\section{Likely questions and answers}
+\subsection*{Concept}
+\qa{What is a lock-in amplifier and why use one?}{It recovers the amplitude and phase of a signal at a known frequency even when noise is far larger, by multiplying with a reference at that frequency and low-pass filtering. Only noise near the reference frequency survives, so the effective noise bandwidth becomes tiny.}
+\qa{Why both a cosine and a sine reference?}{With only one, the output depends on the unknown phase between signal and reference and can be zero. Using both gives $I$ and $Q$, from which amplitude $\sqrt{I^2+Q^2}$ and phase are independent of that offset.}
+\qa{Why does noise average out and the signal not?}{After mixing, the signal at the reference frequency becomes a constant (DC); noise at other frequencies becomes oscillating or random and averages toward zero. The longer you average (the narrower the filter) the more noise is removed.}
+\qa{What does $-63$\,dB mean? Is it realistic?}{It is input SNR over the whole sample band: signal power is about 2 million times smaller than noise power. It is realistic for lock-in work because the processing gain from the narrow filter is large. My number is for synthetic Gaussian-like noise; real sensor noise (drift, $1/f$, interference) would be harder.}
+
+\subsection*{Design choices}
+\qa{Why CIC plus FIR, and why $R=128$?}{A CIC decimator needs only adders and is the cheap way to drop the rate by a large factor. It has passband droop, so a 21-tap FIR compensates. $R=128=2^7$ makes the rescale by $R^4$ a free shift by 28.}
+\qa{Why a first-order averager with gain $2^{-k}$?}{A power-of-two gain is a shift, so no multiplier, and a single shift value $k$ is the only knob the controller must move. Settling and noise reduction follow simple formulas.}
+\qa{Why 40-bit state and 22 fractional bits?}{At $k=20$ each update adds $2^{-20}$ of the error; without extra fraction bits that rounds to zero and the filter stalls. The Phase 4 fixed-point study showed 22 bits are needed for $k_{max}=20$.}
+\qa{Why thresholds $2^{-7}$ and $2^{-9}$?}{They set the target error band. \textbf{(inferred)} They correspond to relative error of about 8.8\% and 4.4\%, with a factor-4 gap as dead-band so $k$ does not chatter. They were chosen by simulation and are fixed constants, not tuned on the board.}
+\qa{What stops $k$ oscillating or running away?}{Three things: the dead-band between the two thresholds, a decision only every 32 outputs, and an anti-windup clamp that stops $k$ exceeding the number of blocks already averaged. The anti-windup was added after the Phase 4 prototype showed a limit cycle.}
+\qa{How do you measure noise without knowing the signal?}{By differencing outputs 32 apart. A constant or slowly varying signal cancels; independent noise does not. The estimate is then used to remove the noise bias from $|z|^2$.}
+\qa{Why is adaptive worse than a wide fixed filter when the signal is strong?}{By design it stops narrowing once the error is inside the 4--9\% band, so it keeps about 4--6\% error where $k=12$ would give under 1\%. The trade is speed: $k=12$ takes about 6\,s to settle, adaptive settles within the first log interval. Say this openly; it is on slide 10.}
+\qa{Why not just choose a large fixed $k$?}{Then you must know the noise level in advance and you always pay the long settling time. At $-45$\,dB a well-chosen fixed $k=16$ gives 2.8\% (better than adaptive's 4.4\%), but it is wrong at other noise levels; the adaptive block needs no setting.}
+
+\subsection*{HLS, Vivado, board}
+\qa{Why HLS instead of Verilog?}{Faster iteration on arithmetic and, importantly, the same C++ runs as the golden reference, the testbench and the Cortex-A53 benchmark. I have also done Verilog work on FPGA boards, but for a datapath with this much fixed-point bookkeeping, C++ made verification simpler.}
+\qa{What does \c{s\_axilite bundle=ctl} do?}{It makes each function argument a memory-mapped register on one AXI4-Lite slave, so settings and results are read and written at fixed offsets.}
+\qa{How does the block run? What is \c{0x81}?}{Writing \c{0x81} to the control register sets \c{ap\_start} (bit 0) and auto-restart (bit 7). The block then executes one sample per invocation continuously without the processor restarting it.}
+\qa{You asked for II=500 for 200\,kS/s. What happened?}{HLS reported ``unable to pipeline'' for that directive, so the block simply finishes each sample in about 13--89 clock cycles. That means it is not paced to 200\,kS/s; it runs about 21 times faster. I therefore label all time axes as nominal 200\,kS/s and report the measured throughput rather than assuming it.}
+\qa{How did you measure 4.27\,MS/s?}{I read the output counter, waited a measured interval, and read it again: 167,021 decimated outputs in 5.005\,s, which is 167,021$\times$128 samples. JTAG and ARM readings agree (4.271 and 4.2714\,MS/s). Limit: the interval over JTAG has a few milliseconds of uncertainty, and there was no external time base.}
+\qa{Why two Vivado builds (JTAG-only and with the PS)?}{JTAG-to-AXI lets Tcl scripts drive the IP with no Linux, which is robust for verification. The PS build adds the Cortex-A53 as a second master so the same IP is controlled from Python on PYNQ. Same register map, same results.}
+\qa{How does Python talk to the IP?}{PYNQ loads the bitstream and hardware handoff file, and I use memory-mapped I/O at the IP's base address \c{0xA0000000} to write registers and read the log.}
+\qa{Could it run faster than 100\,MHz?}{Setup slack is $+3.26$\,ns on a 10\,ns clock, so the critical path is about 6.7\,ns and in principle roughly 140--150\,MHz. I did not try higher; throughput would scale accordingly. \textbf{(inferred from slack)}}
+\qa{Why synthetic input?}{There is no ADC or function generator on the board path I used, and synthetic input makes runs deterministic, which is what allows bit-exact comparison with the C model. The professor accepted this scope. It is listed as a limitation.}
+\qa{Why is power only an estimate?}{It is Vivado's vectorless estimate (0.54\,W, JTAG-only build) with no switching-activity capture. The 2.8\,W figure of the PS build is dominated by a default processing-system configuration and is not a property of the IP.}
+
+\subsection*{Verification}
+\qa{What does bit-exact mean here?}{Every logged 32-bit word from the board equals the word from the integer C reference, 57,344 of 57,344, across seven configurations. No tolerance is used.}
+\qa{What is a mutation test and why did you do it?}{I injected 17 single-line bugs, one at a time, and checked that the testbench fails each. If a bug could slip through, a passing testbench would prove little. All 17 were caught.}
+\qa{What do the seven configurations cover?}{Adaptive at strong signal; fixed $k=7$; tiny signal with a large phase offset; clipping (amplitude 32767, noise 65535); external constant $-32768$; negative amplitude with a detuned tone; and a different log spacing.}
+\qa{Co-simulation versus board?}{Co-simulation compares the generated RTL with the C++ in a simulator per block (Phase 3). The board test checks the whole integrated design in silicon, through the real AXI path.}
+\qa{Anything odd in reading the log?}{JTAG burst reads return each 256-word burst in reversed order; the comparison script accounts for it. The ARM route reads in order.}
+
+\subsection*{Extractors and results}
+\qa{How does CORDIC work, and why the bias?}{It rotates the vector by fixed arctangent angles using shifts and adds until $y\approx0$; the angle sum is the phase, and the leftover $x$ times a constant gain correction is the magnitude. With no guard bits the shifts discard low bits with a consistent sign, which shows up as a roughly constant magnitude offset. A 3-guard-bit variant removes it in the C model.}
+\qa{Which extractor would you choose?}{Depends on the budget: CORDIC if area dominates and accuracy of a few LSB / about 1$^\circ$ is enough; LUT if you have BRAM and want the lowest magnitude error; polynomial for the best angle at the price of 9 DSPs. LUT and polynomial are about 100--200$\times$ better in angle for about twice the LUTs.}
+\qa{Where does the ``4--7\%'' come from?}{It is the standard deviation of $|z|$ over the last 128 log records divided by the true $A/2$, across ten settings (two amplitudes, five noise levels): 1.1 to 6.7\%. It measures fluctuation, not bias.}
+\qa{What limits the $-63$\,dB result?}{The controller reached its upper limit $k=20$, and only two seeds were run, so those two numbers (5.7\% and 4.2\%) are indicative, not statistics.}
+\qa{Why did $k$ overshoot to 18--19 in the live run?}{In the live ARM run $k$ rose past the cold-start mean (11) at $\sigma=8000$ and fell only after the noise dropped. \textbf{(inferred)} The estimator and tracker retain history, and an upward noise step can leave $k$ higher than needed for several seconds. I did not investigate it further and it is listed as a limitation.}
+\qa{Is the A53 comparison fair?}{It is the same source on both sides, compiled \c{g++ -O2}, one core, 5 million samples, adaptive mode: 0.185\,MS/s versus 4.27\,MS/s. But the software uses HLS arbitrary-precision types and is not NEON-optimised, so a tuned ARM implementation would narrow the gap. I say ``23$\times$ for this code''.}
+
+\subsection*{Novelty and process}
+\qa{What exactly is new?}{Not the lock-in principle and not adaptive filtering in general. What I did: a simple hardware-friendly adaptive-bandwidth rule implemented in fixed point, measured on a real FPGA against fixed bandwidth down to $-63$\,dB, plus a quantified three-way CORDIC/LUT/polynomial comparison on the same data.}
+\qa{How does it compare with the adaptive Kalman-filter lock-in (Chen et al.)?}{That work adapts a Kalman filter inside the lock-in for rail-defect detection, which is heavier estimation machinery. Mine is a much simpler rule with no matrix arithmetic, built for small hardware. I made no head-to-head comparison and the report says so.}
+\qa{Which parts did you build versus take from the baseline?}{The baseline paper supplies the chain structure (DDS, mixer, CIC plus FIR) on a ZYNQ-7020. I implemented it myself in HLS and added the adaptive averager, the three extractors and the whole verification and board flow.}
+\qa{What was the hardest problem?}{Pick one: the anti-windup limit cycle in the controller; the CIC/FIR chop-versus-round bias; or the HLS pipelining directive that could not be met, which changed throughput and forced me to label time as nominal.}
+\qa{What would you do next?}{Add a real ADC and analog front end, measure throughput with an external time base, tune or learn the thresholds, run the 3-guard-bit CORDIC on the board, and compare against a Kalman-based adaptive lock-in.}
+\qa{Is it published?}{No. It is a technical report for this course.}
+\qa{Why this board?}{It is the board I had access to (PYNQ-ZU, XCZU5EG). The design is parameterised HLS C++ so it can be rebuilt for another Zynq UltraScale+ part.}
+
+\section{Honest answers when you do not know}
+\begin{careful}
+\textbf{Do say:} ``I measured X; I did not measure Y.'' ``That is a limitation; here is what I would do.'' ``I do not know, but I would check it by \dots''
+\textbf{Do not say:} ``novel lock-in algorithm''; ``published''; ``real-world validated'' (the input is synthetic); that the guard-bit CORDIC runs on the board; that real-time settling equals the ms values on the plots (those are nominal; real time is about 21$\times$ shorter); that the A53 ratio holds for optimised ARM code.
+\end{careful}
+\textbf{If asked something about a number you do not remember:} open the repo's \c{docs/pl-board-results.md}; every measured figure in this guide is there with its context. The raw board logs are in \c{results/}.
+
+\end{document}
