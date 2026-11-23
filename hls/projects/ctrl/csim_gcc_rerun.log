@@ -1,0 +1,11 @@
+# Controller C-sim re-run on 2026-11-23 with g++ 13 + open-source ap_int headers (Apache-2.0, commit 200a9ae).
+# NOT a Vitis HLS run: the original Vitis ctrl project reports no longer exist on disk. Same testbench (hls/src/tb_ctrl.cpp), same golden CSVs.
+hls/golden_vectors/ctrl_m40.csv: 150000 samples x 3 passes (outputs only), mismatches = 0  ->  PASS
+hls/golden_vectors/ctrl_m20.csv: 30000 samples x 3 passes (outputs only), mismatches = 0  ->  PASS
+hls/golden_vectors/ctrl_step.csv: 117000 samples x 3 passes (outputs only), mismatches = 0  ->  PASS
+hls/golden_vectors/ctrl_corner.csv: 65000 samples x 3 passes (outputs only), mismatches = 0  ->  PASS
+# with internal vh/u compared:
+hls/golden_vectors/ctrl_m40.csv: 150000 samples x 3 passes (outputs + internal vh/u), mismatches = 0  ->  PASS
+hls/golden_vectors/ctrl_m20.csv: 30000 samples x 3 passes (outputs + internal vh/u), mismatches = 0  ->  PASS
+hls/golden_vectors/ctrl_step.csv: 117000 samples x 3 passes (outputs + internal vh/u), mismatches = 0  ->  PASS
+hls/golden_vectors/ctrl_corner.csv: 65000 samples x 3 passes (outputs + internal vh/u), mismatches = 0  ->  PASS

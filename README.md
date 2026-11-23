@@ -29,8 +29,10 @@ DDS (sin/cos reference) -> mixer -> CIC decimator (R = 128) + 21-tap compensatin
 
 All blocks meet timing at 10 ns. Numbers are taken from the Export RTL post-implementation reports
 (see `hls/projects/*/reports/`), not from the HLS-stage estimates, which overstate LUTs.
-The adaptive controller's Vitis project was exported to a different folder on the development PC, so its
-reports are not in this repository; the figures above are from the logged Vitis runs.
+The adaptive controller's standalone Vitis project no longer exists on disk, so its csim/csynth/cosim/export
+reports are not in this repository. The controller figures above are from the logged Vitis runs. What is here
+(`hls/projects/ctrl/`): the exported IP (RTL), and an independent g++ re-run of its testbench on all four golden
+vector files (0 mismatches). See `hls/projects/ctrl/README.md`.
 
 ## PS (software) baseline on the board
 
@@ -61,12 +63,14 @@ Headline results (details in `docs/pl-board-results.md` and the report):
 | `vivado/reports/` | Post-implementation utilization, timing, power reports for both builds |
 | `bitstreams/` | `lockin_top.bit`, `lockin_ps.bit`, `lockin_ps.hwh`, packaged IP zip |
 | `board/pynq/` | `lockin_pynq.py` (verify / throughput / demo on PYNQ 3.1.1) |
-| `board/a53_bench/` | A53 software benchmark source (needs the Xilinx `ap_int` headers from a Vitis HLS install; not redistributed) |
+| `board/a53_bench/` | A53 software benchmark source, plus `ap_include/`: the open-source Xilinx `ap_int` headers (Apache-2.0, see `SOURCE.txt`) it builds with (`-Iap_include`) |
 | `results/` | Raw board logs: JTAG and ARM verification, adaptive-vs-fixed sweep, deep-noise runs, throughput |
 | `analysis/` | Python scripts that turn the logs into the report tables and figures |
 | `paper/` | IEEE-style report (`main.tex`, figures, compiled `lockin_report.pdf`) |
 | `docs/` | Slides, project checklist, results notes, PS baseline notes |
-| `sw/lockin_sw.c`, `constraints/`, `python/` | PS baseline C code, board constraints, Phase 0-2 notebook |
+| `sw/lockin_sw.c`, `sw/lockin_chain_np.py` | PS baseline C code and the numpy CIC+FIR chain (prints the same checksum as the C: `n_out=32768 sum=45376 wsum=0xfffffffecd63f20f` for N = 4194304) |
+| `constraints/`, `python/` | Board constraints, Phase 0-2 notebook |
+| `hls/projects/ctrl/` | Adaptive controller: exported IP and an independent C-sim re-run (original Vitis reports are lost) |
 
 Rebuild order: `vivado/scripts/run_hls.tcl` (export IP) -> `build_top.tcl` or `build_top_ps.tcl` -> `board_verify*.tcl` / `lockin_pynq.py`.
 Paths inside the scripts are those of the original Windows workspace; adjust them if you rebuild elsewhere.

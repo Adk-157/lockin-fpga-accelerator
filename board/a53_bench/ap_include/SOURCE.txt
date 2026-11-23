@@ -1,0 +1,6 @@
+Xilinx/AMD "HLS_arbitrary_Precision_Types" (ap_int, ap_uint, ap_fixed), open-source headers.
+Upstream: https://github.com/Xilinx/HLS_arbitrary_Precision_Types
+Commit:   200a9aecaadf471592558540dc5a88256cbf880f
+License:  Apache License 2.0 (see LICENSE.TXT). Unmodified copy of the repository's include/ directory.
+Why here: bench_a53.cpp builds the same lockin_top() source for the Cortex-A53 and needs these headers.
+They replace the copy inside a Vitis HLS install (that copy carries no explicit license text).
