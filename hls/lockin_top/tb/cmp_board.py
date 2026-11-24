@@ -1,5 +1,6 @@
 import sys,re
-R="/mnt/user-data/uploads/FPGA/lockin_top_pkg/results_verify"
+import os
+R=os.environ.get("BOARD_LOG_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)),"../../../results/board_verify_jtag"))
 def board(n):
     L=open(f"{R}/{n}.txt").read().splitlines()
     hdr=[l for l in L if l.startswith('#')]

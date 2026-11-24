@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 from scipy.signal import medfilt
 from lib import *
 plt.rcParams.update({'font.size':7,'axes.linewidth':0.6,'lines.linewidth':1.0,'lines.markersize':3.2,'axes.grid':True,'grid.linewidth':0.3,'grid.alpha':0.5,'legend.fontsize':6,'legend.frameon':False,'pdf.fonttype':42,'font.family':'serif'})
-OUT="/home/claude/lockin/paper/fig/"
+import os
+OUT=os.path.join(os.path.dirname(os.path.abspath(__file__)),"../paper/fig/")   # run from a folder containing results_sweep/ and results_deep/ (extract results/sweep/results_sweep.tgz first)
 W=3.5
 C={'cordic':'#d62728','cordic3':'#ff7f0e','lut':'#1f77b4','poly':'#2ca02c'}
 # ---- Fig extraction accuracy (C model, 4.0M inputs) + board points

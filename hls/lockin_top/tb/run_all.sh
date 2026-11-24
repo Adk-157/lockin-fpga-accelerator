@@ -1,16 +1,17 @@
 #!/bin/bash
+# run from anywhere: bash run_all.sh MUT   (needs g++, gcc, python3 with numpy; scratch files go to $WORK, default /tmp/lockin_work)
 # run_all.sh MUT   (MUT=0 is the real code; other numbers are deliberate breaks that must FAIL somewhere)
-SP=/tmp/claude-0/-home-claude/42c94fb8-bad5-5395-9710-64cf0e5010af/scratchpad
+HERE=$(cd "$(dirname "$0")" && pwd); REPO=$HERE/../../..
 MUT=${1:-0}
-W=$SP/work2; HD=$SP/hdrs2; AP=$SP/apint/repo/include
+W=${WORK:-/tmp/lockin_work}; HD=$REPO/hls/lockin_top/src; AP=${AP_INC:-$REPO/board/a53_bench/ap_include}
 mkdir -p $W
 if [ ! -x $W/ref_all ]; then
     g++ -O2 -std=c++14 -w -I $AP -I $HD -c $HD/cordic_hls.cpp -DCORDIC_GUARD=3 -Dcordic_vectoring=cordic_vectoring_g3 -o $W/cordic_g3.o || exit 9
-    g++ -O2 -std=c++14 -w -I $AP -I $HD -o $W/ref_all $SP/test2/ref_all.cpp $HD/mixer_hls.cpp $HD/dds_hls.cpp \
+    g++ -O2 -std=c++14 -w -I $AP -I $HD -o $W/ref_all $HERE/ref_all.cpp $HD/mixer_hls.cpp $HD/dds_hls.cpp \
         $HD/cordic_hls.cpp $HD/lut_hls.cpp $HD/poly_hls.cpp $W/cordic_g3.o || exit 9
 fi
-[ -f $W/ext_in.bin ] || python3 -I $SP/test2/gen_inputs.py $W || exit 9
-gcc -O2 -Wall -Wextra -DMUT=$MUT -I $HD -o $W/sw_mut$MUT $SP/sw2/lockin_sw.c || exit 9
+[ -f $W/ext_in.bin ] || python3 -I $HERE/gen_inputs.py $W || exit 9
+gcc -O2 -Wall -Wextra -DMUT=$MUT -I $HD -o $W/sw_mut$MUT $REPO/sw/lockin_sw.c || exit 9
 SWB=$W/sw_mut$MUT; REF=$W/ref_all
 total=0; fails=0
 chk() {   # name fileA fileB
@@ -53,8 +54,8 @@ $SWB dump_ext $W/ext_in.bin $W/ext_c || exit 9
 [ -f $W/ext_ref.poly.bin ] || $REF ext $W/ext_in.bin $W/ext_ref || exit 9
 for m in cordic0 cordic3 lut poly; do chk "extraction $m (magnitude and angle, 2.4M vectors)" $W/ext_c.$m.bin $W/ext_ref.$m.bin; done
 # --- the user's own golden CSVs
-total=$((total+1)); if $SWB csv_mixer $SP/csv/mixer_small.csv; then echo "PASS mixer_small.csv"; else echo "FAIL mixer_small.csv"; fails=$((fails+1)); fi
-total=$((total+1)); if $SWB csv_chain $SP/csv/chain_R128_stream.csv; then echo "PASS chain_R128_stream.csv"; else echo "FAIL chain_R128_stream.csv"; fails=$((fails+1)); fi
+total=$((total+1)); if $SWB csv_mixer $REPO/hls/golden_vectors/mixer_small.csv; then echo "PASS mixer_small.csv"; else echo "FAIL mixer_small.csv"; fails=$((fails+1)); fi
+total=$((total+1)); if $SWB csv_chain $REPO/hls/golden_vectors/chain_R128_stream.csv; then echo "PASS chain_R128_stream.csv"; else echo "FAIL chain_R128_stream.csv"; fails=$((fails+1)); fi
 # --- benchmark wiring: the hashes the benchmark prints must equal the ones from the real HLS code
 $SWB bench 1048576 1 | sed -E -n 's/^(stage [0-9] .*hash=0x[0-9a-f]+).*/\1/p' > $W/bench_c.txt
 $REF bench 1048576 > $W/bench_ref.txt

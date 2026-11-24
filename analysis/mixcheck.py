@@ -1,9 +1,11 @@
+import os
+CSV_DIR=os.environ.get("CSV_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)),"../hls/golden_vectors"))   # folder holding the mixer test CSVs (mix_a..f); not shipped in this repo
 import csv, sys, glob, collections
 def load(p):
     rows = list(csv.reader(open(p)))[2:]
     return [(int(r[3],16), int(r[4],16), int(r[5]), int(r[6]), int(r[7],16), int(r[8],16), int(r[9],16)) for r in rows]
 for tag in "abcdef":
-    p = glob.glob(f"/mnt/user-data/uploads/*mix_{tag}.csv")[0]
+    p = glob.glob(f"{CSV_DIR}/*mix_{tag}.csv")[0]
     d = load(p)
     xs = collections.Counter(r[1] for r in d)
     t = next((i for i in range(1,len(d)) if d[i-1][0]==1 and d[i][0]==0), None)

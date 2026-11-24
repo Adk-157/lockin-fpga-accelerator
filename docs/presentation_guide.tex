@@ -186,7 +186,7 @@ $\mathbb E|z|^2=A^2+2v$ for two channels each with noise variance $v$, so subtra
 \begin{itemize}
 \item \textbf{CORDIC.} Rotate $(x,y)$ toward the $x$-axis with 16 shift-and-add steps; the accumulated angle is the phase and the final $x$, times a fixed gain correction ($\approx0.607$), is the magnitude. No multiplier except that one correction and no divider.
 \item \textbf{LUT + interpolation.} Fold into one octant, compute ratio $r=\min/\max$ (needs a divider), look up $\arctan r$ and a magnitude-scale factor in 256-entry tables, interpolate linearly, fold the angle back to the full circle.
-\item \textbf{Polynomial.} Same front end, but $\arctan r$ and the scale come from Horner-evaluated polynomials (order 4 / 6 in the report) with saturation at each step.
+\item \textbf{Polynomial.} Same front end, but $\arctan r$ and the scale come from Horner-evaluated polynomials (order 5 for the arctangent, order 3 for the magnitude scale) with saturation at each step.
 \end{itemize}
 Why LUT and poly are more accurate but larger: they spend a divider, tables or multipliers (3 and 9 DSPs) where CORDIC spends only adders. Why CORDIC (guard 0) has a magnitude bias: with zero guard bits the 16 shifted values lose their low bits, and the loss has a consistent sign, so it appears as a nearly constant offset that dominates small inputs. Three guard bits remove it in the C model (about 1\,LSB).
 

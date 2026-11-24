@@ -22,3 +22,4 @@ Thumbs.db
 # third-party material (papers, vendor manuals, vendor repo) - keep local, do not redistribute
 *.pdf
 PYNQ-ZU-master/
+*.o

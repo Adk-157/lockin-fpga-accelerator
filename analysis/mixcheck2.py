@@ -1,3 +1,5 @@
+import os
+CSV_DIR=os.environ.get("CSV_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)),"../hls/golden_vectors"))   # folder holding the mixer test CSVs (mix_a..f); not shipped in this repo
 import csv, glob, collections
 MAP={"a":"9fd7cf41","b":"a655665e","c":"19add25d","d":"06fff6de","e":"7e532de2","f":"9e119495"}
 def s16(v): return v-65536 if v>=32768 else v
@@ -7,7 +9,7 @@ def rs(p):
 def model(x,s,c): return rs(x*c), rs(-(x*s))
 tot=0; totbad=0; ext=set()
 for tag,u in MAP.items():
-    p=glob.glob(f"/mnt/user-data/uploads/{u}-mix_{tag}.csv")[0]
+    p=glob.glob(f"{CSV_DIR}/{u}-mix_{tag}.csv")[0]
     R=list(csv.reader(open(p)))[2:]
     d=[(int(r[3],16), s16(int(r[4],16)), int(r[5]), int(r[6]), s16(int(r[7],16)), s16(int(r[8],16)), int(r[9],16)) for r in R]
     xs=collections.Counter(r[1] for r in d)

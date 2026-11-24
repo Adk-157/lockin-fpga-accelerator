@@ -1,4 +1,5 @@
 import subprocess, shutil, os, sys
+os.chdir(os.path.dirname(os.path.abspath(__file__)))   # build.sh and ../src are relative to this folder
 SRC="../src"
 M=[
  ("noise scale 28378->28379",        "lockin_top.cpp","* 28378;","* 28379;"),

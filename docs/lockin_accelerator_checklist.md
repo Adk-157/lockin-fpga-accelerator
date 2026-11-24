@@ -1,3 +1,5 @@
+> **Status note (25 Nov 2026).** This is the original plan, written before the project. The project is complete; see `docs/pl-board-results.md` and the report in `paper/` for what was actually done. Differences from the plan: the board used is the PYNQ-ZU (XCZU5EG), not the ZCU104; on-board input is synthetic (no function generator or photodiode); the IP is controlled through AXI4-Lite registers only (no AXI-Stream); the tick boxes below were not updated.
+
 # Lock-In Accelerator — Understand ↔ Implement Checklist
 
 Each block: understand the concept, then build the matching piece. Do them in order — each implementation step depends on the one above it.
@@ -48,9 +50,9 @@ This phase is your paper's core contribution — build all three, side by side, 
 
 ---
 
-## Phase 3 — Hardware bring-up (once ZCU104 arrives)
+## Phase 3 — Hardware bring-up (original plan: ZCU104; built on PYNQ-ZU)
 
-- [ ] **Understand:** ZCU104 clocking/ADC/DAC options (XADC, external pmods, what's actually available on-board) — confirm your input path before designing around it
+- [ ] **Understand:** Board clocking/ADC/DAC options (plan assumed ZCU104) (XADC, external pmods, what's actually available on-board) — confirm your input path before designing around it
 - [ ] **Implement:** Vivado block design — DDS + mixer + CIC/FIR + magnitude/phase block (start with CORDIC only) wired to AXI-Stream, get bitstream generated
 
 - [ ] **Understand:** AXI-Lite vs AXI-Stream — why control registers (bandwidth setting, method select) go on AXI-Lite and data goes on AXI-Stream

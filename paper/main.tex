@@ -102,7 +102,7 @@ The averaged $(\bar I,\bar Q)$ is passed to three extractors that run on the sam
 \begin{itemize}
 \item \textbf{CORDIC}: 16 vectoring iterations, 16-bit data, with gain compensation. A guard-bit option exists in the C model (3 guard bits) and is evaluated there only.
 \item \textbf{LUT}: 256-entry arctangent and magnitude tables with linear interpolation.
-\item \textbf{Polynomial}: Horner evaluation of an order-4 or order-6 approximation.
+\item \textbf{Polynomial}: Horner evaluation of an order-5 arctangent polynomial and an order-3 magnitude-scale polynomial, with 16-bit saturating accumulators.
 \end{itemize}
 Angles are $\theta=\operatorname{atan2}(\bar Q,\bar I)$, stored in degrees as Q10.6 (CORDIC, LUT) or in units of $1/256^\circ$ (polynomial).
 
@@ -148,6 +148,8 @@ To check that the testbench can actually fail, 17 single-line faults were inject
 Seven configurations (V1--V7) were run on the FPGA; the full 512-record log (8192 words) of each was read back and compared word by word against the C model. All 57\,344 words match.
 \subsection{ARM-controlled verification}
 The same seven configurations were repeated on the processor build, this time started from Python on the Cortex-A53 (memory-mapped register access) and read back from the log memory. All 57\,344 words again match the C model. The JTAG route on the same bitstream gave the same result. Throughput measured from the ARM (167\,021 outputs in 5.005\,s, 4.2714\,MS/s) agrees with the JTAG measurement (4.271\,MS/s). A live run from Python with the amplitude fixed at 256 LSB and $\sigma$ stepped through 100, 1000, 3000, 8000, 1000, 100 showed $k$ settling at 0, 5, 8, 18--19, then back to 5 and 0 while the estimated magnitude stayed near the true value of 128.
+\subsection{Reference sources and scope of the comparison}
+The golden models were checked against independent numerical references, not only against themselves: the magnitude and angle extractors against NumPy \texttt{hypot} and \texttt{arctan2}, the FIR stage against SciPy \texttt{lfilter}, and the CIC stage against a direct convolution with the equivalent boxcar$^4$ response followed by decimation. The HLS blocks were then compared with these models using golden vectors (full-range and corner-case files for each extractor, plus mixer, DDS, chain and controller streams) in C simulation and Verilog co-simulation. The corner-case files cover the origin, all four axes, diagonal points, the extreme values $\pm32768$/$32767$, very small inputs and a set of points in each quadrant. No comparison against vendor IP (the Xilinx CIC and FIR compilers), MATLAB, or published test vectors was made.
 \subsection{Extractor accuracy}
 Extractor error was measured on the board for 4\,608 points, and over 4\,000\,256 inputs in the bit-accurate C model grouped by magnitude (powers of two).
 
@@ -159,14 +161,14 @@ Table~\ref{tab:res} gives post-implementation utilization (routed design) from t
 Block & LUT & FF & DSP & BRAM\\\midrule
 Adaptive controller & 3\,125 & 1\,815 & 6 & 0\\
 Polynomial extractor & 1\,468 & 1\,368 & 9 & 0\\
-LUT extractor & 1\,438 & 1\,351 & 3 & 0\\
+LUT extractor & 1\,438 & 1\,351 & 3 & 2$^{c}$\\
 CORDIC extractor & 776 & 218 & 1 & 0\\
 FIR (I and Q, each) & 221--223 & 798 & 19 & 0\\
 AXI-Lite slave & 667 & 420 & 0 & 8$^{a}$\\\midrule
 Whole IP & 9\,554 & 12\,989 & 63 & 8+3$^{b}$\\
 Whole design & 11\,008 & 15\,653 & 63 & 10+4$^{b}$\\\bottomrule
 \end{tabular}\\[2pt]
-{\scriptsize $^{a}$ RAMB36, holds the log memory. $^{b}$ RAMB36 + RAMB18; whole design includes the JTAG-AXI master.}
+{\scriptsize $^{a}$ RAMB36, holds the log memory. $^{b}$ RAMB36 + RAMB18; whole design includes the JTAG-AXI master. $^{c}$ Two RAMB18 holding the arctangent and magnitude tables. Per-block figures are measured inside the integrated IP and therefore differ slightly from the stand-alone HLS runs of the same blocks (for example CORDIC 668 LUT and polynomial 1\,528 LUT stand-alone).}
 \end{table}
 The IP uses 8.2\,\% of the LUTs and 5.0\,\% of the DSP slices. The 100\,MHz clock is met with worst setup slack $+3.256$\,ns and worst hold slack $+0.010$\,ns, with no failing endpoints. Vivado's vectorless power estimate for the whole design is 0.540\,W (0.220\,W dynamic, 0.319\,W static; junction 26.3\,$^\circ$C). Because the estimate is vectorless it is an indication, not a measurement.
 
@@ -247,6 +249,7 @@ Without any setting by the user, the adaptive mode chose $k=15,17,19,20$ and hel
 \item The equilibrium of $k$ depends on history: in the live run $k$ reached 18--19 at $\sigma=8000$ and amplitude 256, higher than the mean of 11 in the logged cold-start run at the same settings, and it fell back only after the noise was reduced. This is consistent with the hysteresis between the $2^{-7}$ and $2^{-9}$ thresholds but was not investigated further, and an upward noise step can leave $k$ higher than needed for several seconds.
 \item The adaptive thresholds are fixed constants chosen by simulation; no optimality is claimed, and a comparison with a Kalman-filter DLIA \cite{chen} was not made.
 \item The 3-guard-bit CORDIC is evaluated in the C model only.
+\item The saturation branch of the polynomial evaluator was not triggered by any test vector, and the corner-case vectors were not chosen to hit the lookup-table breakpoints specifically, so those two paths have less direct coverage than the rest.
 \item The adaptive results are for stationary signals and single noise or amplitude steps.
 \end{itemize}
 

@@ -73,7 +73,7 @@ Headline results (details in `docs/pl-board-results.md` and the report):
 | `hls/projects/ctrl/` | Adaptive controller: exported IP and an independent C-sim re-run (original Vitis reports are lost) |
 
 Rebuild order: `vivado/scripts/run_hls.tcl` (export IP) -> `build_top.tcl` or `build_top_ps.tcl` -> `board_verify*.tcl` / `lockin_pynq.py`.
-Paths inside the scripts are those of the original Windows workspace; adjust them if you rebuild elsewhere.
+Paths inside the Vivado/Vitis Tcl scripts are those of the original Windows workspace; adjust them if you rebuild elsewhere. The C-level test scripts under `hls/lockin_top/tb/` use paths relative to the repository.
 The Vitis `script.tcl` files reference `../files/...` and absolute `C:/...` paths from the original workspace.
 
 ## Key technical notes
@@ -83,10 +83,19 @@ The Vitis `script.tcl` files reference `../files/...` and absolute `C:/...` path
 - CIC droop is real and the compensating FIR is required.
 - The Hogenauer bound needs wide internal accumulators; decimation R = 128 makes the CIC rescale a free shift.
 - Round-to-nearest (not truncation) is used at the CIC and FIR output cuts; truncation gave a measurable offset.
-- Polynomial extraction accuracy is limited by coefficient and accumulator precision beyond order 4.
+- Polynomial extraction uses an order-5 arctangent and an order-3 magnitude-scale polynomial (Horner, 16-bit saturating accumulators); its accuracy is limited by coefficient and accumulator precision.
 
-## Still to do
+## Status and known limits
 
-- Vivado integration on the PYNQ-ZU (mixer IP, then chain, extraction and controller) and on-board measurements
-- Scaling rule from the 18-bit FIR output to the 16-bit extraction input
-- PL-versus-PS comparison, paper writeup
+The project is complete: all blocks verified in Vitis HLS, the integrated IP verified bit-exactly on the PYNQ-ZU (JTAG and ARM), results measured, report and slides written (see `paper/` and `docs/`).
+
+Known limits (also in the report):
+- On-board input is synthetic (internal tone plus noise); no ADC, analog front end or function generator.
+- The 3-guard-bit CORDIC is evaluated in the C model only, not on the board.
+- The polynomial saturation path and the LUT table breakpoints are not covered directly by the corner-case vectors.
+- Verification used independent NumPy/SciPy references for the golden models; no comparison with vendor IP (Xilinx CIC/FIR compilers), MATLAB or published vectors was made.
+- Per-block LUT counts in the report are measured inside the integrated IP and differ slightly from the stand-alone Phase 3 runs listed above.
+- The original Vitis reports for the stand-alone controller project are lost (`hls/projects/ctrl/` has an exported IP and an independent C-sim re-run).
+
+Reproducing the C-level checks (no Xilinx tools needed, only g++, gcc, python3 with numpy):
+`bash hls/lockin_top/tb/run_all.sh 0` (31 checks), `cd hls/lockin_top/tb && ./build.sh ../src tb_top && ./tb_top` (top-level testbench), `python3 mutate.py` (17 injected faults). The `ap_int` headers used are in `board/a53_bench/ap_include`.
