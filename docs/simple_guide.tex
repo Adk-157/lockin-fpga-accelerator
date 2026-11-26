@@ -1,0 +1,246 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2cm,top=1.8cm,bottom=1.8cm]{geometry}
+\usepackage{xcolor,enumitem,booktabs,longtable,fancyhdr,amssymb,needspace}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\definecolor{navy}{HTML}{1E2761}\definecolor{amber}{HTML}{C98300}\definecolor{ice}{HTML}{EAF0FD}\definecolor{warn}{HTML}{FFF4DC}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\setlist{itemsep=2pt,topsep=2pt,leftmargin=1.4em}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Lock-in project: simple guide}\fancyhead[R]{\small Adithya Ram S.}\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{navy}}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries\color{navy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{12pt}{5pt}\titlespacing*{\subsection}{0pt}{9pt}{3pt}
+\newtcolorbox{say}{colback=ice,colframe=navy,boxrule=0.4pt,left=5pt,right=5pt,top=3pt,bottom=3pt,title={Say},fonttitle=\bfseries\small,coltitle=white}
+\newtcolorbox{careful}{colback=warn,colframe=amber,boxrule=0.4pt,left=5pt,right=5pt,top=3pt,bottom=3pt,title={Careful},fonttitle=\bfseries\small,coltitle=white}
+\newcommand{\term}[2]{\par\Needspace{3\baselineskip}\noindent{\bfseries\color{navy}#1}\hspace{0.3em}#2\par}
+\newcommand{\qa}[2]{\par\Needspace{4\baselineskip}\noindent{\bfseries\color{navy}Q: #1}\par\noindent #2\par}
+\begin{document}
+{\Huge\bfseries\color{navy} The lock-in project, made simple}\\[3pt]
+{\large Based on your final slides (\texttt{lockin\_final.pptx}). Read it in order. Nothing here is more complicated than it needs to be.}
+
+\vspace{6pt}
+\begin{tcolorbox}[colback=white,colframe=navy!50,boxrule=0.5pt,left=6pt,right=6pt]
+\textbf{The whole project in five sentences}
+\begin{enumerate}
+\item A sensor gives a very weak signal buried in much louder noise.
+\item A \emph{lock-in amplifier} digs the weak signal out by multiplying with a clean copy of its frequency and then averaging.
+\item How long you average is a trade-off (long = clean but slow), and normally a person has to set it by hand.
+\item You built this on an FPGA board and made it set the averaging length \emph{by itself}, and you also compared three ways of computing the signal's size and phase.
+\item You proved it works on the real board, and it recovered a signal about two million times weaker than the noise with only a few percent error.
+\end{enumerate}
+\end{tcolorbox}
+
+%==================================================
+\section{Part 1. The terms, and what each one is for}
+Think of the whole project as \textbf{tuning a radio to one faint station while a lot of static is playing.}
+
+\subsection*{The signal side}
+\term{Signal and noise}{The signal is the thing you want (a small, steady, repeating wave). Noise is random hiss on top of it. Here the noise is much bigger than the signal.}
+\term{SNR and dB}{Signal-to-noise ratio: how strong the signal is compared with the noise. dB is just a way of writing it. \textbf{0\,dB} means equal; \textbf{negative} means the signal is weaker. Your hardest case, \textbf{$-63$\,dB}, means the signal power is about \textbf{2 million times smaller} than the noise power.}
+\term{Lock-in amplifier}{A circuit that pulls out a weak signal of a \emph{known frequency}. It only listens at that one frequency and ignores the rest, like a radio locked on one station.}
+\term{Reference}{A clean copy of the signal's frequency, made inside the chip. The input is multiplied by it.}
+\term{Mixer}{The multiplier. Multiplying input by reference turns the wanted signal into a steady (flat) value, while the noise stays jumpy.}
+\term{I and Q}{Two versions of the multiplication, one with a cosine reference and one with a sine reference. Together they give both the \emph{size} and the \emph{phase} (timing) of the signal. You need both because the signal's timing is unknown.}
+\term{Low-pass filter / averaging}{Averages the mixer output over time. The steady signal stays; the jumpy noise cancels itself out. The longer you average, the cleaner the result.}
+\term{Bandwidth, time constant, settling}{How long you average is the \textbf{bandwidth} setting. \emph{Narrow bandwidth} = long averaging = cleaner but slow to react. \emph{Wide} = quick but noisy. \textbf{Settling time} is how long the output takes to follow a change. This trade-off is the heart of your project.}
+
+\subsection*{The blocks in your chain (slide 3)}
+\term{DDS (direct digital synthesis)}{A small block that generates a sine and cosine wave of exactly the frequency you want. It is your reference.}
+\term{CIC and FIR filters}{Together they reduce the amount of data. The input arrives 200,000 times per second, which is far more than needed, so they keep one value out of every 128. CIC does the big reduction using only additions (cheap). FIR then tidies up what CIC distorts. \textbf{R=128} means ``keep 1 in 128''.}
+\term{Averager and $k$}{The part that does the averaging. $k$ is the \textbf{averaging strength}: bigger $k$ = longer averaging = cleaner but slower. It goes from 0 to 20. Each +1 in $k$ roughly doubles the averaging length.}
+\term{Adaptive}{Instead of a person choosing $k$, the chip chooses it. It measures how noisy things are, and \textbf{raises $k$ if too noisy, lowers it if there is room}. This is your main addition.}
+\term{Extractors: CORDIC, lookup table, polynomial}{After averaging you have I and Q. You still need the signal's \textbf{size} ($\sqrt{I^2+Q^2}$) and \textbf{phase} (an angle). There are three ways to compute these in hardware, and you compared all three:
+\begin{itemize}
+\item \textbf{CORDIC}: calculates it step by step with only shifts and adds. Smallest, least accurate.
+\item \textbf{Lookup table (LUT method)}: reads the answer from a stored table and blends between entries. More accurate, uses memory.
+\item \textbf{Polynomial}: calculates the answer from a formula. Most accurate for the angle, uses the most multipliers.
+\end{itemize}}
+
+\subsection*{The hardware and tools}
+\term{FPGA}{A chip whose internal wiring you can program, so you build your own circuit instead of running software. Good for fast, parallel signal processing.}
+\term{Zynq UltraScale+ / PYNQ-ZU}{Your board. It has \textbf{two parts}: the FPGA fabric (called PL) where your circuit lives, and an ARM processor (called PS) that runs Linux and Python.}
+\term{Fabric vs ARM}{Fabric = your custom hardware (fast). ARM = a normal small computer on the same chip (slower, easy to program).}
+\term{HLS (Vitis HLS)}{A tool that turns C++ code into hardware. You wrote the lock-in as C++ and the tool built the circuit from it.}
+\term{IP}{A finished, reusable hardware block. Your \texttt{lockin\_top} is one IP.}
+\term{Vivado and block design}{Vivado is the tool that wires your IP to the rest of the chip (clock, processor, connections) and produces the programming file. The wiring diagram is the block design (slide 5).}
+\term{Bitstream}{The programming file that makes the FPGA become your circuit.}
+\term{AXI4-Lite and registers}{The ``control panel''. Your IP has numbered settings (registers) such as amplitude, noise level and $k$. Anything that can write those numbers can control the lock-in.}
+\term{JTAG}{A cable connection from your PC used to program the board and read/write registers through scripts.}
+\term{PYNQ}{Linux plus Python on the ARM, so you can control the IP from a short Python script.}
+\term{Clock, 100\,MHz}{The chip's heartbeat: 100 million ticks per second. Everything moves one step per tick.}
+
+\subsection*{The checking words}
+\term{Fixed-point / integer arithmetic}{Numbers stored as whole numbers with an agreed decimal point, instead of floating point. Smaller and faster in hardware.}
+\term{Golden model / C reference}{A trusted version of the whole chain in plain software. If the hardware gives the same answers, it is correct.}
+\term{Testbench}{A program that feeds test inputs and checks the outputs.}
+\term{Bit-exact}{The hardware output matches the reference \emph{exactly}, digit for digit, not ``close enough''.}
+\term{Mutation test}{You deliberately inject a bug into the design and check that the testbench catches it. It proves the tests are strong. You injected 17 bugs and caught all 17.}
+\term{Synthetic input}{The test signal (a tone plus random noise) is generated inside the FPGA, not from a real sensor. It makes every run repeatable.}
+
+\subsection*{The resource words}
+\term{LUT, FF, DSP, BRAM}{The building materials of an FPGA: LUT = logic cells; FF = memory bits; DSP = multipliers; BRAM = blocks of memory. ``Resources'' just means how much of these your design uses. (Careful: ``LUT'' is also the name of the lookup-table \emph{method}. Say which one you mean.)}
+\term{Timing met / slack}{At 100\,MHz each step must finish within 10\,ns. \textbf{Slack} is the spare time. $+3.26$\,ns slack means it finishes with room to spare, so it works.}
+\term{Throughput, MS/s}{How many samples per second it processes. MS/s = millions per second.}
+
+%==================================================
+\section{Part 2. The numbers}
+\textbf{You do not need all of them.} Learn the \textbf{first eight (marked $\star$)} cold. Glance at the rest.
+
+\begin{longtable}{@{}p{4.3cm}p{9.9cm}p{1.4cm}@{}}
+\toprule \textbf{Number} & \textbf{What it means in plain words} & \textbf{Slide}\\ \midrule\endhead
+$\star$ $-63$\,dB & Weakest signal tested: about 2 million times weaker than the noise. Still recovered with about 4--6\% error. & 2, 11\\
+$\star$ 57,344 words, 0 mismatches & Values read back from the board and compared with the reference: every one matched, over both JTAG and the ARM. & 8\\
+$\star$ 17 of 17 & Deliberately injected bugs, all caught. & 8\\
+$\star$ 9,554 LUTs (8.2\%), 63 DSPs (5.0\%) & The whole design uses only 8\% of the chip's logic and 5\% of its multipliers. & 7\\
+$\star$ $+3.26$\,ns slack & The design meets timing at 100\,MHz with room to spare. & 7\\
+$\star$ 4.27 MS/s vs 0.185 MS/s & Speed of the fabric vs the same code on one ARM core. About \textbf{23 times faster}. & 13\\
+$\star$ 62\% $\to$ 3.7\% & At the noisiest setting a fixed short filter has 62\% error, the adaptive one 3.7\%. & 10\\
+$\star$ $k$ = 15 to 20 & The averaging strength the chip chose by itself in the weak-signal tests. & 11\\
+\midrule
+200 kS/s, 1562.5 outputs/s & Input rate and output rate after ``keep 1 in 128'' ($200000/128$). The 200\,kS/s is a \emph{nominal} (assumed) rate. & 6\\
+$k$ from 0 to 20 & Allowed range of the averaging strength. & 3, 6\\
+Every 32 outputs & How often the chip reconsiders $k$: up, down or hold. & 4, 6\\
+1.47\,ms $\times 2^k$ & Rough settling time: doubles each time $k$ goes up by 1. & 6\\
+512 records & The log memory: 512 saved results you can read back. & 3\\
+0xA0000000 & The address of your IP's control panel when the ARM is used. & 5\\
+100\,MHz & Clock speed (from a 125\,MHz board clock). & 5\\
+$-45,-51,-57,-63$\,dB & Weak-signal tests (signal amplitude 64, 32, 16, 8 against the same noise). & 11\\
+Fixed $k$=8: 57, 120, 281\% & A fixed medium filter fails badly in those weak-signal tests. & 11\\
+3.7 / 0.66 / 0.75 LSB & Magnitude error of CORDIC / LUT / polynomial (smaller is better). & 9\\
+1.28$^\circ$ / 0.012$^\circ$ / 0.006$^\circ$ & Angle error of CORDIC / LUT / polynomial. & 9\\
+776 / 1,438 / 1,468 LUTs & Area of CORDIC / LUT / polynomial extractor. CORDIC is smallest. & 9\\
+1 / 3 / 9 DSPs & Multipliers used by CORDIC / LUT / polynomial. & 9\\
+4,608 points; 4.0 million inputs & How many test points: on the board / in the C model. & 4\\
+57,344 = 7 $\times$ 8,192 & Seven test configurations, 8,192 values each. & 8\\
+12,545 LUTs, +3.55\,ns & Whole design including the processor link. & 7\\
+0.54\,W & Power. Only a \emph{software estimate}, not measured. & 7\\
+20.5\,ms / 368.6\,ms / 6.02\,s & Settling time for fixed $k$ = 4 / 8 / 12, close to theory (23.6\,ms / 377\,ms / 6.04\,s). Times are for the nominal 200\,kS/s. & 12\\
+21$\times$ & The block runs 21 times faster than the 200\,kS/s it was specified for, so real times are about 21 times shorter. & 12, 13\\
+$k$ = 0/5/8/18--19/5/0 & Live ARM demo: $k$ follows the noise up and back down. & 12\\
+\bottomrule
+\end{longtable}
+
+\begin{careful}
+\textbf{LSB} is just the smallest step of the number format, so ``3.7 LSB'' means an error of about 3.7 smallest steps. Do not worry about its exact size; say ``smaller is better''.
+\end{careful}
+
+%==================================================
+\section{Part 3. Other important things to know}
+\subsection*{What you did, and what is new}
+\begin{itemize}
+\item \textbf{Starting point:} an existing paper (Fan et al.) built a lock-in on an older board with the same basic chain: reference, mixer, CIC and FIR. You rebuilt that kind of chain yourself.
+\item \textbf{Your two additions:} (1) the \textbf{adaptive averaging} that picks $k$ automatically; (2) the \textbf{comparison of three extractors} on the same data, measured on hardware.
+\item \textbf{How the adaptive rule works, simply:} it measures the noise (by comparing outputs 32 steps apart, where the signal cancels and only noise is left). If noise is too big compared with the signal, it raises $k$. If there is plenty of room, it lowers $k$. In between, it does nothing. That ``do nothing'' zone stops it from jumping up and down.
+\end{itemize}
+\begin{say}
+I did not invent the lock-in amplifier, and adaptive filtering already exists in other work. My contribution is a simple, hardware-friendly rule, built on an FPGA and measured against fixed settings, plus a measured comparison of three extraction methods.
+\end{say}
+
+\subsection*{The two bugs you found (good stories if asked ``what was hard?'')}
+\begin{enumerate}
+\item \textbf{The $k$ rule could get stuck going up and down.} In simulation the first version of the adaptive rule got into a loop. You found it and added a limit so $k$ cannot run ahead of the data it has averaged.
+\item \textbf{A small constant error from cutting off digits.} The filters were chopping off digits instead of rounding, which left a tiny constant offset (about one step). You changed them to round properly and re-checked.
+\end{enumerate}
+A third story: you asked the tool for a certain speed (one sample every 500 clock ticks) and it could not honour that, so you \emph{measured} the real speed instead of assuming it, and labelled all times honestly as ``nominal 200\,kS/s''.
+
+\subsection*{How you proved it works (three layers)}
+\begin{enumerate}
+\item A software reference of every step in whole numbers.
+\item 17 deliberately injected bugs, all caught, which shows the tests are strong.
+\item On the real board: 7 test setups, run once through the JTAG cable and once from the ARM processor, every value identical to the reference.
+\end{enumerate}
+
+\subsection*{The honest limits (slide 14: say them before anyone asks)}
+\begin{itemize}
+\item The input is \textbf{synthetic} (made inside the chip). No real sensor, converter or function generator was used.
+\item The power figure is an \textbf{estimate}.
+\item At the weakest case ($-63$\,dB) $k$ hit its maximum of 20 and only two runs were done, so treat those two numbers as indicative.
+\item The thresholds in the rule were chosen in simulation, not optimised. $k$ can overshoot after a sudden noise jump (your live run reached 18--19).
+\item The improved CORDIC version (about 1 step of error) exists in the C model only, not on the board.
+\item At low noise and strong signal, a wide fixed filter is more accurate than the adaptive one. The adaptive one is for when you do not know the noise in advance.
+\item The fabric-versus-ARM comparison uses the same code and one ARM core without special optimisation. A tuned ARM program would narrow the gap.
+\end{itemize}
+
+\begin{careful}
+\textbf{Do not say:} ``new lock-in algorithm'', ``published'', ``tested with a real sensor'', or that the improved CORDIC runs on the board. \textbf{Do say:} ``I measured this; I did not measure that.'' If you do not know something, say so and say how you would find out. Honest answers go down much better than guesses.
+\end{careful}
+
+\subsection*{Where things are}
+Your GitHub repository \texttt{Adk-157/lockin-fpga-accelerator} has the code, the board logs, the report (\texttt{paper/}) and these slides (\texttt{docs/}). The file \texttt{docs/pl-board-results.md} lists every measured number with its context.
+
+%==================================================
+\section{Part 4. Each slide and what to tell}
+About 1 minute per slide. Speak in your own words; these lines are only the idea.
+
+\begin{longtable}{@{}p{0.8cm}p{9.6cm}p{5.2cm}@{}}
+\toprule \textbf{\#} & \textbf{What to tell} & \textbf{If asked}\\ \midrule\endhead
+\textbf{1} & \textbf{Title.} ``This is my additional project: a lock-in amplifier on the PYNQ-ZU board with automatic bandwidth. Everything today was measured on the real board.'' & Mention your mentor, Dr.\ Ramesh Kumar V.\\
+\textbf{2} & \textbf{The problem.} ``A lock-in pulls a weak signal out of noise: multiply by a reference, then average. The catch: averaging longer is cleaner but slower, and today a person sets it by hand. My system recovered a signal $-63$\,dB below the noise on the board.'' & What does $-63$\,dB mean? (about 2 million times weaker than the noise)\\
+\textbf{3} & \textbf{Architecture.} ``Signal goes through: reference and mixer, then a filter that reduces the data, then the averager, then the extractors. The amber blocks are what I added: the adaptive averager and the three extractors. It is built as one C++ function run once per sample, controlled through one set of registers.'' & Where is the baseline from? (Fan et al., older board)\\
+\textbf{4} & \textbf{New vs not new.} ``Two contributions: the automatic bandwidth, and a three-way comparison of how to get size and phase. I do not claim a new lock-in principle; adaptive lock-ins already exist. My contribution is a simple rule built and measured on an FPGA.'' & Is this novel? Say the quoted sentence from Part 3.\\
+\textbf{5} & \textbf{Implementation.} ``I wrote C++, Vitis HLS turned it into hardware, Vivado wired it to the clock and processor, and I loaded it on the board. I can control it two ways: from my PC over JTAG, and from Python on the board's ARM. The code on the slide is the actual rule: if noise is high, $k$ goes up; if low, $k$ goes down.'' & How does Python reach it? (it writes numbers to the control registers at one address)\\
+\textbf{6} & \textbf{Math.} ``Mixer multiplies by cosine and sine. The filter keeps one sample in 128. The averager adds a fraction $2^{-k}$ of the difference each step. The rule compares noise with signal and moves $k$ up or down every 32 outputs. Settling time doubles for each step of $k$.'' & Why $2^{-k}$? (a power of two is just a shift, so no multiplier is needed)\\
+\textbf{7} & \textbf{Resources.} ``It uses about 8\% of the chip's logic and 5\% of its multipliers, meets the 100\,MHz timing with room to spare, and the power estimate is about half a watt. The controller is the biggest block.'' & Is power measured? No, it is an estimate.\\
+\textbf{8} & \textbf{Verification.} ``I tested in three layers: a software reference, 17 injected bugs which were all caught, and the real board. Seven test setups, each run through JTAG and through the ARM, about 57 thousand values each, with zero mismatches.'' & What is bit-exact? (identical, not close)\\
+\textbf{9} & \textbf{Extractors.} ``CORDIC is smallest but least accurate. The lookup table and polynomial are about 100 to 200 times better at the angle for about twice the area. The better CORDIC version exists only in my C model, not on the board.'' & Which would you pick? (CORDIC if area matters; LUT or polynomial if accuracy matters)\\
+\textbf{10} & \textbf{Adaptive vs fixed.} ``As noise grows, a short fixed filter gets much worse, up to 62\% error, but the adaptive one stays around 4 to 6\% because it raises $k$ itself. A very wide fixed filter is more accurate, but it takes seconds to settle, and at low noise the adaptive one is a little worse.'' & Why not just use a wide filter? (you must know the noise in advance, and it is slow)\\
+\textbf{11} & \textbf{Weak signals.} ``Down to $-63$\,dB the controller picks $k$ between 15 and 20 by itself. Fixed $k=8$ fails with 57 to 281\% error. At $-63$\,dB it reached its maximum, and I ran only two seeds, so that point is indicative.'' & Why stop at 20? (it is the limit of the design's number range)\\
+\textbf{12} & \textbf{Settling and live run.} ``Settling time matches theory: about 20\,ms, 370\,ms and 6\,s for three fixed settings. In a live run from Python, $k$ followed the noise up and back down. It overshot to 18--19 after a big noise step, which I list as a limitation.'' & These ms are for the nominal rate; real time is about 21 times shorter.\\
+\textbf{13} & \textbf{Fabric vs ARM.} ``The same C++ code runs 23 times faster in the fabric than on one ARM core: 4.27 versus 0.185 million samples per second. The ARM code was not specially optimised, so a tuned version would be closer.'' & Why faster than 200\,kS/s? (the tool did not pace it, so it runs flat out; I measured the speed)\\
+\textbf{14} & \textbf{Limits.} Read the four boxes out loud: synthetic input, estimates and bounds, fixed thresholds with overshoot, CORDIC variant in the C model only. & Saying these first builds trust.\\
+\textbf{15} & \textbf{Conclusion.} ``All phases are done: Python model, each block in HLS, the adaptive controller, then the integrated board design and measurements. The result is a working adaptive lock-in verified bit-exact on the board.'' & What next? (a real ADC and sensor)\\
+\textbf{16} & \textbf{References.} Do not read them. If asked, name the baseline paper (Fan et al.) and the adaptive Kalman-filter lock-in paper (Chen et al.). & --\\
+\bottomrule
+\end{longtable}
+
+%==================================================
+\section{Part 5. Possible questions and simple answers}
+\subsection*{The basics}
+\qa{What is a lock-in amplifier?}{A circuit that pulls out a weak signal of a known frequency from heavy noise. It multiplies the input by a reference at that frequency and averages, so the signal stays and the noise cancels.}
+\qa{Why do you need both I and Q?}{Because you do not know the signal's timing. With one reference the answer can be zero by bad luck. With both you can always get the correct size and phase.}
+\qa{Why does averaging remove noise but not the signal?}{After multiplying, the signal becomes a steady value, while noise is random and jumps up and down, so it cancels over time.}
+\qa{What is the bandwidth trade-off?}{Longer averaging gives cleaner results but reacts slowly. Shorter averaging reacts fast but is noisy. You have to balance them.}
+\qa{What does $-63$\,dB mean? Is it realistic?}{The signal power is about 2 million times smaller than the noise power. For lock-ins this is realistic, because the narrow averaging removes most of the noise. My noise is synthetic though, and real noise can be harder.}
+
+\subsection*{What you built}
+\qa{What exactly did you add?}{Two things. An automatic choice of the averaging strength from a noise measurement, and a measured comparison of three ways to compute size and phase.}
+\qa{How does the chip decide $k$?}{It measures the noise by comparing outputs 32 steps apart. If the noise is too large compared with the signal, it increases $k$. If there is a lot of room, it decreases $k$. In between, it holds.}
+\qa{Why does it only decide every 32 outputs?}{So the noise measurement has enough data and $k$ does not jump around. The value comes from simulation. I did not optimise it.}
+\qa{Why CIC plus FIR?}{The input has far more samples than needed. CIC drops the rate by 128 using only adders, which is cheap. The FIR then corrects the slight droop CIC causes.}
+\qa{Why did you use HLS and not Verilog?}{HLS lets me write the design in C++, and the same C++ works as the reference for testing and for the ARM comparison. That made verification much easier.}
+\qa{Why three extractors?}{To show the trade-off between area and accuracy on real hardware: CORDIC is smallest, LUT and polynomial are far more accurate.}
+
+\subsection*{Hardware and the board}
+\qa{How does Python control the hardware?}{The ARM can read and write the IP's control registers at one address. A short Python script writes the settings, starts it, and reads the results.}
+\qa{Why two ways of controlling it (JTAG and ARM)?}{JTAG lets scripts on my PC test it without Linux. The ARM version runs the same IP from Python on the board. Same registers, same results.}
+\qa{Why is it faster than 200\,kS/s?}{I asked the tool to pace it at exactly 200\,kS/s but it could not, so the block just runs as fast as it can. I measured the real speed instead of assuming it, which is 4.27 million samples per second.}
+\qa{How did you measure the speed?}{I read the output counter, waited about 5 seconds, and read it again. JTAG and the ARM gave the same answer.}
+\qa{Could it run faster than 100\,MHz?}{Probably. There is 3.26\,ns of spare time on a 10\,ns clock. I did not try higher.}
+\qa{Why synthetic input?}{There was no converter or function generator on this setup. Generating the signal inside the chip also makes every run repeatable, which is what lets me compare exactly with the reference. It is listed as a limitation.}
+
+\subsection*{Testing and results}
+\qa{What does bit-exact mean?}{The board's output equals the reference's output exactly, every digit, with no allowed difference.}
+\qa{What is a mutation test?}{I deliberately break the design in 17 ways, one at a time, and check that the tests notice. All 17 were caught. This proves the tests would catch real bugs.}
+\qa{Where does the 4 to 6\% error come from?}{It is how much the measured amplitude wobbles, as a percentage of the true value. The adaptive rule keeps it inside a target range, which is why it stays similar whatever the noise.}
+\qa{Why is adaptive worse than a wide fixed filter sometimes?}{The adaptive rule stops averaging more once the error is small enough. A very wide fixed filter keeps going and is more accurate, but it takes seconds to settle and you need to know the noise level beforehand.}
+\qa{Why did $k$ go to 18--19 in the live run?}{After a big jump in noise, $k$ went higher than needed and came back down later. The system remembers the past. I list this as a limitation and did not investigate it further.}
+\qa{Is the 23 times speed-up fair?}{It is the same code on both sides, one ARM core, no special optimisation. A hand-tuned ARM version would be closer, so I say ``23 times for this code''.}
+
+\subsection*{The hard ones (stay calm and be honest)}
+\qa{Is this novel? Is it published?}{No new lock-in principle, and it is not published. It is a course project report. What is mine is a simple hardware rule, built and measured on an FPGA, with a measured three-way comparison.}
+\qa{How is this different from the adaptive Kalman-filter lock-in (Chen et al.)?}{That work uses a Kalman filter, which is heavier mathematics. Mine is a much simpler rule for small hardware. I did not compare the two directly.}
+\qa{What did you take from the baseline paper and what is yours?}{The baseline gives the chain structure. I built it myself in HLS and added the adaptive averager, the three extractors, the testing and the board measurements.}
+\qa{What was the hardest part?}{Pick one of your stories: the adaptive rule that got stuck in a loop, the rounding offset, or the speed setting that the tool could not meet.}
+\qa{What would you do next?}{Connect a real converter and sensor, measure speed with an external clock, improve the rule so it overshoots less, and run the better CORDIC on the board.}
+\qa{I do not know the answer to a question, what then?}{Say: ``I did not measure that, but I would check it by \dots''. Do not guess. It is a better answer than a wrong one.}
+
+\vspace{8pt}
+\begin{tcolorbox}[colback=ice,colframe=navy,boxrule=0.4pt]
+\textbf{Last minute checklist:} (1) say the five-sentence summary out loud; (2) know the first eight numbers; (3) know the three things you did \emph{not} do (real sensor, published, better CORDIC on the board); (4) breathe, and speak slowly.
+\end{tcolorbox}
+\end{document}
